@@ -1,0 +1,656 @@
+{
+  "version": 1,
+  "updated_at": "2025-11-15T00:00:00Z",
+  "objectives": [
+    "Reliable ML‑assisted drafting for §1782 and seal/pseudonym motions",
+    "High‑coverage research with semantic/hybrid search and curated citations",
+    "Calibrated, explainable models with clear thresholds and evaluation",
+    "Accessible, reproducible workflows for all contributors"
+  ],
+  "environment": {
+    "gpu_available": true,
+    "gpu_model": "NVIDIA GeForce RTX 3090",
+    "gpu_memory_gb": 24,
+    "cuda_version": "12.1",
+    "pytorch_version": "2.5.1+cu121",
+    "gpu_auto_detection": true,
+    "notes": "GPU auto-detected by code. CatBoost and PyTorch models default to GPU when available. Training operations should configure task_type='GPU' for CatBoost and device='cuda' for PyTorch models."
+  },
+  "tasks": [
+    {
+      "id": "DATA-001",
+      "title": "Expand favorable labels by including opinions (not just motions)",
+      "status": "completed",
+      "priority": "P0",
+      "area": "data",
+      "issue": "plans/TODOs/DATA-001.md",
+      "tags": [
+        "labels",
+        "opinions",
+        "coverage"
+      ],
+      "files": [
+        "case_law_data/scripts/analyze_motion_types_and_update_outline_model.py",
+        "case_law_data/scripts/check_actual_seal_pseudonym_counts.py"
+      ],
+      "commands": [
+        "python case_law_data/scripts/check_actual_seal_pseudonym_counts.py",
+        "python case_law_data/scripts/analyze_motion_types_and_update_outline_model.py"
+      ],
+      "notes": "Queues regenerated with opinions; labeling scripts ready. Verified counts across datasets; queues created under case_law_data/labeling_queues. Document type enrichment pending; opinions/orders not tagged due to missing document_type in unified_corpus.db."
+    },
+    {
+      "id": "SEARCH-001",
+      "title": "Adopt semantic/hybrid CourtListener search by default",
+      "status": "completed",
+      "priority": "P0",
+      "area": "search",
+      "issue": "plans/TODOs/SEARCH-001.md",
+      "tags": [
+        "semantic",
+        "courtlistener",
+        "citations"
+      ],
+      "files": [
+        "case_law_data/scripts/semantic_search_harvard_lawsuit.py",
+        "case_law_data/scripts/citation_searchers/courtlistener_searcher.py"
+      ],
+      "commands": [
+        "python case_law_data/scripts/semantic_search_harvard_lawsuit.py --category 1 --max-results 200",
+        "python case_law_data/scripts/analyze_semantic_search_results.py --input results/semantic_search_harvard_lawsuit_*.json"
+      ],
+      "notes": "Completed: semantic_search_harvard_lawsuit.py defaults to hybrid semantic queries (with top-hit summaries + filtering) and CourtListenerSearcher now relies on semantic search by default. Ran category 1 + known-failing queries (results/semantic_search_harvard_lawsuit_20251112_192300.json and ...930.json) and generated reports at reports/analysis_outputs/semantic_report*.md."
+    },
+    {
+      "id": "MODEL-001",
+      "title": "Retrain unified outline model with TF‑IDF + Legal‑BERT",
+      "status": "completed",
+      "priority": "P0",
+      "area": "modeling",
+      "issue": "plans/TODOs/MODEL-001.md",
+      "tags": [
+        "catboost",
+        "bert",
+        "outline"
+      ],
+      "files": [
+        "case_law_data/scripts/generate_bert_features.py",
+        "case_law_data/scripts/retrain_unified_outline_model.py"
+      ],
+      "commands": [
+        "python case_law_data/scripts/generate_bert_features.py",
+        "python case_law_data/scripts/BuildUnifiedFeatures.py --include-outline",
+        "python case_law_data/scripts/retrain_unified_outline_model.py --features-csv case_law_data/features/unified_features.csv --target favorable_to_plaintiff --output-model case_law_data/models/catboost_outline_unified.cbm"
+      ],
+      "notes": "Completed: retrained CatBoost using unified features (TF‑IDF + Legal‑BERT). Outline extraction utility validated. Model + metrics saved under case_law_data/models/."
+    },
+    {
+      "id": "MODEL-002",
+      "title": "Probability calibration + thresholds per use‑case",
+      "status": "pending",
+      "priority": "P1",
+      "area": "modeling",
+      "issue": "plans/TODOs/MODEL-002_003.md",
+      "tags": [
+        "calibration",
+        "thresholds"
+      ],
+      "files": [
+        "Agents_1782_ML_Dataset/MLUPGRADEROADMAP.md"
+      ],
+      "commands": [],
+      "notes": "Isotonic/sigmoid calibration; report ECE/Brier; recall vs precision modes."
+    },
+    {
+      "id": "MODEL-003",
+      "title": "Optuna HPO for key CatBoost models",
+      "status": "pending",
+      "priority": "P1",
+      "area": "modeling",
+      "issue": "plans/TODOs/MODEL-002_003.md",
+      "tags": [
+        "optuna",
+        "hpo"
+      ],
+      "files": [
+        "Agents_1782_ML_Dataset/MLUPGRADEROADMAP.md"
+      ],
+      "commands": [],
+      "notes": "Log best params; keep training time reasonable with pruning."
+    },
+    {
+      "id": "WORKFLOW-001",
+      "title": "Pre-flight checker for required models/features",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "validation",
+        "guardrails"
+      ],
+      "files": [
+        "writer_agents/scripts/generate_optimized_motion.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Added run_preflight_checks() function that validates CatBoost models, personal corpus artifacts (case insights, tmp_corpus, metadata), and outline extractor before workflow runs. Issues are logged but non-blocking. CLI accepts optional case-insights path and reports readiness before building CaseInsights."
+    },
+    {
+      "id": "MLOPS-001",
+      "title": "Experiment tracking (MLflow or JSON) + nightly inventory",
+      "status": "pending",
+      "priority": "P2",
+      "area": "mlops",
+      "tags": [
+        "tracking",
+        "nightly"
+      ],
+      "files": [
+        "reports/analysis_outputs/model_artifacts_inventory.csv",
+        "scripts/refresh_model_inventory.py"
+      ],
+      "commands": [
+        "python scripts/refresh_model_inventory.py"
+      ],
+      "notes": "Record metrics/params; refresh inventories; notify on drift."
+    },
+    {
+      "id": "DOCS-001",
+      "title": "Add short runbooks for train/infer/search",
+      "status": "completed",
+      "priority": "P1",
+      "area": "docs",
+      "tags": [
+        "runbooks",
+        "developer-experience"
+      ],
+      "files": [
+        "docs/for_agents/ML_Lawsuit_Analysis_Docs_Overview.md"
+      ],
+      "commands": [],
+      "notes": "Completed: Added runbook sections (lines 109-204) with copy/paste action boxes for training pipeline, inference/motion generation, semantic search refresh, and local LLM verification. Each section includes reminders about required artifacts and related plan tasks."
+    },
+    {
+      "id": "WORKFLOW-002",
+      "title": "Fix case facts drop-out in CaseFactsProvider",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "case-facts",
+        "personal-corpus",
+        "bug-fix"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/FeaturePlugin/CaseFactsProvider.py",
+        "writer_agents/scripts/generate_optimized_motion.py",
+        "writer_agents/scripts/build_case_insights.py"
+      ],
+      "commands": [],
+      "notes": "Agent 1 completed: Aligned node_id generation to use fact_block_ prefix. Added robust fallback to JSON. All paths now consistent. Audit verified: Also fixed dict evidence support."
+    },
+    {
+      "id": "WORKFLOW-003",
+      "title": "Enable refinement loop by default in CLI",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "refinement-loop",
+        "workflow-config",
+        "bug-fix"
+      ],
+      "files": [
+        "writer_agents/code/WorkflowStrategyExecutor.py",
+        "writer_agents/code/WorkflowOrchestrator.py",
+        "writer_agents/scripts/generate_optimized_motion.py"
+      ],
+      "commands": [],
+      "notes": "Agent 2 completed: Auto-defaults to True when max_iterations > 1. Added --refinement-mode CLI flag. Refinement loop now runs by default. Audit verified: Live-update sanitizer bug fixed."
+    },
+    {
+      "id": "MODEL-004",
+      "title": "Integrate personal corpus metrics into CatBoost feature extraction",
+      "status": "completed",
+      "priority": "P1",
+      "area": "modeling",
+      "tags": [
+        "catboost",
+        "personal-corpus",
+        "feature-extraction"
+      ],
+      "files": [
+        "writer_agents/code/analyze_ma_motion_doc.py",
+        "writer_agents/code/sk_plugins/FeaturePlugin/feature_extractor.py"
+      ],
+      "commands": [],
+      "notes": "Agent 3 completed: Added personal corpus metrics (fact block hits, Harvard/OGC/CCP density, timeline cues) to feature extraction. Feature extractor warns when artifacts missing. Note: Path bug found in feature_extractor.py (see WORKFLOW-005)."
+    },
+    {
+      "id": "WORKFLOW-004",
+      "title": "Fix semantic retrieval silent fallback to keyword matching",
+      "status": "completed",
+      "priority": "P1",
+      "area": "workflow",
+      "tags": [
+        "semantic-search",
+        "embedding-retriever",
+        "bug-fix"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/FeaturePlugin/EmbeddingRetriever.py",
+        ".env.example",
+        "scripts/init_personal_corpus_focus.py"
+      ],
+      "commands": [],
+      "notes": "Agent 3 completed: Added explicit warnings when semantic search degrades. Documented MATRIX_ENABLE_NETWORK_MODELS flag. Fallback to keyword-based SQLite search."
+    },
+    {
+      "id": "WORKFLOW-005",
+      "title": "Fix feature_extractor path bug (parents[5] → parents[4])",
+      "status": "completed",
+      "priority": "P1",
+      "area": "workflow",
+      "tags": [
+        "bug-fix",
+        "path-resolution",
+        "regression"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/FeaturePlugin/feature_extractor.py:127"
+      ],
+      "commands": [],
+      "notes": "Fixed: Changed parents[5] to parents[4] to correctly resolve case_law_data/results/ from repo root. Personal corpus readiness check now works correctly and no longer shows false warnings."
+    },
+    {
+      "id": "WORKFLOW-006",
+      "title": "Consider limiting fact_block_ prefix to explicit fact_blocks only",
+      "status": "completed",
+      "priority": "P2",
+      "area": "workflow",
+      "tags": [
+        "code-quality",
+        "optional-refinement"
+      ],
+      "files": [
+        "writer_agents/scripts/generate_optimized_motion.py:54"
+      ],
+      "commands": [],
+      "notes": "Fixed: Removed injection of extracted_facts as fact_block_* evidence. Only fact_blocks are now prefixed. Verified with sanity check - evidence contains only fact_block_* items, preventing pollution of targeted fact signals."
+    },
+    {
+      "id": "WORKFLOW-007",
+      "title": "De-duplicate WorkflowStrategyConfig or add consistency check",
+      "status": "completed",
+      "priority": "P2",
+      "area": "workflow",
+      "tags": [
+        "code-quality",
+        "refactoring"
+      ],
+      "files": [
+        "writer_agents/code/workflow_config.py",
+        "writer_agents/code/WorkflowStrategyExecutor.py",
+        "writer_agents/code/WorkflowOrchestrator.py",
+        "writer_agents/scripts/generate_optimized_motion.py",
+        "case_law_data/scripts/generate_master_draft_with_workflow.py",
+        "scripts/analyze_national_security_matter.py",
+        "scripts/generate_us_motion_from_hk_success.py",
+        "writer_agents/scripts/test_citation_enforcement.py",
+        "writer_agents/scripts/test_multi_model_national_security.py",
+        "writer_agents/scripts/update_master_draft_in_google_docs.py",
+        "writer_agents/test_live_update_workflow.py",
+        "writer_agents/scripts/test_quick_init.py",
+        "writer_agents/manual_live_update.py",
+        "writer_agents/generate_full_motion_to_seal.py",
+        "create_master_draft_with_outline.py"
+      ],
+      "commands": [],
+      "notes": "Fixed: Created shared workflow_config.py as single source of truth. Updated all 14+ runtime scripts to import WorkflowStrategyConfig from code.workflow_config. Both orchestrators import from shared module. Added runtime sanity checks to ensure auto-default behavior. Docs and some deep tests still reference old import path (informational only, non-blocking)."
+    },
+    {
+      "id": "WORKFLOW-008",
+      "title": "Hardened CaseFactsProvider JSON fallback and embedding fallback",
+      "status": "completed",
+      "priority": "P1",
+      "area": "workflow",
+      "tags": [
+        "bug-fix",
+        "case-facts",
+        "fallback"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/FeaturePlugin/CaseFactsProvider.py"
+      ],
+      "commands": [],
+      "notes": "Fixed: JSON fallback now rebuilds structured facts after loading (line 71-72). Embedding fallback gracefully downgrades to fact-block chunks when embeddings unavailable via _fact_blocks_to_chunks(). Added lightweight RetrievedChunk shim to prevent import errors when EMBEDDING_RETRIEVER_AVAILABLE is False."
+    },
+    {
+      "id": "WORKFLOW-009",
+      "title": "Fix CaseFactsProvider JSON fallback path (parents[3] → parents[4])",
+      "status": "completed",
+      "priority": "P1",
+      "area": "workflow",
+      "tags": [
+        "bug-fix",
+        "path-resolution"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/FeaturePlugin/CaseFactsProvider.py:121"
+      ],
+      "commands": [],
+      "notes": "Fixed: Changed parents[3] to parents[4] to correctly resolve writer_agents/outputs/case_insights.json from repo root. Fallback paths remain safe with additional candidates. Verified path resolves correctly."
+    },
+    {
+      "id": "WORKFLOW-010",
+      "title": "CaseFactsProvider enhancements & formatting for AutoGen",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "facts",
+        "autogen",
+        "formatting"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/FeaturePlugin/CaseFactsProvider.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Added has_lawsuit_facts(), format_facts_for_autogen(), and filter_evidence_for_lawsuit() methods. Smoke tests passed. Ready for integration."
+    },
+    {
+      "id": "WORKFLOW-011",
+      "title": "AutoGen bridge & exploration phase integration",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "autogen",
+        "bridge",
+        "exploration"
+      ],
+      "files": [
+        "writer_agents/code/WorkflowOrchestrator.py",
+        "writer_agents/code/WorkflowStrategyExecutor.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Enriched AutoGenToSKBridge with filtered evidence and fact blocks. Added _build_autogen_fact_context() helper. Rebuilt exploration prompt to inject verified personal facts. Logging added for filtering statistics."
+    },
+    {
+      "id": "WORKFLOW-012",
+      "title": "Workflow phase updates (planning, drafting, review)",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "workflow",
+        "phases",
+        "facts"
+      ],
+      "files": [
+        "writer_agents/code/WorkflowOrchestrator.py",
+        "writer_agents/code/WorkflowStrategyExecutor.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Planning, drafting, and review phases now use structured facts via _build_autogen_fact_context() helper. All AutoGen prompts consistently reference verified personal corpus facts."
+    },
+    {
+      "id": "WORKFLOW-013",
+      "title": "Factuality filter integration",
+      "status": "completed",
+      "priority": "P1",
+      "area": "workflow",
+      "tags": [
+        "facts",
+        "filtering",
+        "factuality"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/FeaturePlugin/CaseFactsProvider.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Added optional enable_factuality_filter parameter. Integrated FactualityFilter with graceful degradation. All ingestion paths route through _sanitize_fact_text(). Added filtered fact retrieval methods. Logs removed hypothetical sentences."
+    },
+    {
+      "id": "SK-001",
+      "title": "Fix Semantic Kernel 1.37.1 plugin registration compatibility",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "semantic-kernel",
+        "plugin-registration",
+        "compatibility"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/ValidationPlugin/validation_functions.py",
+        "writer_agents/code/sk_plugins/PetitionQualityPlugin/__init__.py",
+        "writer_agents/code/sk_plugins/FeaturePlugin/base_feature_plugin.py",
+        "writer_agents/code/sk_compat.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Fixed ValidationPlugin to mirror functions to kernel.plugins. Updated PetitionQualityPlugin to use register_functions_with_kernel() helper. Added @kernel_function decorators to all BaseFeaturePlugin wrappers. All plugins now register successfully with SK 1.37.1."
+    },
+    {
+      "id": "SK-002",
+      "title": "Fix tone validation ChatMessageContent parsing",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "semantic-kernel",
+        "validation",
+        "bug-fix"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/ValidationPlugin/validation_functions.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Fixed ToneConsistencySemanticFunction to extract text from ChatMessageContent lists before JSON parsing. Handles nested items/text extraction. Falls back to basic validation if JSON parsing fails."
+    },
+    {
+      "id": "SK-003",
+      "title": "Update drafting plugins to use KernelFunctionFromPrompt",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "semantic-kernel",
+        "drafting-plugins",
+        "compatibility"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/DraftingPlugin/motion_sections_plugin.py",
+        "writer_agents/code/sk_plugins/DraftingPlugin/privacy_harm_function.py",
+        "writer_agents/code/sk_plugins/DraftingPlugin/factual_timeline_function.py",
+        "writer_agents/code/sk_plugins/DraftingPlugin/causation_analysis_function.py",
+        "writer_agents/code/sk_plugins/utils.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Created shared extract_prompt_text() helper in utils.py. Updated all drafting plugins to use KernelFunctionFromPrompt instead of removed create_function_from_prompt(). All plugins now handle ChatMessageContent list results correctly."
+    },
+    {
+      "id": "SK-004",
+      "title": "Fix import path warning for code.sk_plugins.sk_compat",
+      "status": "completed",
+      "priority": "P1",
+      "area": "workflow",
+      "tags": [
+        "semantic-kernel",
+        "imports",
+        "cleanup"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/sk_compat.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Created compatibility shim at writer_agents/code/sk_plugins/sk_compat.py that re-exports from code.sk_compat, eliminating 'No module named code.sk_plugins.sk_compat' warning during plugin registration."
+    },
+    {
+      "id": "WORKFLOW-014",
+      "title": "Enhance CaseFactsProvider with caching and personal corpus enrichment",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "case-facts",
+        "personal-corpus",
+        "performance"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/FeaturePlugin/CaseFactsProvider.py",
+        "tests/test_case_facts_provider.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Added caching for JSON + embedding resources. Personal corpus auto-enrichment (up to 40 documents). Lawsuit-aware evidence filtering with per-reason drop statistics. Retry logic for truths DB access. Structured fallback tracking with comprehensive logging."
+    },
+    {
+      "id": "WORKFLOW-015",
+      "title": "Enhance constraint system formatting and integration",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "constraints",
+        "quality-gates",
+        "prompts"
+      ],
+      "files": [
+        "writer_agents/code/WorkflowOrchestrator.py",
+        "writer_agents/code/WorkflowStrategyExecutor.py",
+        "docs/guides/constraint_system.md",
+        "tests/test_constraint_system.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Enhanced constraint formatting with severity icons. Constraint caching per version. JSON validation and schema logging. Constraints always appended to prompts. Violation feedback flows to refinement phases."
+    },
+    {
+      "id": "WORKFLOW-016",
+      "title": "Improve prompt assembly and context flow",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "prompts",
+        "context-flow",
+        "case-facts"
+      ],
+      "files": [
+        "writer_agents/code/WorkflowOrchestrator.py",
+        "writer_agents/code/WorkflowStrategyExecutor.py",
+        "tests/test_prompt_assembly.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Created formatting helpers for structured facts, AutoGen notes, and quality constraints. Section prompts reuse helpers for consistency. Context defaults ensure all fields present. Explicit instructions to rely only on vetted facts."
+    },
+    {
+      "id": "WORKFLOW-017",
+      "title": "Fix fact enforcement timing in validation phase",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "fact-enforcement",
+        "validation",
+        "bug-fix",
+        "blocking"
+      ],
+      "files": [
+        "writer_agents/code/WorkflowOrchestrator.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Added fact enforcement in validation phase right after fact_retry_todo is populated (around line 6936). This injects missing facts before the blocking check in get_next_phase, ensuring facts are present when workflow evaluates whether to proceed. Enforcement now runs in three places: during drafting, in validation phase (new), and before commit. Ensures fact_snippet_map exists with synthesis before enforcement. Updates state.draft_result with enforced document."
+    },
+    {
+      "id": "WORKFLOW-018",
+      "title": "Update fact verification rules to remove fictional facts and improve PRC risk coverage",
+      "status": "pending",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "fact-verification",
+        "validation",
+        "prc-risk",
+        "rules"
+      ],
+      "files": [
+        "writer_agents/code/validation/personal_facts_verifier.py"
+      ],
+      "commands": [],
+      "notes": "Analysis shows current DEFAULT_FACT_RULES still includes fictional facts (date_june_4_2025, timeline_june_2025_arrests) that force hallucinations. Need to: (1) Remove/drop fictional June 2025 dates and arrests timeline, (2) Keep valid facts (hk_statement, ogc_emails, allegation_defamation), (3) Add core safety/PRC facts (unable_to_leave_china_2019_2022, xi_slide, esuwiki_case, wechat_pdf_persistence, monkey_article, economic_loss_contracts, notice_wang_april_2019, notice_ogc_2025), (4) Use optional=True for facts that may not always appear, (5) Update RULE_TO_GRAPH_TYPE mapping for better fact graph integration. Current clustered structure exists but needs refinement to match actual danger model rather than generic form-based validation."
+    },
+    {
+      "id": "WORKFLOW-019",
+      "title": "Fix cluster-based validation blocking logic",
+      "status": "completed",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "cluster-validation",
+        "blocking",
+        "bug-fix"
+      ],
+      "files": [
+        "writer_agents/code/WorkflowOrchestrator.py"
+      ],
+      "commands": [],
+      "notes": "Completed: Fixed blocking logic in get_next_phase (around line 949). When cluster-based validation shows 100% satisfaction (cluster_satisfaction_rate >= 1.0), the system no longer blocks on individual missing facts. Only blocks if required clusters are missing. This is correct because cluster-based validation requires at least one fact from each required cluster - if all required clusters are satisfied, the motion has essential factual coverage and individual missing facts within satisfied clusters are optional and shouldn't block commit."
+    },
+    {
+      "id": "WORKFLOW-020",
+      "title": "Add cluster satisfaction override to remaining blocking points",
+      "status": "pending",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "cluster-validation",
+        "blocking",
+        "quality-gates",
+        "override"
+      ],
+      "files": [
+        "writer_agents/code/quality_gates.py",
+        "writer_agents/scripts/generate_optimized_motion.py",
+        "docs/for_agents/session_coordination_status.md"
+      ],
+      "commands": [],
+      "notes": "Analysis shows that while cluster-based validation blocking was fixed in WorkflowOrchestrator, three additional blocking points still exist that can block even when cluster satisfaction = 100%: (1) quality_gates.py has independent blocking gates (missing sections, citations, format, tone, grammar) that fire before finalization, (2) generate_optimized_motion.py performs post-generation sanity sweep (hallucinated dates, contradictions, missing sections, incomplete streaming) that can block, (3) session coordinator uses coordination locks that can block commits. Fix: Add global override - if cluster_satisfaction_rate == 1.0, override ALL other fact-related blocking and allow pipeline to continue, EXCEPT if a hard safety rule is violated (doxxing, naming address, PRC citizenship claim, wrong court venue, false factual statement). Rationale: If all clusters are satisfied, motion is structurally/factually/legally sufficient, so minor issues (missing Conclusion, citation format, tone warnings) shouldn't block progress."
+    },
+    {
+      "id": "WORKFLOW-021",
+      "title": "Fix constraint system path resolution",
+      "status": "pending",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "quality-gates",
+        "path-resolution",
+        "catboost"
+      ],
+      "files": [
+        "writer_agents/code/sk_plugins/PetitionQualityPlugin/enhanced_validator.py",
+        "writer_agents/code/WorkflowOrchestrator.py"
+      ],
+      "commands": [],
+      "notes": "Validation currently fails with 'Could not find constraint system v1.0 at /home/serteamwork/projects/case_law_data/...' because the path resolution drops the TheMatrix directory. Need to audit workspace_root detection in enhanced_validator.py (lines 27-31) and WorkflowOrchestrator.py (around line 5521) so constraint_path resolves to /home/serteamwork/projects/TheMatrix/case_law_data/config/constraint_system_versions/v1.0_base.json. Fix is to correctly compute workspace_root via Path(__file__).resolve().parents[...] and ensure joins include TheMatrix."
+    },
+    {
+      "id": "WORKFLOW-022",
+      "title": "Improve fact injection prompts and natural coverage",
+      "status": "pending",
+      "priority": "P0",
+      "area": "workflow",
+      "tags": [
+        "fact-coverage",
+        "prompting",
+        "catboost"
+      ],
+      "files": [
+        "writer_agents/code/WorkflowStrategyExecutor.py",
+        "writer_agents/code/fact_payload_utils.py",
+        "writer_agents/code/validation/personal_facts_verifier.py"
+      ],
+      "commands": [],
+      "notes": "CatBoost quality score stuck at 0.58 because 15 facts required enforcement and three (seal_request, reputational_harm, prc_surveillance_handlers) still missing post-injection. Need to: (1) pass fact_retry_todo checklist into initial draft prompts (WorkflowStrategyExecutor.py lines 4161-4195) so CRITICAL FACTS section is front-loaded with explicit 'You MUST mention' instructions, (2) make checklist formatting more prominent (checkbox style) to drive natural integration, (3) strengthen enforcement regex patterns in personal_facts_verifier.py (lines 73-142) and fact_payload_utils.py (605-632) for the three missed facts. Goal: reduce forced injections and raise CatBoost coverage >0.70."
+    }
+  ]
+}

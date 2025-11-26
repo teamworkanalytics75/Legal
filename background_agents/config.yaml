@@ -1,0 +1,126 @@
+# Background Agent System Configuration
+
+# System Resources
+system:
+  max_ram_usage_gb: 16  # Leave 16GB free for your work
+  max_cpu_cores: 12     # Leave 4 cores free
+  checkpoint_interval_minutes: 15
+  log_level: "INFO"
+  enable_gpu: true      # Use GPU if available for acceleration
+
+# Agent Configuration
+agents:
+  project_organizer:
+    enabled: true
+    priority: high  # HIGHEST PRIORITY - Organization First!
+    interval_hours: 6  # Run every 6 hours for active organization
+    interval_minutes: null
+    root_directory: "C:/Users/User/Desktop/TheMatrix"
+    enable_file_naming_standardization: true
+    enable_folder_organization: true
+    enable_cleanup_empty_folders: true
+    enable_duplicate_detection: true
+
+  settlement_optimizer:
+    enabled: true  # Works without Ollama - pure Python/NumPy
+    priority: medium
+    interval_hours: 12
+    model: null  # deterministic - no LLM needed
+    monte_carlo_iterations: 10000
+
+  document_monitor:
+    enabled: false  # Disabled until project is organized
+    priority: low
+    interval_minutes: 5
+    model: "phi3:medium"
+    max_concurrent_tasks: 3
+
+  legal_research:
+    enabled: false  # Disabled until project is organized
+    priority: low
+    interval_minutes: 30
+    model: "llama3.2:7b"
+    max_concurrent_analyses: 5
+    temperature: 0.7
+    max_tokens: 2000
+
+  citation_network:
+    enabled: false  # Disabled until project is organized
+    priority: low
+    interval_hours: 2
+    model: "mistral:13b"
+    min_batch_size: 10  # Only run when 10+ new cases
+
+  pattern_detection:
+    enabled: false  # Disabled until project is organized
+    priority: low
+    interval_hours: 4
+    model: "llama3.2:7b"
+    min_cases_for_pattern: 5
+
+  code_generator:
+    enabled: false  # On-demand only
+    priority: low
+    model: "codellama:7b"
+
+# Directory Monitoring
+monitored_directories:
+  - path: "C:/Users/User/Desktop/TheMatrix/1782 Case PDF Database"
+    watch_extensions: [".pdf", ".docx"]
+    auto_process: true
+    recursive: true
+
+  - path: "C:/Users/User/Desktop/TheMatrix/Agents_1782_ML_Dataset"
+    watch_extensions: [".pdf", ".json"]
+    auto_process: true
+    recursive: true
+
+  - path: "C:/Users/User/Desktop/TheMatrix/case_law"
+    watch_extensions: [".pdf", ".txt", ".html"]
+    auto_process: true
+    recursive: true
+
+# Output Configuration
+outputs:
+  base_directory: "background_agents/outputs"
+  keep_days: 30  # Delete old outputs after 30 days
+  compress_old: true  # Compress outputs older than 7 days
+
+# Notifications
+notifications:
+  enabled: true
+  methods:
+    - type: "file"
+      path: "background_agents/notifications.txt"
+      min_priority: "low"
+
+    - type: "desktop"
+      enabled: true
+      min_priority: "medium"
+
+    - type: "email"
+      enabled: false
+      smtp_server: "smtp.gmail.com"
+      smtp_port: 587
+      sender: ""
+      recipient: ""
+      password: ""  # Use environment variable instead
+
+# Database
+database:
+  type: "sqlite"
+  path: "background_agents/agents.db"
+  backup_interval_hours: 24
+
+# Ollama Configuration
+ollama:
+  host: "http://localhost:11434"
+  timeout_seconds: 300
+  max_retries: 3
+
+# Logging
+logging:
+  directory: "background_agents/logs"
+  max_file_size_mb: 10
+  backup_count: 5
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

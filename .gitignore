@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.dist-info/
+.venv/
+venv/
+.env
+*.env
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Node / JS
+node_modules/
+dist/
+build/
+.npm/
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Project artifacts
+logs/
+outputs/
+results/
+graphics_output/
+models/
+models_cache/
+mlruns/
+storage/
+stores/
+memory_store/
+memory_store_backup/
+cache/
+**/cache/
+**/tmp/
+*.log
+
+# Data and tokens
+secrets.toml
+*.db
+*.sqlite
+*.sqlite3
+token.pickle
+
+# Test outputs
+coverage/
+htmlcov/
+.test_results/
+test_results/
+
+# Misc
+*.bak
+*.swp
+*.swo

@@ -1,0 +1,36 @@
+# Background AI Agent System Requirements
+
+# Core Ollama integration
+ollama-python==0.1.2
+
+# Task queue and scheduling
+schedule>=1.2.0
+apscheduler>=3.10.0
+
+# File monitoring
+watchdog>=4.0.0
+
+# Network analysis
+networkx>=3.2.1
+python-louvain>=0.16
+
+# Visualization
+plotly>=5.18.0
+pyvis>=0.3.2
+
+# Database
+sqlalchemy>=2.0.23
+
+# Configuration
+pyyaml>=6.0.1
+python-dotenv>=1.0.0
+
+# Notifications
+plyer>=2.1.0  # Desktop notifications
+
+# Already in TheMatrix (but listing for completeness)
+# pydantic>=2.5.0
+# asyncio
+# pathlib
+# json
+# logging
