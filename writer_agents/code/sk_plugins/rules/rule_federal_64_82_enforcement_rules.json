@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 64_82_enforcement",
+  "rule_id": 82,
+  "rule_citation": "Federal 64",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "III. PROVISIONAL AND FINAL REMEDIES <ul> <li> <a href=\"/rules/frcp/rule_64\"> Rule 64 </a> . Seizing a Person or Property </li> <li> <a href=\"/rules/frcp/rule_65\"> Rule 65 </a> . Injunctions and Restraining Orders </li> <li> <a href=\"/rules/frcp/rule_65.1\"> Rule 65.1 </a> . Proceedings Against a Security Provider </li> <li> <a href=\"/rules/frcp/rule_66\"> Rule 66 </a> . Receivers </li> <li> <a href=",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 64",
+  "duty": "Enforce Federal 64",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 64"
+    ]
+  }
+}

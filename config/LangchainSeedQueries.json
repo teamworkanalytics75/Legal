@@ -1,0 +1,343 @@
+{
+  "database_path": "C:/Users/Owner/Desktop/LawsuitSQL/lawsuit.db",
+  "memory_dir": "memory_store",
+  "model": "gpt-4o-mini",
+  "records": [
+    {
+      "agent": "PlannerAgent",
+      "codename": "Dumbledore",
+      "question": "What are the row counts for the tables cleaned_documents, sources, nodes, and edges?",
+      "context": "Summarize overall database inventory for planning."
+    },
+    {
+      "agent": "WriterAgent_core",
+      "codename": "Gandalf",
+      "question": "Show the top three documents containing the phrase 'Final Draft' with their id and a short preview.",
+      "context": "Use cleaned_documents for drafting inspiration."
+    },
+    {
+      "agent": "EditorAgent",
+      "codename": "Tyrion Lannister",
+      "question": "For documents mentioning 'draft', what are the average and maximum content lengths in characters?",
+      "context": "Evaluate editing workload from cleaned_documents."
+    },
+    {
+      "agent": "DoubleCheckerAgent",
+      "codename": "Near",
+      "question": "List the first two documents that mention 'affidavit' with their IDs.",
+      "context": "Focus on cleaned_documents content filters."
+    },
+    {
+      "agent": "StylistAgent",
+      "codename": "Minerva McGonagall",
+      "question": "Retrieve three documents that discuss presentation or tone, including id and the first 120 characters.",
+      "context": "Look for keywords 'presentation' or 'tone' in cleaned_documents."
+    },
+    {
+      "agent": "StrategicPlannerAgent",
+      "codename": "Light Yagami",
+      "question": "List three documents mentioning 'strategy' with their IDs.",
+      "context": "Use aggregate counts from cleaned_documents."
+    },
+    {
+      "agent": "TacticalPlannerAgent",
+      "codename": "The Joy",
+      "question": "List up to five documents using the word 'tactical' along with their id and preview text.",
+      "context": "Search cleaned_documents for tactical guidance."
+    },
+    {
+      "agent": "OperationalPlannerAgent",
+      "codename": "Neo",
+      "question": "Which documents mention operations or operational steps? Return three ids with previews.",
+      "context": "Look for 'operation' or 'operations' in cleaned_documents."
+    },
+    {
+      "agent": "ResearchAgent",
+      "codename": "Varys",
+      "question": "Find one document mentioning 'analysis' with its ID.",
+      "context": "Use cleaned_documents content."
+    },
+    {
+      "agent": "PrimaryWriterAgent",
+      "codename": "Trinity",
+      "question": "List two documents mentioning 'Hong Kong' with their IDs.",
+      "context": "Target international filings in cleaned_documents."
+    },
+    {
+      "agent": "ContentReviewerAgent",
+      "codename": "Elrond",
+      "question": "List five documents that mention 'review' or 'reviewed', including id and a short preview.",
+      "context": "Use cleaned_documents for review checkpoints."
+    },
+    {
+      "agent": "TechnicalReviewerAgent",
+      "codename": "Mello",
+      "question": "List three documents with procedural 'Rule' citations and their IDs.",
+      "context": "Search cleaned_documents for the keyword 'Rule '."
+    },
+    {
+      "agent": "StyleReviewerAgent",
+      "codename": "Misa Amane",
+      "question": "Show documents referencing formatting guidance (keyword 'format') with id and short snippet.",
+      "context": "Use cleaned_documents formatting language."
+    },
+    {
+      "agent": "QualityAssuranceAgent",
+      "codename": "Aragorn",
+      "question": "List two documents mentioning 'quality control' with their IDs.",
+      "context": "Need both keyword count and overall count from cleaned_documents."
+    },
+    {
+      "agent": "AdaptiveOrchestratorAgent",
+      "codename": "Galadriel",
+      "question": "List three documents mentioning 'calendar', 'timeline', or 'schedule' with their IDs.",
+      "context": "Look for 'schedule' or 'scheduling' in cleaned_documents."
+    },
+    {
+      "agent": "CitationFinderAgent",
+      "codename": "L",
+      "question": "Provide five documents containing ' v. ' along with preview text to confirm case style references.",
+      "context": "Search cleaned_documents for litigation captions."
+    },
+    {
+      "agent": "CitationNormalizerAgent",
+      "codename": "Severus Snape",
+      "question": "List documents quoting U.S.C. citations (keyword 'U.S.C.') with id and snippet.",
+      "context": "Locate federal statute references in cleaned_documents."
+    },
+    {
+      "agent": "CitationVerifierAgent",
+      "codename": "Yoda",
+      "question": "List two documents referencing 'exhibit' or 'Exhibit A' with their IDs.",
+      "context": "Use cleaned_documents to spot exhibit references."
+    },
+    {
+      "agent": "CitationLocatorAgent",
+      "codename": "Agent Smith",
+      "question": "Show edges where the source or target node contains the word 'Court', including weight values.",
+      "context": "Query the edges table for court-related relationships."
+    },
+    {
+      "agent": "CitationInserterAgent",
+      "codename": "Architect",
+      "question": "Which source files were most recently imported and what record counts do they have?",
+      "context": "Use the sources table ordered by import_date."
+    },
+    {
+      "agent": "FactExtractorAgent",
+      "codename": "Hermione Granger",
+      "question": "Retrieve four documents focusing on the word 'fact', returning id and a short preview.",
+      "context": "Search cleaned_documents for factual statements."
+    },
+    {
+      "agent": "PrecedentFinderAgent",
+      "codename": "Weavess",
+      "question": "List five documents referencing precedent and provide preview text.",
+      "context": "Use cleaned_documents to surface precedent discussions."
+    },
+    {
+      "agent": "PrecedentRankerAgent",
+      "codename": "Brewess",
+      "question": "Among documents mentioning precedent, which three have the longest content length?",
+      "context": "Combine keyword filter with LENGTH(content) in cleaned_documents."
+    },
+    {
+      "agent": "PrecedentSummarizerAgent",
+      "codename": "Whispess",
+      "question": "Provide counts of precedent-tagged documents grouped by whether the text also mentions 'court'.",
+      "context": "Use conditional aggregation on cleaned_documents."
+    },
+    {
+      "agent": "StatuteLocatorAgent",
+      "codename": "Severus Snape",
+      "question": "Find two documents mentioning 'statute' with their IDs.",
+      "context": "Search cleaned_documents for statute language."
+    },
+    {
+      "agent": "ExhibitFetcherAgent",
+      "codename": "Quiet",
+      "question": "List two documents mentioning 'exhibit' or 'appendix' with their IDs.",
+      "context": "Use cleaned_documents with keyword 'exhibit'."
+    },
+    {
+      "agent": "OutlineBuilderAgent",
+      "codename": "Hermione Granger",
+      "question": "List three documents containing the word 'outline' with ids and preview text.",
+      "context": "Focus on planning materials in cleaned_documents."
+    },
+    {
+      "agent": "SectionWriterAgent",
+      "codename": "Legolas",
+      "question": "Return four documents that reference specific sections (keyword 'section') with ids and short previews.",
+      "context": "Use cleaned_documents for sectional drafting."
+    },
+    {
+      "agent": "ParagraphWriterAgent",
+      "codename": "Harry Potter",
+      "question": "Find the first 2-3 documents mentioning 'paragraph' with their IDs.",
+      "context": "Search cleaned_documents for paragraph cues."
+    },
+    {
+      "agent": "TransitionAgent",
+      "codename": "Frodo",
+      "question": "List three documents that mention 'transition' along with id and preview text.",
+      "context": "Use cleaned_documents for transition guidance."
+    },
+    {
+      "agent": "GrammarFixerAgent",
+      "codename": "Minerva McGonagall",
+      "question": "Find two documents mentioning 'typo' or 'grammar' with their IDs.",
+      "context": "Search cleaned_documents for grammar-related keywords."
+    },
+    {
+      "agent": "StyleCheckerAgent",
+      "codename": "Gimli",
+      "question": "List four documents referencing style or tone with ids and preview text.",
+      "context": "Use cleaned_documents for stylistic cues."
+    },
+    {
+      "agent": "LogicCheckerAgent",
+      "codename": "Rem",
+      "question": "Provide three documents that mention logical reasoning (keywords 'logic' or 'coherent') with previews.",
+      "context": "Search cleaned_documents for logical consistency discussions."
+    },
+    {
+      "agent": "ConsistencyCheckerAgent",
+      "codename": "Elrond",
+      "question": "List one document mentioning 'consistency' with its ID.",
+      "context": "Use cleaned_documents with keyword 'consistent'."
+    },
+    {
+      "agent": "RedactionAgent",
+      "codename": "Agent Smith",
+      "question": "Find one document mentioning 'confidential' or 'seal' with its ID.",
+      "context": "Search cleaned_documents for 'redact' or 'confidential'."
+    },
+    {
+      "agent": "ComplianceAgent",
+      "codename": "Minerva McGonagall",
+      "question": "List the three most recent documents mentioning 'compliance' with their IDs.",
+      "context": "Use cleaned_documents compliance keyword search."
+    },
+    {
+      "agent": "ExpertQAAgent",
+      "codename": "Gimli",
+      "question": "Find two documents mentioning 'expert report' or 'expert testimony' with their IDs.",
+      "context": "Search cleaned_documents for keyword 'expert'."
+    },
+    {
+      "agent": "MarkdownExporterAgent",
+      "codename": "Oracle",
+      "question": "Which source files currently stored have a .json extension and what record counts do they contribute?",
+      "context": "Query the sources table for file_name endings."
+    },
+    {
+      "agent": "DocxExporterAgent",
+      "codename": "Architect",
+      "question": "Return the five longest documents by content length along with their ids.",
+      "context": "Order cleaned_documents by LENGTH(content)."
+    },
+    {
+      "agent": "MetadataTaggerAgent",
+      "codename": "Agent Smith",
+      "question": "Count nodes containing 'Motion', 'Order', or 'Complaint'.",
+      "context": "Use the nodes table with LIKE filters."
+    },
+    {
+      "agent": "TimelineAgent",
+      "codename": "Naked Snake",
+      "question": "List ten nodes whose labels include the year 2025 ordered alphabetically.",
+      "context": "Search nodes table for timeline references."
+    },
+    {
+      "agent": "LinguistAgent",
+      "codename": "Hermione Granger",
+      "question": "Provide four documents referencing language or translation support with ids and previews.",
+      "context": "Use cleaned_documents with keywords 'language' or 'translation'."
+    },
+    {
+      "agent": "CausalAgent",
+      "codename": "Light Yagami",
+      "question": "List three documents that analyze cause or impact, including id and preview text.",
+      "context": "Search cleaned_documents for keywords 'cause' or 'impact'."
+    },
+    {
+      "agent": "LegalAgent",
+      "codename": "Minerva McGonagall",
+      "question": "Find the most recent document mentioning 'jurisdiction' with its ID.",
+      "context": "Use cleaned_documents keyword 'jurisdiction'."
+    },
+    {
+      "agent": "WriterAgent_autogen",
+      "codename": "Morpheus",
+      "question": "Find two 'memo' documents with their IDs.",
+      "context": "Target memo-style content in cleaned_documents."
+    },
+    {
+      "agent": "SettlementOptimizerAgent",
+      "codename": "Light Yagami",
+      "question": "Provide average, minimum, and maximum content length for documents mentioning 'settlement'.",
+      "context": "Use LENGTH(content) aggregations in cleaned_documents."
+    },
+    {
+      "agent": "BATNAAnalyzerAgent",
+      "codename": "Emperor Palpatine",
+      "question": "List five documents referencing negotiation or counter offers with ids and snippet text.",
+      "context": "Search cleaned_documents for 'negotiation' or 'offer'."
+    },
+    {
+      "agent": "NashEquilibriumCalculatorAgent",
+      "codename": "Saruman",
+      "question": "Identify the five edges with the highest weight values and report their source, target, and weight.",
+      "context": "Use edges table sorted by weight descending."
+    },
+    {
+      "agent": "ReputationRiskScorerAgent",
+      "codename": "Voldemort",
+      "question": "Retrieve four documents focusing on risk or reputation management with ids and previews.",
+      "context": "Search cleaned_documents for keyword 'risk'."
+    },
+    {
+      "agent": "TimelineAnalyzerAgent",
+      "codename": "Hermione Granger",
+      "question": "Find all events, communications, or actions involving Harvard between 2019-01-01 and 2019-12-31. Extract dates, event descriptions, and involved parties.",
+      "context": "Timeline analysis for Harvard activities in 2019 - focus on temporal relationships and chronological ordering."
+    },
+    {
+      "agent": "TimelineAnalyzerAgent",
+      "codename": "Hermione Granger",
+      "question": "What arguments did Harvard have constructive knowledge of regarding the Schedule 4 Xi slide on or before April 19, 2019? Extract timeline of knowledge acquisition.",
+      "context": "Constructive knowledge timeline analysis - identify when Harvard gained knowledge of specific arguments."
+    },
+    {
+      "agent": "TimelineAnalyzerAgent",
+      "codename": "Hermione Granger",
+      "question": "Find all communications between OGC and external parties in 2019. Extract dates, participants, and communication content.",
+      "context": "OGC communication timeline - track external communications and their timing."
+    },
+    {
+      "agent": "EvidenceCorrelatorAgent",
+      "codename": "Sherlock Holmes",
+      "question": "Find evidence that contradicts Harvard's claim of lack of knowledge about Xi's Schedule 4 slide. Look for supporting evidence of awareness.",
+      "context": "Evidence correlation analysis - find contradicting evidence for Harvard's knowledge claims."
+    },
+    {
+      "agent": "EvidenceCorrelatorAgent",
+      "codename": "Sherlock Holmes",
+      "question": "Find documents mentioning both Harvard and OGC together. Analyze their relationship and any contradictions in their statements.",
+      "context": "Entity correlation analysis - examine Harvard-OGC relationship and statement consistency."
+    },
+    {
+      "agent": "EvidenceCorrelatorAgent",
+      "codename": "Sherlock Holmes",
+      "question": "Find evidence that supports or contradicts the claim that Harvard had constructive knowledge of Xi's activities before April 19, 2019.",
+      "context": "Constructive knowledge evidence correlation - analyze supporting and contradicting evidence."
+    },
+    {
+      "agent": "EvidenceCorrelatorAgent",
+      "codename": "Sherlock Holmes",
+      "question": "Find documents that mention Xi, Schedule 4, and Harvard together. Analyze the relationships and any temporal contradictions.",
+      "context": "Multi-entity correlation analysis - examine Xi-Schedule 4-Harvard relationships and timing."
+    }
+  ]
+}

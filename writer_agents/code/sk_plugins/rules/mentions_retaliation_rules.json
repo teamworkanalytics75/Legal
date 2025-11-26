@@ -1,0 +1,25 @@
+{
+  "feature_name": "mentions_retaliation",
+  "feature_type": "MENTION",
+  "shap_importance": 0.49737032324271674,
+  "minimum_threshold": 1,
+  "successful_case_average": 1.2,
+  "recommended_phrases": [
+    "retaliation",
+    "adverse action",
+    "reprisal",
+    "retaliatory conduct",
+    "punitive action"
+  ],
+  "chroma_query_template": "retaliation adverse action reprisal {case_context}",
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "retaliation",
+      "adverse",
+      "causal"
+    ],
+    "target_average": 1.2
+  },
+  "last_updated": "2025-11-13T15:09:01.623233"
+}

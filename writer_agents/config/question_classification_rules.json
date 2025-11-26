@@ -1,0 +1,53 @@
+{
+  "patterns": {
+    "probability": {
+      "keywords": [
+        "probability", "percent", "percentage", "chance", "likelihood",
+        "odds", "what's the", "what is the", "how likely", "how probable",
+        "what are the odds", "what percent", "what percentage"
+      ],
+      "required_components": ["bn", "research"],
+      "complexity": "quick"
+    },
+    "research": {
+      "keywords": [
+        "find cases", "case law", "precedents", "what does", "what did",
+        "search for", "look up", "find similar", "related cases",
+        "has there been", "are there cases", "what cases", "which cases"
+      ],
+      "required_components": ["research"],
+      "complexity": "quick"
+    },
+    "analysis": {
+      "keywords": [
+        "analyze", "evaluate", "assess", "review", "examine",
+        "what about", "tell me about", "explain", "compare",
+        "how does", "how do"
+      ],
+      "required_components": ["research", "ml"],
+      "complexity": "moderate"
+    },
+    "writing": {
+      "keywords": [
+        "write", "draft", "create", "generate", "compose",
+        "make a", "prepare a", "build a", "produce"
+      ],
+      "required_components": ["writing", "research", "ml"],
+      "complexity": "complex"
+    }
+  },
+  "complexity_indicators": {
+    "quick": ["simple", "quick", "fast", "direct", "just"],
+    "moderate": ["analyze", "compare", "evaluate", "review"],
+    "complex": ["comprehensive", "full", "complete", "detailed", "thorough", "full report"]
+  },
+  "bn_node_keywords": {
+    "National_Security_Risk": ["national security", "national security matter", "security risk", "classified"],
+    "Sealing_Justification": ["sealing", "seal", "under seal", "sealed"],
+    "Harvard_Involvement": ["harvard", "harvard university", "harvard club"],
+    "PRC_Government_Involvement": ["china", "chinese", "prc", "ccp", "chinese communist party"],
+    "Defamation_Claim": ["defamation", "defamatory", "libel", "slander"],
+    "Litigation_Status": ["lawsuit", "litigation", "case", "legal proceeding"]
+  }
+}
+

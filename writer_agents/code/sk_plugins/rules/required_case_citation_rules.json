@@ -1,0 +1,31 @@
+{
+  "plugin_name": "required_case_citations",
+  "description": "Enforces citation of specific required cases from case law research",
+  "enforcement": {
+    "always_check": true,
+    "minimum_high_priority_compliance": 0.8,
+    "minimum_overall_compliance": 0.7
+  },
+  "citation_patterns": {
+    "standard_citation": "\\d+\\s+F\\.\\s+Supp\\.?\\s*(?:2d|3d)?\\s*\\d+",
+    "reporter_citation": "\\d+\\s+F\\.\\s+(?:2d|3d)?\\s*\\d+",
+    "massachusetts_citation": "\\d+\\s+Mass\\.\\s+(?:App\\.)?\\s*\\d+"
+  },
+  "matching": {
+    "check_case_name": true,
+    "check_citation_pattern": true,
+    "check_full_citation": true,
+    "case_name_fuzzy_match": true
+  },
+  "priority_levels": {
+    "high": {
+      "must_cite": true,
+      "penalty_if_missing": 0.15
+    },
+    "medium": {
+      "must_cite": false,
+      "penalty_if_missing": 0.05
+    }
+  }
+}
+

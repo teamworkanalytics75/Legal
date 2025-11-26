@@ -1,0 +1,44 @@
+{
+  "feature_name": "intel_factor_4_burden",
+  "description": "Enforces Intel Factor 4: undue burden/intrusiveness",
+  "priority": "medium",
+  "threshold": 0.85,
+  "required": false,
+  "legal_standard": "Intel Corp. v. Advanced Micro Devices, Inc., 542 U.S. 241, 264-65 (2004)",
+  "key_cases": [
+    "Pishevar v. Fusion GPS, 2017 WL 1184305 (D.D.C. 2017)",
+    "O'Keeffe v. Adelson, 646 F. App'x 263 (3d Cir. 2016)"
+  ],
+  "checklist_items": [
+    "Request is narrowly tailored",
+    "Not overly broad",
+    "Proportional to foreign proceeding",
+    "Specific custodian(s) identified",
+    "Time period limited",
+    "Document categories specific"
+  ],
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_keywords": [
+      "narrowly tailored",
+      "narrow",
+      "specific",
+      "limited",
+      "proportional",
+      "targeted",
+      "custodian"
+    ],
+    "negative_keywords": [
+      "all documents",
+      "any documents",
+      "overly broad",
+      "unlimited",
+      "fishing expedition"
+    ]
+  },
+  "chroma_query_template": "Intel Factor 4 burden narrowly tailored specific custodian {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 0.85,
+  "shap_importance": 0.0
+}
+

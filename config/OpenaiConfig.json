@@ -1,0 +1,6 @@
+{
+  "openai_api_key": "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",
+  "database_path": "C:\\Users\\Owner\\Desktop\\LawsuitSQL\\lawsuit.db",
+  "memory_dir": "memory_store",
+  "model": "gpt-4o-mini"
+}

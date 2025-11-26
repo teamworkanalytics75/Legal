@@ -1,0 +1,28 @@
+{
+  "rule_name": "protective_measures_word_count",
+  "description": "Word count validation for Protective Measures section based on CatBoost analysis",
+  "source": "CatBoost model trained on successful vs unsuccessful motions",
+  "data_backing": {
+    "successful_mean": 2319.6341463414633,
+    "unsuccessful_mean": 2696.3375,
+    "roc_auc": 0.6161585365853659,
+    "feature_importance": 0.0,
+    "sample_size": 2653.5540166204987
+  },
+  "targets": {
+    "min_word_count": 316,
+    "max_word_count": 2771,
+    "optimal_range": [
+      316.0,
+      2771.0
+    ]
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "medium"
+  },
+  "recommendations": {
+    "below_min": "Increase word count in Protective Measures section to at least 316 words (optimal: 316-2771)",
+    "above_max": "Reduce word count in Protective Measures section to at most 2771 words (optimal: 316-2771)"
+  }
+}

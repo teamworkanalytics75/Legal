@@ -1,0 +1,32 @@
+{
+  "feature_name": "rule_26_discovery",
+  "description": "Enforces FRCP Rule 26 (discovery scope) requirements",
+  "priority": "medium",
+  "threshold": 0.85,
+  "required": false,
+  "checklist_items": [
+    "Relevance requirement met",
+    "Proportionality requirement met",
+    "Privilege issues addressed"
+  ],
+  "validation_criteria": {
+    "required_keywords": [
+      "relevant",
+      "proportional",
+      "proportionality",
+      "privilege",
+      "attorney-client privilege",
+      "work product"
+    ],
+    "required_context": [
+      "relevant to any party's claim or defense",
+      "proportional to the needs of the case",
+      "privileged information"
+    ]
+  },
+  "chroma_query_template": "Rule 26 discovery scope relevance proportionality {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 0.85,
+  "shap_importance": 0.0
+}
+

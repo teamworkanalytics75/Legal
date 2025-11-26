@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_18 U.S.C. § 1001_463_enforcement",
+  "rule_id": 463,
+  "rule_citation": "18 U.S.C. § 1001",
+  "rule_type": "Statute - Criminal",
+  "text_excerpt": "Statements or entries generally - Makes it a crime to knowingly and willfully make any materially false, fictitious, or fraudulent statement to any department or agency of the United States.",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce 18 U.S.C. § 1001",
+  "duty": "Enforce 18 U.S.C. § 1001",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "18 U.S.C. § 1001"
+    ]
+  }
+}

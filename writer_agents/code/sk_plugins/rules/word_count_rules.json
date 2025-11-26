@@ -1,0 +1,40 @@
+{
+  "feature_name": "word_count",
+  "description": "Enforces word count at all levels (document, section, paragraph, sentence)",
+  "priority": "optional",
+  "threshold": 0.85,
+  "required": false,
+  "checklist_items": [
+    "Document word count within limits",
+    "Section word count appropriate",
+    "Paragraph word count appropriate",
+    "Sentence word count appropriate"
+  ],
+  "validation_criteria": {
+    "document": {
+      "min_words": 1000,
+      "max_words": 50000,
+      "target_range": [3000, 15000]
+    },
+    "section": {
+      "min_words": 200,
+      "max_words": 5000,
+      "target_range": [500, 2000]
+    },
+    "paragraph": {
+      "min_words": 50,
+      "max_words": 300,
+      "target_range": [100, 200]
+    },
+    "sentence": {
+      "min_words": 5,
+      "max_words": 40,
+      "target_range": [15, 25]
+    }
+  },
+  "chroma_query_template": "word count document length legal brief {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 0.85,
+  "shap_importance": 0.0
+}
+

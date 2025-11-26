@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 73_93_enforcement",
+  "rule_id": 93,
+  "rule_citation": "Federal 73",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "Magistrate Judges: Pretrial Order </li> <li> <a href=\"/rules/frcp/rule_73\"> Rule 73 </a> . Magistrate Judges: Trial by Consent; Appeal </li> <li> <a href=\"/rules/frcp/rule_74\"> Rule 74 </a> . [Abrogated (Apr. 11, 1997, eff. Dec. 1, 1997).] </li> <li> <a href=\"/rules/frcp/rule_75\"> Rule 75 </a> . [Abrogated (Apr. 11, 1997, eff. Dec. 1, 1997).] </li> <li> <a href=\"/rules/frcp/rule_76\"> Rule 76 </a> ",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 73",
+  "duty": "Enforce Federal 73",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 73"
+    ]
+  }
+}

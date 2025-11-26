@@ -1,0 +1,345 @@
+{
+  "description": "Comprehensive query list for initializing plugin memories in EpisodicMemoryBank",
+  "last_updated": "2025-11-03",
+  "version": "1.0.0",
+  "query_categories": {
+    "content_plugins": {
+      "PrivacyPlugin": {
+        "description": "Privacy harm cases, successful privacy arguments, expectation of privacy precedents",
+        "semantic_queries": [
+          "privacy harm expectation of privacy personal information disclosure",
+          "invasion of privacy breach of privacy confidentiality",
+          "privacy harm in academic institutions",
+          "privacy harm motion to seal pseudonym",
+          "expectation of privacy personal information confidential"
+        ],
+        "winning_cases_keywords": ["privacy", "confidential", "personal information", "privacy harm"],
+        "winning_cases_tags": {
+          "tag_privacy": 1
+        }
+      },
+      "HarassmentPlugin": {
+        "description": "Harassment cases, retaliation risks, intimidation precedents",
+        "semantic_queries": [
+          "harassment intimidation retaliation risk",
+          "harassment threat adverse action reprisal",
+          "harassment risk disclosure public filing",
+          "harassment academic institution retaliation",
+          "harassment causation likelihood would likely"
+        ],
+        "winning_cases_keywords": ["harassment", "intimidation", "retaliation", "reprisal", "adverse action"],
+        "winning_cases_tags": {
+          "tag_harassment": 1
+        }
+      },
+      "SafetyPlugin": {
+        "description": "Safety concern cases, threats, danger precedents",
+        "semantic_queries": [
+          "safety concern threat danger well-being",
+          "safety risk disclosure public filing",
+          "safety protection security harm",
+          "safety concern academic institution",
+          "safety threat danger physical harm"
+        ],
+        "winning_cases_keywords": ["safety", "threat", "danger", "security", "well-being"],
+        "winning_cases_tags": {
+          "tag_safety": 1
+        }
+      },
+      "RetaliationPlugin": {
+        "description": "Retaliation cases, reprisal patterns, adverse action precedents",
+        "semantic_queries": [
+          "retaliation reprisal adverse action backlash",
+          "retaliation risk disclosure public filing",
+          "retaliation causation causal connection",
+          "retaliation academic institution employer",
+          "retaliation fear substantial risk"
+        ],
+        "winning_cases_keywords": ["retaliation", "reprisal", "adverse action", "backlash"],
+        "winning_cases_tags": {
+          "tag_retaliation": 1
+        }
+      }
+    },
+    "citation_plugins": {
+      "RequiredCaseCitationPlugin": {
+        "description": "All required cases from master_citations.json, related cases, citation patterns",
+        "semantic_queries": [
+          "section 1782 discovery Intel factors foreign proceeding",
+          "sealing pseudonym privacy harassment safety",
+          "national security academic institution foreign government",
+          "Harvard foreign government interference",
+          "motion to seal pseudonym required citations"
+        ],
+        "case_specific_queries": [
+          {
+            "case_name": "Intel Corp. v. Advanced Micro Devices, Inc.",
+            "queries": [
+              "Intel Corp. v. Advanced Micro Devices Intel factors",
+              "Intel factors section 1782 discretionary",
+              "Intel Corp 542 U.S. 241 foreign proceeding"
+            ]
+          },
+          {
+            "case_name": "Brandi-Dohrn v. IKB Deutsche Industriebank AG",
+            "queries": [
+              "Brandi-Dohrn IKB Deutsche Industriebank admissibility",
+              "Second Circuit section 1782 admissibility foreign forum"
+            ]
+          },
+          {
+            "case_name": "In re del Valle Ruiz",
+            "queries": [
+              "In re del Valle Ruiz Second Circuit",
+              "del Valle Ruiz resides or is found extraterritorial"
+            ]
+          },
+          {
+            "case_name": "Doe v. Stegall",
+            "queries": [
+              "Doe v. Stegall pseudonym privacy",
+              "Doe v. Stegall anonymity factors threats retaliation"
+            ]
+          },
+          {
+            "case_name": "Doe v. Amherst College",
+            "queries": [
+              "Doe v. Amherst College privacy academic",
+              "Amherst College academic institution privacy"
+            ]
+          },
+          {
+            "case_name": "United States v. President and Fellows of Harvard College",
+            "queries": [
+              "United States v. President and Fellows of Harvard College",
+              "Harvard College foreign government connections"
+            ]
+          },
+          {
+            "case_name": "Nixon v. Warner Communications, Inc.",
+            "queries": [
+              "Nixon v. Warner Communications sealing",
+              "Nixon v. Warner Communications balancing test impound"
+            ]
+          },
+          {
+            "case_name": "Macquarie Bank Ltd.",
+            "queries": [
+              "Macquarie Bank Ltd. section 1782",
+              "Macquarie Bank participant non-participant Intel factors"
+            ]
+          },
+          {
+            "case_name": "O'Keeffe v. Adelson",
+            "queries": [
+              "O'Keeffe v. Adelson",
+              "O'Keeffe v. Adelson Hong Kong libel section 1782"
+            ]
+          },
+          {
+            "case_name": "United States v. LaRouche Campaign",
+            "queries": [
+              "United States v. LaRouche Campaign",
+              "LaRouche Campaign national security D. Massachusetts"
+            ]
+          },
+          {
+            "case_name": "Doe I v. Bush",
+            "queries": [
+              "Doe I v. Bush national security",
+              "Doe I v. Bush national security privacy balance"
+            ]
+          },
+          {
+            "case_name": "Gailius v. Immigration & Naturalization Service",
+            "queries": [
+              "Gailius v. Immigration & Naturalization Service",
+              "Gailius Harvard communist party First Circuit"
+            ]
+          },
+          {
+            "case_name": "Morris v. People's Republic of China",
+            "queries": [
+              "Morris v. People's Republic of China",
+              "Morris v. PRC foreign government communist party"
+            ]
+          },
+          {
+            "case_name": "Jackson v. People's Republic of China",
+            "queries": [
+              "Jackson v. People's Republic of China",
+              "Jackson v. PRC 550 F.Supp. 869 foreign government"
+            ]
+          }
+        ],
+        "winning_cases_keywords": ["section 1782", "sealing", "pseudonym", "national security", "foreign government"],
+        "winning_cases_tags": {
+          "tag_national_security": 1
+        }
+      },
+      "CitationRetrievalPlugin": {
+        "description": "Citation patterns, successful citation examples, top cited cases",
+        "semantic_queries": [
+          "citation count successful motion",
+          "citation precedent legal authority",
+          "top cited cases winning motions",
+          "citation pattern motion to seal",
+          "citation enforcement required cases"
+        ],
+        "winning_cases_keywords": ["citation", "precedent", "legal authority"],
+        "winning_cases_tags": {}
+      },
+      "IndividualCaseEnforcementPlugin": {
+        "description": "Each plugin needs memories about its specific case - queries generated from master_citations.json",
+        "note": "Queries are generated dynamically from master_case_citations.json for each case"
+      }
+    },
+    "analysis_plugins": {
+      "PrivacyHarmCountPlugin": {
+        "description": "Diverse privacy harm types, harm enumeration examples",
+        "semantic_queries": [
+          "privacy harm types diversity multiple",
+          "privacy harm financial emotional reputational",
+          "privacy harm enumeration list examples",
+          "privacy harm count diversity successful",
+          "multiple privacy harms enumerated"
+        ],
+        "winning_cases_keywords": ["privacy harm", "harm types", "multiple harms"],
+        "winning_cases_tags": {
+          "tag_privacy": 1
+        }
+      },
+      "PublicInterestPlugin": {
+        "description": "Public interest balancing cases, transparency precedents",
+        "semantic_queries": [
+          "public interest transparency disclosure",
+          "public interest vs privacy balance",
+          "public interest First Amendment",
+          "public interest outweigh privacy",
+          "public interest transparency argument"
+        ],
+        "winning_cases_keywords": ["public interest", "transparency", "First Amendment"],
+        "winning_cases_tags": {}
+      },
+      "TransparencyArgumentPlugin": {
+        "description": "Transparency arguments, First Amendment cases",
+        "semantic_queries": [
+          "transparency First Amendment public access",
+          "transparency argument openness disclosure",
+          "First Amendment public record transparency",
+          "transparency vs privacy balance",
+          "transparency argument successful motion"
+        ],
+        "winning_cases_keywords": ["transparency", "First Amendment", "public access"],
+        "winning_cases_tags": {}
+      }
+    },
+    "structure_plugins": {
+      "SentenceStructurePlugin": {
+        "description": "Well-structured sentences, successful motion sentence patterns",
+        "semantic_queries": [
+          "sentence structure clarity readability",
+          "sentence length average successful motion",
+          "sentence structure legal writing",
+          "clear sentence structure motion",
+          "sentence structure examples"
+        ],
+        "winning_cases_keywords": ["sentence", "structure", "clarity"],
+        "winning_cases_tags": {}
+      },
+      "ParagraphStructurePlugin": {
+        "description": "Well-structured paragraphs, paragraph length patterns",
+        "semantic_queries": [
+          "paragraph structure coherence flow",
+          "paragraph length average successful",
+          "paragraph structure legal motion",
+          "well-structured paragraphs motion",
+          "paragraph coherence topic sentence"
+        ],
+        "winning_cases_keywords": ["paragraph", "structure", "coherence"],
+        "winning_cases_tags": {}
+      },
+      "EnumerationDensityPlugin": {
+        "description": "Enumeration patterns, list usage examples",
+        "semantic_queries": [
+          "enumeration list numbered bullet",
+          "enumeration density successful motion",
+          "list enumeration examples legal",
+          "enumeration pattern motion",
+          "numbered list bullet points motion"
+        ],
+        "winning_cases_keywords": ["enumeration", "list", "numbered", "bullet"],
+        "winning_cases_tags": {}
+      },
+      "PerParagraphPlugin": {
+        "description": "Per-paragraph analysis examples, paragraph health patterns",
+        "semantic_queries": [
+          "paragraph analysis topic sentence",
+          "paragraph health consistency",
+          "per paragraph analysis motion",
+          "paragraph structure quality",
+          "paragraph analysis examples"
+        ],
+        "winning_cases_keywords": ["paragraph", "analysis", "topic sentence"],
+        "winning_cases_tags": {}
+      },
+      "ParagraphMonitorPlugin": {
+        "description": "Paragraph monitoring patterns, consistency examples",
+        "semantic_queries": [
+          "paragraph monitoring health consistency",
+          "paragraph consistency motion",
+          "paragraph monitoring quality",
+          "consistent paragraph structure",
+          "paragraph health monitoring"
+        ],
+        "winning_cases_keywords": ["paragraph", "monitoring", "consistency"],
+        "winning_cases_tags": {}
+      }
+    },
+    "specialized_queries": {
+      "national_security_theme": {
+        "description": "National security theme queries for all plugins when relevant",
+        "semantic_queries": [
+          "national security academic institution",
+          "national security foreign government interference",
+          "national security reputation harm",
+          "Harvard foreign government Chinese Communist Party",
+          "national security privacy balance"
+        ],
+        "winning_cases_keywords": ["national security", "Harvard", "foreign government", "China", "CCP"],
+        "winning_cases_tags": {
+          "tag_national_security": 1,
+          "tag_academic_institution": 1,
+          "tag_foreign_government": 1
+        }
+      },
+      "jurisdiction_specific": {
+        "description": "D. Massachusetts jurisdiction-specific queries",
+        "semantic_queries": [
+          "District Court Massachusetts motion to seal",
+          "D. Massachusetts privacy harassment",
+          "Massachusetts First Circuit precedent",
+          "District Court Massachusetts successful motion",
+          "Massachusetts jurisdiction motion"
+        ],
+        "winning_cases_keywords": ["Massachusetts", "D. Massachusetts", "First Circuit"],
+        "winning_cases_tags": {}
+      }
+    }
+  },
+  "execution_parameters": {
+    "semantic_search": {
+      "top_k": 10,
+      "min_similarity": 0.3
+    },
+    "winning_cases_search": {
+      "min_keywords": 1,
+      "limit": 20
+    },
+    "case_verification": {
+      "top_k": 5,
+      "min_similarity": 0.7
+    }
+  }
+}
+

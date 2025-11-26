@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 67_86_enforcement",
+  "rule_id": 86,
+  "rule_citation": "Federal 67",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "</a> . Receivers </li> <li> <a href=\"/rules/frcp/rule_67\"> Rule 67 </a> . Deposit into Court </li> <li> <a href=\"/rules/frcp/rule_68\"> Rule 68 </a> . Offer of Judgment </li> <li> <a href=\"/rules/frcp/rule_69\"> Rule 69 </a> . Execution </li> <li> <a href=\"/rules/frcp/rule_70\"> Rule 70 </a> . Enforcing a Judgment for a Specific Act </li> <li> <a href=\"/rules/frcp/rule_71\">",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 67",
+  "duty": "Enforce Federal 67",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 67"
+    ]
+  }
+}

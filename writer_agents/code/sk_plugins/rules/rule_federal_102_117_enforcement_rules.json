@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 102_117_enforcement",
+  "rule_id": 117,
+  "rule_citation": "Federal 102",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": ". Scope; Definitions </li> <li> <a href=\"/rules/fre/rule_102\"> Rule 102 </a> . Purpose </li> <li> <a href=\"/rules/fre/rule_103\"> Rule 103 </a> . Rulings on Evidence </li> <li> <a href=\"/rules/fre/rule_104\"> Rule 104 </a> . Preliminary Questions </li> <li> <a href=\"/rules/fre/rule_105\"> Rule 105 </a> . Limiting Evidence That Is Not Admissible Against Other Parties or for Other Purposes </li",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 102",
+  "duty": "Enforce Federal 102",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 102"
+    ]
+  }
+}

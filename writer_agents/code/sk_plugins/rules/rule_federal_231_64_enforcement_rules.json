@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 23.1_64_enforcement",
+  "rule_id": 64,
+  "rule_citation": "Federal 23.1",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "/a> . Class Actions </li> <li> <a href=\"/rules/frcp/rule_23.1\"> Rule 23.1 </a> . Derivative Actions </li> <li> <a href=\"/rules/frcp/rule_23.2\"> Rule 23.2 </a> . Actions Relating to Unincorporated Associations </li> <li> <a href=\"/rules/frcp/rule_24\"> Rule 24 </a> . Intervention </li> <li> <a href=\"/rules/frcp/rule_25\"> Rule 25 </a> . Substitution of Parties </li> </ul> </li> <li> T",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 23.1",
+  "duty": "Enforce Federal 23.1",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 23.1"
+    ]
+  }
+}

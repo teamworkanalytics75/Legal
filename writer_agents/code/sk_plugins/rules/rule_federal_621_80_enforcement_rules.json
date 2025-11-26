@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 62.1_80_enforcement",
+  "rule_id": 80,
+  "rule_citation": "Federal 62.1",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "oceedings to Enforce a Judgment </li> <li> <a href=\"/rules/frcp/rule_62.1\"> Rule 62.1 </a> . Indicative Ruling on a Motion for Relief That is Barred by a Pending Appeal </li> <li> <a href=\"/rules/frcp/rule_63\"> Rule 63 </a> . Judge's Inability to Proceed </li> </ul> </li> <li> TITLE VIII. PROVISIONAL AND FINAL REMEDIES <ul> <li> <a href=\"/rules/frcp/rule_64\"> Rule 64 </a> . Seizing a Person or Pro",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 62.1",
+  "duty": "Enforce Federal 62.1",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 62.1"
+    ]
+  }
+}

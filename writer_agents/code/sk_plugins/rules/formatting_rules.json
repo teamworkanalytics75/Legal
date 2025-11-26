@@ -1,0 +1,26 @@
+{
+  "feature_name": "formatting",
+  "description": "Enforces document formatting standards",
+  "priority": "optional",
+  "threshold": 0.85,
+  "required": false,
+  "checklist_items": [
+    "Font consistent",
+    "Font size appropriate",
+    "Margins correct",
+    "Line spacing correct",
+    "Headers/footers formatted"
+  ],
+  "validation_criteria": {
+    "check_headers": true,
+    "check_footers": true,
+    "check_margins": true,
+    "check_line_spacing": true,
+    "check_font_consistency": true
+  },
+  "chroma_query_template": "document formatting legal brief format {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 0.85,
+  "shap_importance": 0.0
+}
+

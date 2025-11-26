@@ -1,0 +1,19 @@
+{
+  "feature_name": "mentions_public_interest",
+  "shap_importance": 0.0128,
+  "minimum_threshold": 1,
+  "successful_case_average": 2.0,
+  "recommended_phrases": [
+    "limited public interest",
+    "minimal public interest",
+    "no public interest",
+    "private matter",
+    "personal dispute"
+  ],
+  "chroma_query_template": "limited public interest {case_context}",
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": ["limited", "minimal", "private"],
+    "target_average": 2.0
+  }
+}

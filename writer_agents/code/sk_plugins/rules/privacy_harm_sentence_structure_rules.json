@@ -1,0 +1,11 @@
+{
+  "rule_name": "privacy_harm_sentence_structure",
+  "description": "Sentence structure validation for Privacy Harm section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_sentences_per_paragraph": 1.5,
+    "max_sentences_per_paragraph": 3.3833333333333333,
+    "min_words_per_sentence": 8.275893114309513,
+    "max_words_per_sentence": 17.49481865284974
+  }
+}

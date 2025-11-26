@@ -1,0 +1,28 @@
+{
+  "rule_name": "public_interest_word_count",
+  "description": "Word count validation for Public Interest section based on CatBoost analysis",
+  "source": "CatBoost model trained on successful vs unsuccessful motions",
+  "data_backing": {
+    "successful_mean": 15073.5,
+    "unsuccessful_mean": 4116.677192982456,
+    "roc_auc": 0.5728070175438597,
+    "feature_importance": 3.2474065956556735,
+    "sample_size": 5064.863782051282
+  },
+  "targets": {
+    "min_word_count": 489,
+    "max_word_count": 5099,
+    "optimal_range": [
+      489.5,
+      5099.5
+    ]
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "medium"
+  },
+  "recommendations": {
+    "below_min": "Increase word count in Public Interest section to at least 489 words (optimal: 489-5099)",
+    "above_max": "Reduce word count in Public Interest section to at most 5099 words (optimal: 489-5099)"
+  }
+}

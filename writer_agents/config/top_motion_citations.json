@@ -1,0 +1,153 @@
+{
+  "description": "Top 20 citations for motion to seal/pseudonym cases based on success rates from MA_FEDERAL_MOTION_SUCCESS_FACTORS.md",
+  "source": "case_law_data/analysis/MA_FEDERAL_MOTION_SUCCESS_FACTORS.md",
+  "last_updated": "2025-01-02",
+  "citations": [
+    {
+      "citation": "752 F.3d 990",
+      "appearances": 32,
+      "success_rate": 1.0,
+      "priority": 1,
+      "notes": "Highest appearance count with perfect success rate"
+    },
+    {
+      "citation": "592 F. Supp. 2",
+      "appearances": 23,
+      "success_rate": 1.0,
+      "priority": 2,
+      "notes": "Strong success rate, high appearance count"
+    },
+    {
+      "citation": "482 F.3d 501",
+      "appearances": 22,
+      "success_rate": 1.0,
+      "priority": 3,
+      "notes": "High appearance count with perfect success"
+    },
+    {
+      "citation": "64 F. Supp. 3d 47",
+      "appearances": 21,
+      "success_rate": 1.0,
+      "priority": 4,
+      "notes": "Consistently successful citation"
+    },
+    {
+      "citation": "177 F. Supp. 3d 554",
+      "appearances": 20,
+      "success_rate": 1.0,
+      "priority": 5,
+      "notes": "High appearance count"
+    },
+    {
+      "citation": "355 F. Supp. 3",
+      "appearances": 17,
+      "success_rate": 1.0,
+      "priority": 6,
+      "notes": "Reliable citation"
+    },
+    {
+      "citation": "153 F. Supp. 3",
+      "appearances": 16,
+      "success_rate": 1.0,
+      "priority": 7,
+      "notes": "Consistent success"
+    },
+    {
+      "citation": "527 F. Supp. 2d 1",
+      "appearances": 16,
+      "success_rate": 1.0,
+      "priority": 8,
+      "notes": "Reliable citation"
+    },
+    {
+      "citation": "605 F. Supp. 3",
+      "appearances": 15,
+      "success_rate": 1.0,
+      "priority": 9,
+      "notes": "Strong success rate"
+    },
+    {
+      "citation": "964 F.3d 1203",
+      "appearances": 15,
+      "success_rate": 1.0,
+      "priority": 10,
+      "notes": "Appeals court citation"
+    },
+    {
+      "citation": "700 F. Supp. 2",
+      "appearances": 14,
+      "success_rate": 1.0,
+      "priority": 11,
+      "notes": "District court citation"
+    },
+    {
+      "citation": "326 F. Supp. 2d 556",
+      "appearances": 13,
+      "success_rate": 1.0,
+      "priority": 12,
+      "notes": "Reliable citation"
+    },
+    {
+      "citation": "551 F. Supp. 2",
+      "appearances": 12,
+      "success_rate": 1.0,
+      "priority": 13,
+      "notes": "Consistent success"
+    },
+    {
+      "citation": "69 F. Supp. 3",
+      "appearances": 12,
+      "success_rate": 1.0,
+      "priority": 14,
+      "notes": "Reliable citation"
+    },
+    {
+      "citation": "353 Mass. 614",
+      "appearances": 11,
+      "success_rate": 1.0,
+      "priority": 15,
+      "notes": "Massachusetts state court citation"
+    },
+    {
+      "citation": "473 U.S. 1",
+      "appearances": 10,
+      "success_rate": 1.0,
+      "priority": 16,
+      "notes": "Supreme Court citation - highest authority"
+    },
+    {
+      "citation": "831 F.3d 46",
+      "appearances": 10,
+      "success_rate": 1.0,
+      "priority": 17,
+      "notes": "Appeals court citation"
+    },
+    {
+      "citation": "542 F. Supp. 2d 153",
+      "appearances": 10,
+      "success_rate": 1.0,
+      "priority": 18,
+      "notes": "District court citation"
+    },
+    {
+      "citation": "314 F. Supp. 3",
+      "appearances": 10,
+      "success_rate": 1.0,
+      "priority": 19,
+      "notes": "Reliable citation"
+    },
+    {
+      "citation": "278 F. Supp. 3",
+      "appearances": 10,
+      "success_rate": 1.0,
+      "priority": 20,
+      "notes": "Consistent success"
+    }
+  ],
+  "usage_notes": {
+    "priority_ordering": "Citations are ordered by appearance count (highest first) as a tie-breaker when success rates are equal",
+    "recommended_usage": "Prioritize these citations in CitationRetrievalPlugin when CatBoost indicates low citation_count feature",
+    "integration": "These citations should be boosted in candidate aggregation when they appear in search results"
+  }
+}
+

@@ -1,0 +1,41 @@
+{
+  "feature_name": "timing_argument",
+  "feature_importance": 4.5,
+  "feature_rank": 14,
+  "description": "Timing argument: June 4th proclamation (2 days after HK claim) made Harvard-CCP ties NS since April 7th",
+  "shap_importance": 4.5,
+  "importance_source": "contextual_estimate",
+  "importance_note": "Estimated contextual importance - not from CatBoost analysis (case-specific fact, not generalizable feature)",
+  "target_count": 1,
+  "min_count": 1,
+  "validation_criteria": {
+    "april_7_mentioned": true,
+    "june_4_mentioned": true,
+    "timing_connected": true,
+    "ns_since_april_7": true
+  },
+  "chroma_query_template": "April 7 June 4 proclamation timing national security since {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Include the timing argument connecting April 7th, HK claim filing, and June 4th proclamation.",
+    "rationale": "This establishes that Harvard's ties to Xi Jinping's daughter became a recognized matter of national security since April 7th, when Plaintiff first wrote Harvard, because the June 4th proclamation came into effect 2 days after the HK claim was filed.",
+    "example": "The June 4th proclamation came into effect 2 days after Plaintiff filed the Hong Kong claim in this court, making Harvard's ties to Xi Jinping's daughter a recognized matter of national security since the time Plaintiff first wrote Harvard on April 7th.",
+    "insight": "This timing argument is crucial for showing the national security issue was present from the beginning of the case, not just after the proclamation."
+  },
+  "enforcement": {
+    "severity": "high",
+    "auto_fix": false,
+    "requires_manual_review": true,
+    "suggestions": [
+      "Mention April 7th (when Plaintiff first wrote Harvard)",
+      "Mention June 4th proclamation",
+      "Connect them: proclamation came 2 days after HK claim filed",
+      "Explain this made it NS since April 7th"
+    ]
+  }
+}
+

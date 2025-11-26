@@ -1,0 +1,722 @@
+{
+  "metadata": {
+    "created": "2025-01-11",
+    "last_updated": "2025-11-06",
+    "version": "2.0.0",
+    "description": "Complete registry of all legal checklist enforcement plugins, mapped from document level down to character level",
+    "total_plugins_configured": 35,
+    "existing_plugins": 61,
+    "plugins_needing_creation": 0,
+    "note": "Updated 2025-11-06: 61 actual plugin classes exist in FeaturePlugin directory. Registry tracks configured plugins; actual implementation exceeds configuration."
+  },
+  "document_level": {
+    "section_structure": {
+      "plugin": "section_structure_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/section_structure.json",
+      "priority": "required",
+      "threshold": 1.0,
+      "description": "Enforces document structure requirements (sections, order, TOC, etc.)",
+      "checklist_items": [
+        "All required sections present",
+        "Section order correct",
+        "Table of contents (if required)",
+        "Caption/title page",
+        "Signature block"
+      ]
+    },
+    "citation_retrieval": {
+      "plugin": "citation_retrieval_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/citation_requirements.json",
+      "priority": "required",
+      "threshold": 1.0,
+      "description": "Enforces document-level citation requirements",
+      "checklist_items": [
+        "All required cases cited",
+        "Citation format correct",
+        "Pin cites included",
+        "Parallel citations included"
+      ]
+    },
+    "word_count": {
+      "plugin": "word_count_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/word_count_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Enforces document-level word count limits",
+      "checklist_items": [
+        "Total word count within limits",
+        "Minimum word count met",
+        "Maximum word count not exceeded"
+      ]
+    }
+  },
+  "section_level": {
+    "statutory_requirements": {
+      "requirement_1_person_found": {
+        "plugin": "statutory_requirement_1_plugin.py",
+        "status": "needs_creation",
+        "rules_file": "rules/statutory_requirement_1_rules.json",
+        "priority": "critical",
+        "threshold": 1.0,
+        "description": "Enforces Section 1782 statutory requirement: person found/resides in district",
+        "legal_standard": "Brandi-Dohrn v. IKB Deutsche Industriebank AG, 673 F.3d 76, 80 (2d Cir. 2012)",
+        "checklist_items": [
+          "Discovery target identified",
+          "District where target is found/resides specified",
+          "Evidence of residency/location provided",
+          "Jurisdictional basis established"
+        ]
+      },
+      "requirement_2_foreign_proceeding": {
+        "plugin": "statutory_requirement_2_plugin.py",
+        "status": "needs_creation",
+        "rules_file": "rules/statutory_requirement_2_rules.json",
+        "priority": "critical",
+        "threshold": 1.0,
+        "description": "Enforces Section 1782 statutory requirement: foreign proceeding exists",
+        "legal_standard": "Brandi-Dohrn, 673 F.3d at 80; Intel, 542 U.S. 241; Mees v. Buiter, 793 F.3d 291",
+        "checklist_items": [
+          "Foreign proceeding identified",
+          "Foreign tribunal specified",
+          "Proceeding status (pending or reasonably contemplated)",
+          "Evidence of proceeding provided"
+        ]
+      },
+      "requirement_3_interested_person": {
+        "plugin": "statutory_requirement_3_plugin.py",
+        "status": "needs_creation",
+        "rules_file": "rules/statutory_requirement_3_rules.json",
+        "priority": "critical",
+        "threshold": 1.0,
+        "description": "Enforces Section 1782 statutory requirement: interested person/applicant",
+        "legal_standard": "Brandi-Dohrn, 673 F.3d at 80; Intel, 542 U.S. at 256",
+        "checklist_items": [
+          "Applicant identified",
+          "Applicant's interest in foreign proceeding established",
+          "'Reasonable interest' demonstrated",
+          "Applicant is party to foreign proceeding OR has right to submit information"
+        ]
+      }
+    },
+    "intel_factors": {
+      "factor_1_participant": {
+        "plugin": "intel_factor_1_participant_plugin.py",
+        "status": "needs_creation",
+        "rules_file": "rules/intel_factor_1_rules.json",
+        "priority": "high",
+        "threshold": 0.9,
+        "description": "Enforces Intel Factor 1: participant status analysis",
+        "legal_standard": "Intel Corp. v. Advanced Micro Devices, Inc., 542 U.S. 241, 264 (2004)",
+        "key_cases": [
+          "Gorsoan Ltd. v. Bullock, 652 F. App'x 44 (2d Cir. 2016)",
+          "Pishevar v. Fusion GPS, 2017 WL 1184305 (D.D.C. 2017)"
+        ],
+        "checklist_items": [
+          "Discovery target identified as non-participant",
+          "Evidence that target is NOT a party to foreign proceeding",
+          "If target IS a party, justification for Section 1782 aid",
+          "Separate legal entities distinguished (if applicable)"
+        ]
+      },
+      "factor_2_receptivity": {
+        "plugin": "intel_factor_2_receptivity_plugin.py",
+        "status": "needs_creation",
+        "rules_file": "rules/intel_factor_2_rules.json",
+        "priority": "high",
+        "threshold": 0.9,
+        "description": "Enforces Intel Factor 2: receptivity of foreign tribunal",
+        "legal_standard": "Intel, 542 U.S. at 264",
+        "key_cases": [
+          "O'Keeffe v. Adelson, 646 F. App'x 263 (3d Cir. 2016)",
+          "Pishevar v. Fusion GPS"
+        ],
+        "checklist_items": [
+          "Foreign tribunal identified",
+          "Evidence of receptivity (Hague Evidence Convention, prior cases, etc.)",
+          "No authoritative proof of non-receptivity",
+          "Hong Kong cases: Cite Hague Evidence Convention signatory status"
+        ]
+      },
+      "factor_3_circumvention": {
+        "plugin": "intel_factor_3_circumvention_plugin.py",
+        "status": "needs_creation",
+        "rules_file": "rules/intel_factor_3_rules.json",
+        "priority": "high",
+        "threshold": 0.9,
+        "description": "Enforces Intel Factor 3: circumvention concerns",
+        "legal_standard": "Intel, 542 U.S. at 264",
+        "key_cases": [
+          "Brandi-Dohrn v. IKB Deutsche Industriebank AG, 673 F.3d 76, 81-83 (2d Cir. 2012)",
+          "O'Keeffe v. Adelson"
+        ],
+        "checklist_items": [
+          "No evidence of bad faith",
+          "Not attempting to avoid foreign court orders",
+          "Not using Section 1782 to evade foreign procedural safeguards",
+          "Valid foreign proceeding exists",
+          "Discovery target is separate entity (not sham proceeding)"
+        ]
+      },
+      "factor_4_burden": {
+        "plugin": "intel_factor_4_burden_plugin.py",
+        "status": "needs_creation",
+        "rules_file": "rules/intel_factor_4_rules.json",
+        "priority": "medium",
+        "threshold": 0.85,
+        "description": "Enforces Intel Factor 4: undue burden/intrusiveness",
+        "legal_standard": "Intel, 542 U.S. at 264-65",
+        "key_cases": [
+          "Pishevar v. Fusion GPS",
+          "O'Keeffe v. Adelson"
+        ],
+        "checklist_items": [
+          "Request is narrowly tailored",
+          "Not overly broad",
+          "Proportional to foreign proceeding",
+          "Specific custodian(s) identified",
+          "Time period limited",
+          "Document categories specific"
+        ]
+      }
+    },
+    "case_enforcement": {
+      "intel": {
+        "plugin": "IndividualCaseEnforcementPlugin (generated)",
+        "status": "exists",
+        "rules_file": "rules/required_case_citation_rules.json",
+        "priority": "critical",
+        "case_name": "Intel Corp. v. Advanced Micro Devices, Inc.",
+        "citation": "542 U.S. 241 (2004)",
+        "checklist_items": [
+          "Case cited with full citation",
+          "Intel factors framework explained",
+          "'Interested person' definition referenced",
+          "'Foreign proceeding' definition referenced",
+          "Non-participant status emphasized"
+        ]
+      },
+      "okeeffe": {
+        "plugin": "IndividualCaseEnforcementPlugin (generated)",
+        "status": "exists",
+        "rules_file": "rules/required_case_citation_rules.json",
+        "priority": "high",
+        "case_name": "O'Keeffe v. Adelson",
+        "citation": "646 F. App'x 263 (3d Cir. 2016)",
+        "checklist_items": [
+          "Case cited (multiple circuits available)",
+          "Hong Kong receptivity holding cited",
+          "Hague Evidence Convention mentioned",
+          "Deposition request precedent cited",
+          "'No letter rogatory required' holding cited"
+        ]
+      },
+      "brandi_dohrn": {
+        "plugin": "IndividualCaseEnforcementPlugin (generated)",
+        "status": "exists",
+        "rules_file": "rules/required_case_citation_rules.json",
+        "priority": "high",
+        "case_name": "Brandi-Dohrn v. IKB Deutsche Industriebank AG",
+        "citation": "673 F.3d 76 (2d Cir. 2012)",
+        "checklist_items": [
+          "Case cited",
+          "'No requirement for foreign discoverability' holding cited",
+          "Circumvention standard cited",
+          "Statutory requirements framework cited"
+        ]
+      },
+      "gorsoan": {
+        "plugin": "IndividualCaseEnforcementPlugin (generated)",
+        "status": "exists",
+        "rules_file": "rules/required_case_citation_rules.json",
+        "priority": "high",
+        "case_name": "Gorsoan Ltd. v. Bullock",
+        "citation": "652 F. App'x 44 (2d Cir. 2016)",
+        "checklist_items": [
+          "Case cited (if Harvard raises 'add as party' argument)",
+          "'Related entity being party doesn't bar discovery from non-party' holding",
+          "'Participation doesn't automatically foreclose Section 1782 aid' holding"
+        ]
+      },
+      "pishevar": {
+        "plugin": "IndividualCaseEnforcementPlugin (generated)",
+        "status": "exists",
+        "rules_file": "rules/required_case_citation_rules.json",
+        "priority": "high",
+        "case_name": "Pishevar v. Fusion GPS",
+        "citation": "2017 WL 1184305 (D.D.C. 2017)",
+        "checklist_items": [
+          "Case cited (if applicable)",
+          "Non-participant status holding",
+          "Deposition request granted precedent",
+          "Narrow tailoring approved precedent"
+        ]
+      },
+      "zf_automotive": {
+        "plugin": "IndividualCaseEnforcementPlugin (generated)",
+        "status": "exists",
+        "rules_file": "rules/required_case_citation_rules.json",
+        "priority": "medium",
+        "case_name": "ZF Automotive US, Inc. v. Luxshare, Ltd.",
+        "citation": "596 U.S. 450 (2022)",
+        "checklist_items": [
+          "Case cited (if arbitration tribunal issue)",
+          "'Foreign tribunal' definition clarified"
+        ]
+      },
+      "del_valle_ruiz": {
+        "plugin": "IndividualCaseEnforcementPlugin (generated)",
+        "status": "exists",
+        "rules_file": "rules/required_case_citation_rules.json",
+        "priority": "medium",
+        "case_name": "In re del Valle Ruiz",
+        "citation": "939 F.3d 520 (2d Cir. 2019)",
+        "checklist_items": [
+          "Case cited (if 'resides or is found' issue)",
+          "Extraterritorial reach limits"
+        ]
+      }
+    },
+    "federal_rules": {
+      "frcp_rule_45": {
+        "plugin": "rule_45_mentions_plugin.py",
+        "status": "needs_creation",
+        "rules_file": "rules/rule_45_mentions_rules.json",
+        "priority": "high",
+        "threshold": 0.85,
+        "description": "Enforces FRCP Rule 45 (subpoenas) requirements",
+        "checklist_items": [
+          "Subpoena format correct",
+          "Service requirements met",
+          "Geographic limits respected",
+          "Notice to parties (if required)"
+        ]
+      },
+      "frcp_rule_26": {
+        "plugin": "rule_26_discovery_plugin.py",
+        "status": "needs_creation",
+        "rules_file": "rules/rule_26_rules.json",
+        "priority": "medium",
+        "threshold": 0.85,
+        "description": "Enforces FRCP Rule 26 (discovery scope) requirements",
+        "checklist_items": [
+          "Relevance requirement met",
+          "Proportionality requirement met",
+          "Privilege issues addressed"
+        ]
+      }
+    }
+  },
+  "paragraph_level": {
+    "paragraph_structure": {
+      "plugin": "paragraph_structure_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/paragraph_structure_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Enforces paragraph structure metrics",
+      "checklist_items": [
+        "Paragraph word count within limits",
+        "Paragraph sentence count appropriate",
+        "Paragraph coherence",
+        "Topic sentence present"
+      ]
+    },
+    "per_paragraph": {
+      "plugin": "per_paragraph_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/per_paragraph_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Enforces per-paragraph content requirements",
+      "checklist_items": [
+        "Each paragraph has clear purpose",
+        "Paragraphs support section thesis",
+        "Transition between paragraphs"
+      ]
+    },
+    "paragraph_monitor": {
+      "plugin": "paragraph_monitor_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/paragraph_monitor_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Monitors paragraph-level metrics",
+      "checklist_items": [
+        "Paragraph count per section appropriate",
+        "Paragraph length variation",
+        "Paragraph structure consistency"
+      ]
+    }
+  },
+  "sentence_level": {
+    "sentence_structure": {
+      "plugin": "sentence_structure_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/sentence_structure_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Enforces sentence structure metrics",
+      "checklist_items": [
+        "Sentence word count within limits",
+        "Sentence complexity appropriate",
+        "Sentence variety (not all simple or all complex)",
+        "Run-on sentences avoided"
+      ]
+    },
+    "sentence_count": {
+      "plugin": "sentence_count_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/sentence_count_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Enforces sentence count per paragraph",
+      "checklist_items": [
+        "Sentences per paragraph: 3-8 (typical)",
+        "Maximum sentence count per paragraph",
+        "Minimum sentence count per paragraph"
+      ]
+    },
+    "sentence_length": {
+      "plugin": "sentence_length_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/sentence_length_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Enforces sentence length constraints",
+      "checklist_items": [
+        "Average sentence length: 15-25 words (legal writing)",
+        "Maximum sentence length: 40 words",
+        "Minimum sentence length: 5 words",
+        "Long sentence ratio < 20%"
+      ]
+    }
+  },
+  "word_level": {
+    "word_count": {
+      "plugin": "word_count_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/word_count_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Enforces word count at all levels",
+      "checklist_items": [
+        "Document word count within limits",
+        "Section word count appropriate",
+        "Paragraph word count appropriate",
+        "Sentence word count appropriate"
+      ]
+    },
+    "word_choice": {
+      "plugin": "word_choice_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/word_choice_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Enforces legal terminology and word choice",
+      "checklist_items": [
+        "Legal terminology used correctly",
+        "Avoid informal language",
+        "Avoid contractions",
+        "Technical terms defined"
+      ]
+    },
+    "word_frequency": {
+      "plugin": "word_frequency_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/word_frequency_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Tracks word frequency and keyword usage",
+      "checklist_items": [
+        "Key terms used consistently",
+        "Avoid excessive repetition",
+        "Keyword density appropriate",
+        "Legal terms frequency tracked"
+      ]
+    }
+  },
+  "character_level": {
+    "character_count": {
+      "plugin": "character_count_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/character_count_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Enforces character count limits",
+      "checklist_items": [
+        "Document character count within limits",
+        "Section character count appropriate",
+        "Paragraph character count appropriate",
+        "Line length considerations"
+      ]
+    },
+    "formatting": {
+      "plugin": "formatting_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/formatting_rules.json",
+      "priority": "optional",
+      "threshold": 0.85,
+      "description": "Enforces document formatting standards",
+      "checklist_items": [
+        "Font consistent",
+        "Font size appropriate",
+        "Margins correct",
+        "Line spacing correct",
+        "Headers/footers formatted"
+      ]
+    },
+    "citation_format": {
+      "plugin": "citation_format_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/citation_format_rules.json",
+      "priority": "required",
+      "threshold": 1.0,
+      "description": "Enforces character-level citation formatting (Bluebook)",
+      "checklist_items": [
+        "Citation format: Bluebook compliant",
+        "Case names italicized",
+        "Pin cites correct format",
+        "Parallel citations correct",
+        "Period placement correct",
+        "Comma placement correct"
+      ]
+    }
+  },
+  "catboost_features": {
+    "enumeration_density": {
+      "plugin": "enumeration_density_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/enumeration_density_rules.json",
+      "priority": "high",
+      "threshold": 0.9,
+      "shap_value": 0.312,
+      "description": "Enforces high enumeration density (positive signal)",
+      "checklist_items": [
+        "Use numbered lists (1., 2., 3.)",
+        "Use bullet points",
+        "Use lettered lists (a., b., c.)",
+        "Use headers/subheaders",
+        "Break up dense text with enumeration",
+        "Target: High enumeration density (34+ = very high)"
+      ]
+    },
+    "rule_45_mentions": {
+      "plugin": "rule_45_mentions_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/rule_45_mentions_rules.json",
+      "priority": "high",
+      "threshold": 0.85,
+      "shap_value": 0.144,
+      "description": "Enforces Rule 45 mentions (positive signal)",
+      "checklist_items": [
+        "Rule 45 cited appropriately",
+        "'Undue burden' language used",
+        "'Quash' or 'quashing' mentioned",
+        "Burden minimization arguments",
+        "Target: 10-20 mentions (not excessive)"
+      ]
+    },
+    "custodian_count": {
+      "plugin": "custodian_count_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/custodian_count_rules.json",
+      "priority": "high",
+      "threshold": 0.9,
+      "shap_value": -0.309,
+      "description": "Enforces low custodian count (negative signal - minimize)",
+      "checklist_items": [
+        "Minimize number of custodians",
+        "Target: 1-3 custodians (narrow request)",
+        "Avoid: 20+ custodians (overly broad)",
+        "Justify each custodian individually"
+      ]
+    },
+    "scope_breadth": {
+      "plugin": "scope_breadth_plugin.py",
+      "status": "needs_creation",
+      "rules_file": "rules/scope_breadth_rules.json",
+      "priority": "high",
+      "threshold": 0.9,
+      "description": "Enforces narrow scope (negative signal - minimize breadth)",
+      "checklist_items": [
+        "Narrow time period",
+        "Specific document categories",
+        "Specific search terms",
+        "Avoid: 'All documents' language",
+        "Avoid: Unlimited time periods"
+      ]
+    }
+  },
+  "content_features": {
+    "privacy": {
+      "plugin": "mentions_privacy_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/mentions_privacy_rules.json",
+      "priority": "optional",
+      "threshold": 0.85
+    },
+    "harassment": {
+      "plugin": "mentions_harassment_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/mentions_harassment_rules.json",
+      "priority": "optional",
+      "threshold": 0.85
+    },
+    "safety": {
+      "plugin": "mentions_safety_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/mentions_safety_rules.json",
+      "priority": "optional",
+      "threshold": 0.85
+    },
+    "retaliation": {
+      "plugin": "mentions_retaliation_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/mentions_retaliation_rules.json",
+      "priority": "optional",
+      "threshold": 0.85
+    },
+    "public_interest": {
+      "plugin": "public_interest_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/mentions_public_interest_rules.json",
+      "priority": "optional",
+      "threshold": 0.85
+    },
+    "transparency": {
+      "plugin": "transparency_argument_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/mentions_transparency_rules.json",
+      "priority": "optional",
+      "threshold": 0.85
+    },
+    "privacy_harm_count": {
+      "plugin": "privacy_harm_count_plugin.py",
+      "status": "exists",
+      "rules_file": "rules/privacy_harm_count_rules.json",
+      "priority": "optional",
+      "threshold": 0.85
+    }
+  },
+  "dependencies": {
+    "document_level": {
+      "requires": []
+    },
+    "section_level": {
+      "requires": [
+        "document_level"
+      ]
+    },
+    "paragraph_level": {
+      "requires": [
+        "section_level"
+      ]
+    },
+    "sentence_level": {
+      "requires": [
+        "paragraph_level"
+      ]
+    },
+    "word_level": {
+      "requires": [
+        "sentence_level"
+      ]
+    },
+    "character_level": {
+      "requires": [
+        "word_level"
+      ]
+    }
+  },
+  "plugins": [
+    {
+      "name": "case_enforcement_friends_for_all_children_inc_v_lockheed_aircraft_c",
+      "display_name": "Enforce Citation: Friends for All Children, Inc. v. Lockheed Aircraft Corp.",
+      "description": "Direct precedent for filing materials 'under seal' in discovery proceedings",
+      "category": "case_enforcement",
+      "priority": "high",
+      "status": "active",
+      "enabled": true,
+      "metadata": {
+        "case_name": "Friends for All Children, Inc. v. Lockheed Aircraft Corp.",
+        "cluster_id": 1752777,
+        "key_points": [
+          "sealing",
+          "protective orders",
+          "confidential documents",
+          "Section 1782"
+        ],
+        "reason": "Direct precedent for filing materials 'under seal' in discovery proceedings",
+        "checklist_reference": "MASTERCHECKLISTEXPANDED.md",
+        "section": "Section 1782 Case Law"
+      }
+    },
+    {
+      "name": "case_enforcement_in_re_application_of_chevron_corp",
+      "display_name": "Enforce Citation: In Re Application of Chevron Corp.",
+      "description": "Section 1782 granted for sensitive international matters, shows courts grant discovery even for sensitive materials",
+      "category": "case_enforcement",
+      "priority": "high",
+      "status": "active",
+      "enabled": true,
+      "metadata": {
+        "case_name": "In Re Application of Chevron Corp.",
+        "cluster_id": 1587460,
+        "key_points": [
+          "Section 1782",
+          "foreign proceedings",
+          "sensitive materials",
+          "international arbitration"
+        ],
+        "reason": "Section 1782 granted for sensitive international matters, shows courts grant discovery even for sensitive materials",
+        "checklist_reference": "MASTERCHECKLISTEXPANDED.md",
+        "section": "Section 1782 Case Law"
+      }
+    },
+    {
+      "name": "case_enforcement_in_re_application_of_chevron_corp_duplicate",
+      "display_name": "Enforce Citation: In Re Application of Chevron Corp. (duplicate)",
+      "description": "Section 1782 granted for sensitive international matters",
+      "category": "case_enforcement",
+      "priority": "high",
+      "status": "active",
+      "enabled": true,
+      "metadata": {
+        "case_name": "In Re Application of Chevron Corp. (duplicate)",
+        "cluster_id": 2541883,
+        "key_points": [
+          "Section 1782",
+          "foreign proceedings",
+          "sensitive materials"
+        ],
+        "reason": "Section 1782 granted for sensitive international matters",
+        "checklist_reference": "MASTERCHECKLISTEXPANDED.md",
+        "section": "Section 1782 Case Law"
+      }
+    },
+    {
+      "name": "case_enforcement_in_re_application_of_international_mineral_resourc",
+      "display_name": "Enforce Citation: In Re: Application of International Mineral Resources B.V.",
+      "description": "References 'In re Sealed Case' precedent, shows sealing is established practice",
+      "category": "case_enforcement",
+      "priority": "high",
+      "status": "active",
+      "enabled": true,
+      "metadata": {
+        "case_name": "In Re: Application of International Mineral Resources B.V.",
+        "cluster_id": 2821079,
+        "key_points": [
+          "Section 1782",
+          "sealing",
+          "Sealed Case precedent"
+        ],
+        "reason": "References 'In re Sealed Case' precedent, shows sealing is established practice",
+        "checklist_reference": "MASTERCHECKLISTEXPANDED.md",
+        "section": "Section 1782 Case Law"
+      }
+    }
+  ]
+}

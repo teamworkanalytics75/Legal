@@ -1,0 +1,42 @@
+{
+  "feature_name": "citation_count",
+  "feature_type": "COUNT",
+  "shap_importance": 0.0226,
+  "minimum_threshold": 3,
+  "successful_case_average": 5.0,
+  "sections": {
+    "introduction": {
+      "min_citations": 1,
+      "max_citations": 3,
+      "density_per_100_words": 0.5,
+      "required_authorities": ["469 U.S. 310", "353 Mass. 614"]
+    },
+    "harm_analysis": {
+      "min_citations": 3,
+      "density_per_100_words": 2.3,
+      "required_authorities": ["605 F. Supp. 3", "740 F. Supp. 2"]
+    },
+    "legal_standard": {
+      "min_citations": 2,
+      "density_per_100_words": 1.8,
+      "required_authorities": ["457 U.S. 307", "462 U.S. 213"]
+    },
+    "argument": {
+      "min_citations": 2,
+      "density_per_100_words": 1.5,
+      "required_authorities": ["715 F.2d 1", "895 F.2d 38"]
+    }
+  },
+  "winning_citations": [
+    {"citation": "605 F. Supp. 3", "success_rate": 1.0, "appearances": 12},
+    {"citation": "353 Mass. 614", "success_rate": 1.0, "appearances": 11},
+    {"citation": "740 F. Supp. 2", "success_rate": 1.0, "appearances": 9},
+    {"citation": "469 U.S. 310", "success_rate": 1.0, "appearances": 8},
+    {"citation": "715 F.2d 1", "success_rate": 1.0, "appearances": 8}
+  ],
+  "validation_criteria": {
+    "min_total_citations": 3,
+    "required_winning_cites": 2,
+    "target_average": 5.0
+  }
+}

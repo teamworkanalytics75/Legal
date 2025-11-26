@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Upjohn Co. v. United States, 449 U.S. 383 (1981)_0_enforcement",
+  "rule_id": 0,
+  "rule_citation": "Upjohn Co. v. United States, 449 U.S. 383 (1981)",
+  "rule_type": "Case Law - Attorney-Client Privilege",
+  "text_excerpt": "Extended attorney-client privilege to cover communications with all employees necessary for legal advice, not just control group.",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Upjohn Co. v. United States, 449 U.S. 383 (1981)",
+  "duty": "Enforce Upjohn Co. v. United States, 449 U.S. 383 (1981)",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Upjohn Co. v. United States, 449 U.S. 383 (1981)"
+    ]
+  }
+}

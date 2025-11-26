@@ -1,0 +1,41 @@
+{
+  "feature_name": "trump_june4_proclamation",
+  "feature_importance": 4.0,
+  "feature_rank": 12,
+  "description": "Trump June 4, 2020 proclamation and fact sheet identifying Harvard's ties to CCP as national security risk",
+  "shap_importance": 4.0,
+  "importance_source": "contextual_estimate",
+  "importance_note": "Estimated contextual importance - not from CatBoost analysis (case-specific fact, not generalizable feature)",
+  "target_count": 1,
+  "min_count": 1,
+  "validation_criteria": {
+    "proclamation_mentioned": true,
+    "harvard_ccp_mentioned": true,
+    "national_security_risk_mentioned": true,
+    "explicitly_connected": true
+  },
+  "chroma_query_template": "Trump June 4 2020 proclamation Harvard CCP national security risk fact sheet {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Add mention of President Trump's June 4, 2020 proclamation and fact sheet that explicitly identified Harvard's ties to the CCP as a national security risk.",
+    "rationale": "This proclamation came into effect 2 days after Plaintiff filed the HK claim in court, making Harvard's ties to Xi Jinping's daughter a recognized matter of national security since the time Plaintiff first wrote Harvard on April 7th.",
+    "example": "On June 4, 2020, President Trump issued a proclamation and fact sheet that explicitly identified Harvard's ties to the Chinese Communist Party (CCP) as a national security risk. This proclamation came into effect 2 days after Plaintiff filed the Hong Kong claim in this court, making Harvard's ties to Xi Jinping's daughter a recognized matter of national security since the time Plaintiff first wrote Harvard on April 7th.",
+    "insight": "This is official government recognition that Harvard's CCP ties are a national security concern, providing strong support for the national security argument."
+  },
+  "enforcement": {
+    "severity": "high",
+    "auto_fix": false,
+    "requires_manual_review": true,
+    "suggestions": [
+      "Mention the June 4, 2020 proclamation and fact sheet",
+      "Connect to Harvard's ties to the CCP",
+      "Explain it explicitly identified this as a national security risk",
+      "Note the timing: 2 days after HK claim filed, making it NS since April 7th"
+    ]
+  }
+}
+

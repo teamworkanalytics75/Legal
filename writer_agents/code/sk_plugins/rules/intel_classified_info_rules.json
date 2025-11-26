@@ -1,0 +1,40 @@
+{
+  "feature_name": "intel_classified_info",
+  "feature_importance": 17.01,
+  "feature_rank": 1,
+  "description": "Intelligence/classified information features - THE #1 MOST PREDICTIVE FEATURE",
+  "shap_importance": 2.7230032051180366,
+  "target_count": 2,
+  "min_count": 1,
+  "validation_criteria": {
+    "min_intel_mentions": 1,
+    "target_intel_mentions": 2,
+    "preferred_intel_mentions": 3
+  },
+  "chroma_query_template": "classified information intelligence state secret national security {case_context}",
+  "chroma_collections": [
+    "case_law_legal",
+    "motion_examples"
+  ],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "If applicable, mention intelligence sources, classified information, state secrets, or confidential materials in the context of national security.",
+    "rationale": "This is THE #1 MOST PREDICTIVE FEATURE (importance: 17.01) for successful sealing motions. CatBoost analysis shows intel/classified indicators are the strongest predictor.",
+    "example": "The case involves classified information and intelligence sources that, if disclosed, would harm national security.",
+    "insight": "Successful motions explicitly mention intelligence/classified information when applicable. This is the single most important feature."
+  },
+  "enforcement": {
+    "severity": "high",
+    "auto_fix": false,
+    "requires_manual_review": true,
+    "suggestions": [
+      "Mention 'classified information', 'intelligence', 'state secret', or 'confidential' if applicable",
+      "Link to national security context",
+      "Place in Factual Background or National Security section"
+    ]
+  },
+  "last_updated": "2025-11-13T15:09:01.617750"
+}

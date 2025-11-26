@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 409_137_enforcement",
+  "rule_id": 137,
+  "rule_citation": "Federal 409",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": "ompromise Offers and Negotiations </li> <li> <a href=\"/rules/fre/rule_409\"> Rule 409 </a> . Offers to Pay Medical and Similar Expenses </li> <li> <a href=\"/rules/fre/rule_410\"> Rule 410 </a> . Pleas, Plea Discussions, and Related Statements </li> <li> <a href=\"/rules/fre/rule_411\"> Rule 411 </a> . Liability Insurance </li> <li> <a href=\"/rules/fre/rule_412\"> Rule 412 </a> . Sex-Offense Cases: The ",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 409",
+  "duty": "Enforce Federal 409",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 409"
+    ]
+  }
+}

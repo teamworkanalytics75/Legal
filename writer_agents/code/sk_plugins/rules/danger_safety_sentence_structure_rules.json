@@ -1,0 +1,11 @@
+{
+  "rule_name": "danger_safety_sentence_structure",
+  "description": "Sentence structure validation for Danger/Safety section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_sentences_per_paragraph": 1.4494144437215355,
+    "max_sentences_per_paragraph": 3.9833333333333334,
+    "min_words_per_sentence": 8.671947732411224,
+    "max_words_per_sentence": 20.15668402777778
+  }
+}

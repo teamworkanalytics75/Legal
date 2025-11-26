@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "description": "Evaluate whether the draft maintains a formal legal tone.",
+  "executionSettings": {
+    "default": {
+      "maxTokens": 200,
+      "temperature": 0.0
+    }
+  },
+  "input": {
+    "parameters": [
+      {
+        "name": "document",
+        "description": "The drafted section to evaluate.",
+        "default": ""
+      }
+    ]
+  }
+}

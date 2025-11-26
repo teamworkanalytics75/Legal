@@ -1,0 +1,40 @@
+{
+  "feature_name": "presumption_acknowledgment",
+  "feature_importance": 8.65,
+  "feature_rank": 5,
+  "description": "Explicit acknowledgment of presumption of public access before showing it's overcome",
+  "shap_importance": 0.6713461968896929,
+  "target_count": 1,
+  "min_count": 1,
+  "validation_criteria": {
+    "presumption_mentioned": true,
+    "explicitly_acknowledged": true,
+    "shown_overcome": true
+  },
+  "chroma_query_template": "presumption of public access acknowledge overcome {case_context}",
+  "chroma_collections": [
+    "case_law_legal",
+    "motion_examples"
+  ],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Explicitly acknowledge the presumption of public access before showing it's overcome.",
+    "rationale": "This is highly predictive (importance: 8.65) for successful sealing motions. Courts appreciate when parties acknowledge the presumption.",
+    "example": "The Court recognizes the strong presumption of public access to court records. However, the national security interests at stake clearly outweigh that presumption.",
+    "insight": "Successful motions acknowledge the presumption explicitly, then show why it's overcome."
+  },
+  "enforcement": {
+    "severity": "high",
+    "auto_fix": false,
+    "requires_manual_review": false,
+    "suggestions": [
+      "Use language like 'The Court recognizes the strong presumption of public access...'",
+      "Then show how national security interests outweigh it",
+      "Place in Balancing Test section"
+    ]
+  },
+  "last_updated": "2025-11-13T15:09:01.619110"
+}

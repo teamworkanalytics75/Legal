@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_USC § 3251_349_enforcement",
+  "rule_id": 349,
+  "rule_citation": "USC § 3251",
+  "rule_type": "Statute",
+  "text_excerpt": "MENT (§§ 3121 – 3234)</a></li> <li class=\"tocitem\"><a aria-label=\"Chapter 39—Solid Waste Disposal (§§ 3251 – 3256)\" href=\"/uscode/text/42/chapter-39\" title=\"SOLID WASTE DISPOSAL\">CHAPTER 39—SOLID WASTE DISPOSAL (§§ 3251 – 3256)</a></li> <li class=\"tocitem\"><a aria-label=\"Chapter 40—Soil Information Assistance For Community Planning And Resource Development (§§ 3271 – 3274)\" href=\"/uscode/text/42/c",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce USC § 3251",
+  "duty": "Enforce USC § 3251",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "USC § 3251"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "feature_name": "rule_45_mentions",
+  "description": "Enforces Rule 45 mentions (positive signal from CatBoost)",
+  "priority": "high",
+  "threshold": 0.85,
+  "required": false,
+  "shap_value": 0.144,
+  "target_mentions": {
+    "min": 10,
+    "max": 20,
+    "optimal": 15
+  },
+  "checklist_items": [
+    "Rule 45 cited appropriately",
+    "'Undue burden' language used",
+    "'Quash' or 'quashing' mentioned",
+    "Burden minimization arguments"
+  ],
+  "validation_criteria": {
+    "min_mentions": 10,
+    "max_mentions": 20,
+    "required_keywords": [
+      "Rule 45",
+      "undue burden",
+      "quash",
+      "quashing",
+      "burden or expense"
+    ],
+    "required_context": [
+      "Rule 45",
+      "subpoena",
+      "burden or expense"
+    ]
+  },
+  "chroma_query_template": "Rule 45 undue burden quash successful petition {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 15.0,
+  "shap_importance": 0.144,
+  "notes": [
+    "SHAP value: 0.144 (positive signal)",
+    "Target: 10-20 mentions (not excessive)",
+    "Rule 45 mentions correlate with favorable outcomes"
+  ]
+}
+

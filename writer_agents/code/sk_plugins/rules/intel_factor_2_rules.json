@@ -1,0 +1,38 @@
+{
+  "feature_name": "intel_factor_2_receptivity",
+  "description": "Enforces Intel Factor 2: receptivity of foreign tribunal",
+  "priority": "high",
+  "threshold": 0.9,
+  "required": false,
+  "legal_standard": "Intel Corp. v. Advanced Micro Devices, Inc., 542 U.S. 241, 264 (2004)",
+  "key_cases": [
+    "O'Keeffe v. Adelson, 646 F. App'x 263 (3d Cir. 2016)",
+    "Pishevar v. Fusion GPS, 2017 WL 1184305 (D.D.C. 2017)"
+  ],
+  "checklist_items": [
+    "Foreign tribunal identified",
+    "Evidence of receptivity (Hague Evidence Convention, prior cases, etc.)",
+    "No authoritative proof of non-receptivity",
+    "Hong Kong cases: Cite Hague Evidence Convention signatory status"
+  ],
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_keywords": [
+      "receptive",
+      "Hague Evidence Convention",
+      "receptivity",
+      "judicial assistance",
+      "U.S. judicial assistance"
+    ],
+    "required_context": [
+      "receptivity of the foreign government",
+      "receptive to U.S. federal-court judicial assistance",
+      "Hague Evidence Convention signatory"
+    ]
+  },
+  "chroma_query_template": "Intel Factor 2 receptivity Hague Evidence Convention Hong Kong {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 0.9,
+  "shap_importance": 0.0
+}
+

@@ -1,0 +1,26 @@
+{
+  "feature_name": "sentence_length",
+  "description": "Enforces sentence length constraints",
+  "priority": "optional",
+  "threshold": 0.85,
+  "required": false,
+  "checklist_items": [
+    "Average sentence length: 15-25 words (legal writing)",
+    "Maximum sentence length: 40 words",
+    "Minimum sentence length: 5 words",
+    "Long sentence ratio < 20%"
+  ],
+  "validation_criteria": {
+    "min_words_per_sentence": 5,
+    "max_words_per_sentence": 40,
+    "target_avg_words": 20,
+    "target_avg_min": 15,
+    "target_avg_max": 25,
+    "max_long_sentence_ratio": 0.2
+  },
+  "chroma_query_template": "sentence length legal writing clarity {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 20.0,
+  "shap_importance": 0.0
+}
+

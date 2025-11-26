@@ -1,0 +1,19 @@
+{
+  "feature_name": "mentions_transparency",
+  "shap_importance": 0.0109,
+  "minimum_threshold": 1,
+  "successful_case_average": 1.5,
+  "recommended_phrases": [
+    "court transparency",
+    "public access",
+    "open court",
+    "public interest",
+    "First Amendment"
+  ],
+  "chroma_query_template": "court transparency public access {case_context}",
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": ["transparency", "public", "access"],
+    "target_average": 1.5
+  }
+}

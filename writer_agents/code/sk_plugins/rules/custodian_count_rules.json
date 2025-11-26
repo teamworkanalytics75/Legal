@@ -1,0 +1,43 @@
+{
+  "feature_name": "custodian_count",
+  "description": "Enforces low custodian count (negative signal - minimize)",
+  "priority": "high",
+  "threshold": 0.9,
+  "required": false,
+  "shap_value": -0.309,
+  "target_count": {
+    "ideal_min": 1,
+    "ideal_max": 3,
+    "warning_threshold": 10,
+    "critical_threshold": 20
+  },
+  "checklist_items": [
+    "Minimize number of custodians",
+    "Target: 1-3 custodians (narrow request)",
+    "Avoid: 20+ custodians (overly broad)",
+    "Justify each custodian individually"
+  ],
+  "validation_criteria": {
+    "max_count": 3,
+    "warning_count": 10,
+    "critical_count": 20,
+    "required_keywords": [
+      "custodian",
+      "document custodian",
+      "records custodian",
+      "individual.*possesses",
+      "person.*maintains"
+    ]
+  },
+  "chroma_query_template": "narrow request single custodian specific custodian successful petition {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 2.0,
+  "shap_importance": -0.309,
+  "notes": [
+    "SHAP value: -0.309 (negative signal - decreases success probability)",
+    "Target: 1-3 custodians (narrow request)",
+    "Avoid: 20+ custodians (overly broad)",
+    "High custodian count correlates with denial"
+  ]
+}
+

@@ -1,0 +1,14 @@
+{
+  "feature_name": "foreign_tribunal",
+  "shap_importance": 2.104512093581206,
+  "minimum_threshold": 1,
+  "successful_case_average": 2.0,
+  "chroma_query_template": "foreign_tribunal foreign_tribunal",
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "foreign_tribunal"
+    ]
+  },
+  "last_updated": "2025-11-13T15:09:01.623970"
+}

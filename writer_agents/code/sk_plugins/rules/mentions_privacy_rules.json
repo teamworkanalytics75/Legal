@@ -1,0 +1,28 @@
+{
+  "feature_name": "mentions_privacy",
+  "feature_type": "MENTION",
+  "shap_importance": 0.43805680837894373,
+  "minimum_threshold": 5,
+  "successful_case_average": 7.2,
+  "recommended_phrases": [
+    "privacy harm",
+    "personal information disclosure",
+    "expectation of privacy",
+    "privacy interest",
+    "confidential information",
+    "invasion of privacy",
+    "breach of privacy",
+    "privacy violation"
+  ],
+  "chroma_query_template": "privacy harm personal information disclosure {case_context}",
+  "validation_criteria": {
+    "min_mentions": 5,
+    "required_context": [
+      "harm",
+      "disclosure",
+      "expectation"
+    ],
+    "target_average": 7.2
+  },
+  "last_updated": "2025-11-13T15:09:01.620727"
+}

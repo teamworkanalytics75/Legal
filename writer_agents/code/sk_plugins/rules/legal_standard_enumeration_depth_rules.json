@@ -1,0 +1,20 @@
+{
+  "rule_name": "legal_standard_enumeration_depth",
+  "description": "Enumeration depth validation for Legal Standard section",
+  "source": "CatBoost model",
+  "data_backing": {
+    "optimal_threshold": 1.0,
+    "successful_mean": 1.4128440366972477,
+    "roc_auc": 0.5342346692419121,
+    "feature_importance": 0.0
+  },
+  "targets": {
+    "target_depth": 1.0,
+    "min_depth": 0.0,
+    "max_depth": 3.0
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "low"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "feature_name": "intel_factor_3_circumvention",
+  "description": "Enforces Intel Factor 3: circumvention concerns",
+  "priority": "high",
+  "threshold": 0.9,
+  "required": false,
+  "legal_standard": "Intel Corp. v. Advanced Micro Devices, Inc., 542 U.S. 241, 264 (2004)",
+  "key_cases": [
+    "Brandi-Dohrn v. IKB Deutsche Industriebank AG, 673 F.3d 76, 81-83 (2d Cir. 2012)",
+    "O'Keeffe v. Adelson, 646 F. App'x 263 (3d Cir. 2016)"
+  ],
+  "checklist_items": [
+    "No evidence of bad faith",
+    "Not attempting to avoid foreign court orders",
+    "Not using Section 1782 to evade foreign procedural safeguards",
+    "Valid foreign proceeding exists",
+    "Discovery target is separate entity (not sham proceeding)"
+  ],
+  "validation_criteria": {
+    "min_mentions": 0,
+    "negative_keywords": [
+      "circumvent",
+      "evade",
+      "avoid.*?foreign.*?restrictions",
+      "bad faith",
+      "sham proceeding"
+    ],
+    "positive_keywords": [
+      "valid proceeding",
+      "genuine proceeding",
+      "not.*?circumvent",
+      "no.*?circumvention",
+      "separate entity"
+    ]
+  },
+  "chroma_query_template": "Intel Factor 3 circumvention Brandi-Dohrn no requirement foreign discoverability {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 0.9,
+  "shap_importance": 0.0
+}
+

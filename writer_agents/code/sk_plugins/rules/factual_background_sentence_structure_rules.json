@@ -1,0 +1,11 @@
+{
+  "rule_name": "factual_background_sentence_structure",
+  "description": "Sentence structure validation for Factual Background section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_sentences_per_paragraph": 1.450435341136169,
+    "max_sentences_per_paragraph": 3.6937134502923974,
+    "min_words_per_sentence": 8.581929347826087,
+    "max_words_per_sentence": 20.431818181818183
+  }
+}

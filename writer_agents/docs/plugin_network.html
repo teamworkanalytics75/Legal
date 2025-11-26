@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plugin Network Visualization - Legal Checklist Enforcement System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+
+        .btn-secondary {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #d0d0d0;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .tree-container {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 500px;
+            overflow-x: auto;
+        }
+
+        .tree {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .level {
+            margin-bottom: 20px;
+        }
+
+        .level-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+
+        .plugins-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .plugin-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+            border-left: 4px solid #ddd;
+        }
+
+        .plugin-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .plugin-card.exists {
+            border-left-color: #4caf50;
+        }
+
+        .plugin-card.needs-creation {
+            border-left-color: #ff9800;
+        }
+
+        .plugin-card.critical {
+            border-left-color: #f44336;
+        }
+
+        .plugin-card.high {
+            border-left-color: #ff9800;
+        }
+
+        .plugin-card.medium {
+            border-left-color: #ffc107;
+        }
+
+        .plugin-card.optional {
+            border-left-color: #2196f3;
+        }
+
+        .plugin-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .plugin-status {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-bottom: 8px;
+        }
+
+        .status-exists {
+            background: #4caf50;
+            color: white;
+        }
+
+        .status-needs-creation {
+            background: #ff9800;
+            color: white;
+        }
+
+        .plugin-description {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 8px;
+        }
+
+        .plugin-priority {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.75em;
+            margin-right: 5px;
+        }
+
+        .priority-critical {
+            background: #f44336;
+            color: white;
+        }
+
+        .priority-high {
+            background: #ff9800;
+            color: white;
+        }
+
+        .priority-medium {
+            background: #ffc107;
+            color: #333;
+        }
+
+        .priority-optional {
+            background: #2196f3;
+            color: white;
+        }
+
+        .plugin-threshold {
+            color: #999;
+            font-size: 0.85em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .legend {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .legend h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Plugin Network Visualization</h1>
+        <p class="subtitle">Legal Checklist Enforcement System - Complete Plugin Architecture</p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <h3>61</h3>
+                <p>Existing Plugins</p>
+            </div>
+            <div class="stat-card">
+                <h3>35</h3>
+                <p>Configured Plugins</p>
+            </div>
+            <div class="stat-card">
+                <h3>6</h3>
+                <p>Hierarchy Levels</p>
+            </div>
+            <div class="stat-card">
+                <h3>100%</h3>
+                <p>Integration Complete</p>
+            </div>
+        </div>
+
+        <div class="legend">
+            <h3>Legend</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4caf50;"></div>
+                    <span>Plugin Exists</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #ff9800;"></div>
+                    <span>Needs Creation</span>
+                </div>
+            <div class="legend-item">
+                    <div class="legend-color" style="background: #f44336;"></div>
+                    <span>Critical Priority</span>
+            </div>
+            <div class="legend-item">
+                    <div class="legend-color" style="background: #ff9800;"></div>
+                <span>High Priority</span>
+            </div>
+            <div class="legend-item">
+                    <div class="legend-color" style="background: #ffc107;"></div>
+                <span>Medium Priority</span>
+            </div>
+            <div class="legend-item">
+                    <div class="legend-color" style="background: #2196f3;"></div>
+                    <span>Optional Priority</span>
+            </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <input type="text" class="search-box" id="searchBox" placeholder="Search plugins...">
+            <button class="btn btn-primary" onclick="expandAll()">Expand All</button>
+            <button class="btn btn-secondary" onclick="collapseAll()">Collapse All</button>
+            <button class="btn btn-secondary" onclick="filterByStatus('exists')">Show Existing Only</button>
+            <button class="btn btn-secondary" onclick="filterByStatus('all')">Show All</button>
+        </div>
+
+        <div class="tree-container">
+            <div class="tree" id="pluginTree">
+                <!-- Plugin tree will be generated here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Plugin data structure
+        const pluginData = {
+            document_level: {
+                section_structure: {
+                    plugin: "section_structure_plugin.py",
+                    status: "exists",
+                    priority: "required",
+                    threshold: 1.0,
+                    description: "Enforces document structure requirements (sections, order, TOC, etc.)"
+                },
+                citation_retrieval: {
+                    plugin: "citation_retrieval_plugin.py",
+                    status: "exists",
+                    priority: "required",
+                    threshold: 1.0,
+                    description: "Enforces document-level citation requirements"
+                },
+                word_count: {
+                    plugin: "word_count_plugin.py",
+                    status: "needs_creation",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Enforces document-level word count limits"
+                }
+            },
+            section_level: {
+                statutory_requirements: {
+                    requirement_1_person_found: {
+                        plugin: "statutory_requirement_1_plugin.py",
+                        status: "exists",
+                        priority: "critical",
+                        threshold: 1.0,
+                        description: "Enforces Section 1782 statutory requirement: person found/resides in district"
+                    },
+                    requirement_2_foreign_proceeding: {
+                        plugin: "statutory_requirement_2_plugin.py",
+                        status: "exists",
+                        priority: "critical",
+                        threshold: 1.0,
+                        description: "Enforces Section 1782 statutory requirement: foreign proceeding exists"
+                    },
+                    requirement_3_interested_person: {
+                        plugin: "statutory_requirement_3_plugin.py",
+                        status: "exists",
+                        priority: "critical",
+                        threshold: 1.0,
+                        description: "Enforces Section 1782 statutory requirement: interested person/applicant"
+                    }
+                },
+                intel_factors: {
+                    factor_1_participant: {
+                        plugin: "intel_factor_1_participant_plugin.py",
+                        status: "exists",
+                        priority: "high",
+                        threshold: 0.9,
+                        description: "Enforces Intel Factor 1: participant status analysis"
+                    },
+                    factor_2_receptivity: {
+                        plugin: "intel_factor_2_receptivity_plugin.py",
+                        status: "exists",
+                        priority: "high",
+                        threshold: 0.9,
+                        description: "Enforces Intel Factor 2: receptivity of foreign tribunal"
+                    },
+                    factor_3_circumvention: {
+                        plugin: "intel_factor_3_circumvention_plugin.py",
+                        status: "exists",
+                        priority: "high",
+                        threshold: 0.9,
+                        description: "Enforces Intel Factor 3: circumvention concerns"
+                    },
+                    factor_4_burden: {
+                        plugin: "intel_factor_4_burden_plugin.py",
+                        status: "exists",
+                        priority: "medium",
+                        threshold: 0.85,
+                        description: "Enforces Intel Factor 4: undue burden/intrusiveness"
+                    }
+                },
+                case_enforcement: {
+                    intel: {
+                        plugin: "IndividualCaseEnforcementPlugin (generated)",
+                        status: "exists",
+                        priority: "critical",
+                        description: "Intel Corp. v. Advanced Micro Devices, Inc., 542 U.S. 241 (2004)"
+                    }
+                },
+                federal_rules: {
+                    frcp_rule_45: {
+                        plugin: "rule_45_mentions_plugin.py",
+                        status: "exists",
+                        priority: "high",
+                        threshold: 0.85,
+                        description: "Enforces FRCP Rule 45 (subpoenas) requirements"
+                    },
+                    frcp_rule_26: {
+                        plugin: "rule_26_discovery_plugin.py",
+                        status: "exists",
+                        priority: "medium",
+                        threshold: 0.85,
+                        description: "Enforces FRCP Rule 26 (discovery scope) requirements"
+                    }
+                }
+            },
+            paragraph_level: {
+                paragraph_structure: {
+                    plugin: "paragraph_structure_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Enforces paragraph structure metrics"
+                },
+                per_paragraph: {
+                    plugin: "per_paragraph_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Enforces per-paragraph content requirements"
+                },
+                paragraph_monitor: {
+                    plugin: "paragraph_monitor_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Monitors paragraph-level metrics"
+                }
+            },
+            sentence_level: {
+                sentence_structure: {
+                    plugin: "sentence_structure_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Enforces sentence structure metrics"
+                },
+                sentence_count: {
+                    plugin: "sentence_count_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Enforces sentence count per paragraph"
+                },
+                sentence_length: {
+                    plugin: "sentence_length_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Enforces sentence length constraints"
+                }
+            },
+            word_level: {
+                word_count: {
+                    plugin: "word_count_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Enforces word count at all levels"
+                },
+                word_choice: {
+                    plugin: "word_choice_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Enforces legal terminology and word choice"
+                },
+                word_frequency: {
+                    plugin: "word_frequency_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Tracks word frequency and keyword usage"
+                }
+            },
+            character_level: {
+                character_count: {
+                    plugin: "character_count_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Enforces character count limits"
+                },
+                formatting: {
+                    plugin: "formatting_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Enforces document formatting standards"
+                },
+                citation_format: {
+                    plugin: "citation_format_plugin.py",
+                    status: "exists",
+                    priority: "required",
+                    threshold: 1.0,
+                    description: "Enforces character-level citation formatting (Bluebook)"
+                }
+            },
+            catboost_features: {
+                enumeration_density: {
+                    plugin: "enumeration_density_plugin.py",
+                    status: "exists",
+                    priority: "high",
+                    threshold: 0.9,
+                    shap_value: 0.312,
+                    description: "Enforces high enumeration density (positive signal)"
+                },
+                rule_45_mentions: {
+                    plugin: "rule_45_mentions_plugin.py",
+                    status: "exists",
+                    priority: "high",
+                    threshold: 0.85,
+                    shap_value: 0.144,
+                    description: "Enforces Rule 45 mentions (positive signal)"
+                },
+                custodian_count: {
+                    plugin: "custodian_count_plugin.py",
+                    status: "exists",
+                    priority: "high",
+                    threshold: 0.9,
+                    shap_value: -0.309,
+                    description: "Enforces low custodian count (negative signal - minimize)"
+                },
+                scope_breadth: {
+                    plugin: "scope_breadth_plugin.py",
+                    status: "exists",
+                    priority: "high",
+                    threshold: 0.9,
+                    description: "Enforces narrow scope (negative signal - minimize breadth)"
+                }
+            },
+            content_features: {
+                privacy: {
+                    plugin: "mentions_privacy_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Privacy mentions enforcement"
+                },
+                harassment: {
+                    plugin: "mentions_harassment_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Harassment mentions enforcement"
+                },
+                safety: {
+                    plugin: "mentions_safety_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Safety mentions enforcement"
+                },
+                retaliation: {
+                    plugin: "mentions_retaliation_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Retaliation mentions enforcement"
+                },
+                public_interest: {
+                    plugin: "public_interest_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Public interest enforcement"
+                },
+                transparency: {
+                    plugin: "transparency_argument_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Transparency argument enforcement"
+                },
+                privacy_harm_count: {
+                    plugin: "privacy_harm_count_plugin.py",
+                    status: "exists",
+                    priority: "optional",
+                    threshold: 0.85,
+                    description: "Privacy harm count enforcement"
+                }
+            }
+        };
+
+        const levelNames = {
+            document_level: "📄 Document Level",
+            section_level: "📑 Section Level",
+            paragraph_level: "📝 Paragraph Level",
+            sentence_level: "💬 Sentence Level",
+            word_level: "🔤 Word Level",
+            character_level: "🔠 Character Level",
+            catboost_features: "📊 CatBoost Features",
+            content_features: "📋 Content Features"
+        };
+
+        function renderTree() {
+            const treeContainer = document.getElementById('pluginTree');
+            treeContainer.innerHTML = '';
+
+            for (const [level, plugins] of Object.entries(pluginData)) {
+                const levelDiv = document.createElement('div');
+                levelDiv.className = 'level';
+
+                const levelTitle = document.createElement('div');
+                levelTitle.className = 'level-title';
+                levelTitle.textContent = levelNames[level] || level;
+                levelDiv.appendChild(levelTitle);
+
+                const pluginsGrid = document.createElement('div');
+                pluginsGrid.className = 'plugins-grid';
+
+                for (const [key, plugin] of Object.entries(plugins)) {
+                    if (typeof plugin === 'object' && plugin !== null && 'plugin' in plugin) {
+                        const card = createPluginCard(key, plugin);
+                        pluginsGrid.appendChild(card);
+                    } else if (typeof plugin === 'object') {
+                        // Nested structure (e.g., statutory_requirements)
+                        for (const [subKey, subPlugin] of Object.entries(plugin)) {
+                            if (typeof subPlugin === 'object' && subPlugin !== null && 'plugin' in subPlugin) {
+                                const card = createPluginCard(subKey, subPlugin);
+                                pluginsGrid.appendChild(card);
+                            }
+                        }
+                    }
+                }
+
+                levelDiv.appendChild(pluginsGrid);
+                treeContainer.appendChild(levelDiv);
+            }
+        }
+
+        function createPluginCard(key, plugin) {
+            const card = document.createElement('div');
+            const statusClass = plugin.status === 'exists' ? 'exists' : 'needs-creation';
+            const priorityClass = plugin.priority || 'optional';
+            card.className = `plugin-card ${statusClass} ${priorityClass}`;
+            card.setAttribute('data-status', plugin.status);
+            card.setAttribute('data-name', key);
+
+            const name = document.createElement('div');
+            name.className = 'plugin-name';
+            name.textContent = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            card.appendChild(name);
+
+            const status = document.createElement('span');
+            status.className = `plugin-status status-${plugin.status === 'exists' ? 'exists' : 'needs-creation'}`;
+            status.textContent = plugin.status === 'exists' ? '✅ Exists' : '⏳ Needs Creation';
+            card.appendChild(status);
+
+            if (plugin.priority) {
+                const priority = document.createElement('span');
+                priority.className = `plugin-priority priority-${plugin.priority}`;
+                priority.textContent = plugin.priority.toUpperCase();
+                card.appendChild(priority);
+            }
+
+            const description = document.createElement('div');
+            description.className = 'plugin-description';
+            description.textContent = plugin.description || 'No description available';
+            card.appendChild(description);
+
+            if (plugin.threshold) {
+                const threshold = document.createElement('div');
+                threshold.className = 'plugin-threshold';
+                threshold.textContent = `Threshold: ${plugin.threshold}`;
+                card.appendChild(threshold);
+            }
+
+            if (plugin.shap_value !== undefined) {
+                const shap = document.createElement('div');
+                shap.className = 'plugin-threshold';
+                shap.textContent = `SHAP Value: ${plugin.shap_value}`;
+                card.appendChild(shap);
+            }
+
+            return card;
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.level').forEach(level => {
+                level.style.display = 'block';
+            });
+        }
+
+        function collapseAll() {
+            // Implementation for collapse if needed
+        }
+
+        function filterByStatus(status) {
+            const cards = document.querySelectorAll('.plugin-card');
+            cards.forEach(card => {
+                if (status === 'all') {
+                    card.style.display = 'block';
+                } else if (status === 'exists') {
+                    card.style.display = card.getAttribute('data-status') === 'exists' ? 'block' : 'none';
+                }
+            });
+        }
+
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.plugin-card');
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                const description = card.querySelector('.plugin-description').textContent.toLowerCase();
+                if (name.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Initial render
+        renderTree();
+    </script>
+</body>
+</html>

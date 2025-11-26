@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 301_127_enforcement",
+  "rule_id": 127,
+  "rule_citation": "Federal 301",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": "LE III. PRESUMPTIONS IN CIVIL CASES <ol> <li> <a href=\"/rules/fre/rule_301\"> Rule 301 </a> . Presumptions in Civil Cases Generally </li> <li> <a href=\"/rules/fre/rule_302\"> Rule 302 </a> . Applying State Law to Presumptions in Civil Cases </li> </ol> </li> <li> ARTICLE IV. RELEVANCE AND ITS LIMITS <ol> <li> <a href=\"/rules/fre/rule_401\"> Rule 401 </a> . Test for Relevant Evidence </li> <li> <a hre",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 301",
+  "duty": "Enforce Federal 301",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 301"
+    ]
+  }
+}

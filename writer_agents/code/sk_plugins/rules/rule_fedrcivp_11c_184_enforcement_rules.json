@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Fed.R.Civ.P. 11(c)_184_enforcement",
+  "rule_id": 184,
+  "rule_citation": "Fed.R.Civ.P. 11(c)",
+  "rule_type": "Sanctions - Rule 11 Sanctions",
+  "text_excerpt": "Sanctions. If Rule 11(b) is violated, the court may impose an appropriate sanction on any attorney, law firm, or party. Sanctions may include nonmonetary directives, monetary sanctions payable to the court, and penalties payable to the movant.",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Fed.R.Civ.P. 11(c)",
+  "duty": "Enforce Fed.R.Civ.P. 11(c)",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Fed.R.Civ.P. 11(c)"
+    ]
+  }
+}

@@ -1,0 +1,685 @@
+"""Advanced multi-agent writing system with nested review processes and multi-order planning."""
+
+from __future__ import annotations
+
+import asyncio
+import json
+import logging
+from dataclasses import dataclass, field
+from enum import Enum
+from typing import Dict, List, Optional, Sequence, Tuple, Union
+
+try:
+    from .agents import AgentFactory, BaseAutoGenAgent, ModelConfig
+    from .tasks import DraftSection, PlanDirective, ReviewFindings, SectionPlan, WriterDeliverable
+    from .insights import CaseInsights
+except ImportError:  # pragma: no cover - fallback for direct script execution
+    from agents import AgentFactory, BaseAutoGenAgent, ModelConfig
+    from tasks import DraftSection, PlanDirective, ReviewFindings, SectionPlan, WriterDeliverable
+    from insights import CaseInsights
+
+logger = logging.getLogger(__name__)
+
+
+class ReviewLevel(Enum):
+    """Levels of review sophistication."""
+    BASIC = "basic"
+    INTERMEDIATE = "intermediate"
+    ADVANCED = "advanced"
+    EXPERT = "expert"
+
+
+class PlanningOrder(Enum):
+    """Orders of planning complexity."""
+    STRATEGIC = "strategic" # High-level objectives and structure
+    TACTICAL = "tactical" # Section-level planning and coordination
+    OPERATIONAL = "operational" # Paragraph and sentence-level planning
+
+
+@dataclass(slots=True)
+class AdvancedAgentConfig:
+    """Configuration for the advanced multi-agent system."""
+
+    model_config: ModelConfig = field(default_factory=ModelConfig)
+    max_review_rounds: int = 3
+    enable_research_agents: bool = True
+    enable_quality_gates: bool = True
+    enable_adaptive_workflow: bool = True
+    review_levels: List[ReviewLevel] = field(default_factory=lambda: [
+        ReviewLevel.BASIC, ReviewLevel.INTERMEDIATE, ReviewLevel.ADVANCED
+    ])
+    planning_orders: List[PlanningOrder] = field(default_factory=lambda: [
+        PlanningOrder.STRATEGIC, PlanningOrder.TACTICAL, PlanningOrder.OPERATIONAL
+    ])
+
+
+@dataclass(slots=True)
+class ResearchTask:
+    """Research task specification."""
+
+    topic: str
+    depth: str # "shallow", "moderate", "deep"
+    focus_areas: List[str]
+    evidence_requirements: List[str]
+    deadline: Optional[str] = None
+
+
+@dataclass(slots=True)
+class ResearchResult:
+    """Result from research agent."""
+
+    topic: str
+    findings: List[str]
+    evidence: List[str]
+    confidence: float # 0.0 to 1.0
+    sources: List[str]
+    gaps: List[str]
+
+
+@dataclass(slots=True)
+class QualityGate:
+    """Quality gate configuration."""
+
+    name: str
+    criteria: List[str]
+    threshold: float # Minimum score to pass
+    required: bool = True
+
+
+class StrategicPlannerAgent(BaseAutoGenAgent):
+    """High-level strategic planning agent."""
+
+    def __init__(self, factory: AgentFactory) -> None:
+        super().__init__(
+            factory,
+            name="StrategicPlanner",
+            system_message=(
+                "You are a strategic planning agent for legal document creation. "
+                "Your role is to analyze the case context and create high-level strategic objectives, "
+                "identify key themes, determine document structure, and establish quality standards. "
+                "Focus on the 'what' and 'why' of the document, not the 'how'."
+            )
+        )
+
+
+class TacticalPlannerAgent(BaseAutoGenAgent):
+    """Mid-level tactical planning agent."""
+
+    def __init__(self, factory: AgentFactory) -> None:
+        super().__init__(
+            factory,
+            name="TacticalPlanner",
+            system_message=(
+                "You are a tactical planning agent for legal document creation. "
+                "Your role is to break down strategic objectives into specific sections, "
+                "coordinate between sections, manage dependencies, and ensure logical flow. "
+                "Focus on the 'how' of organizing content within the strategic framework."
+            )
+        )
+
+
+class OperationalPlannerAgent(BaseAutoGenAgent):
+    """Low-level operational planning agent."""
+
+    def __init__(self, factory: AgentFactory) -> None:
+        super().__init__(
+            factory,
+            name="OperationalPlanner",
+            system_message=(
+                "You are an operational planning agent for legal document creation. "
+                "Your role is to create detailed paragraph-level plans, specify evidence placement, "
+                "define citation requirements, and ensure technical accuracy. "
+                "Focus on the specific implementation details of each section."
+            )
+        )
+
+
+class ResearchAgent(BaseAutoGenAgent):
+    """Dedicated research and fact-checking agent."""
+
+    def __init__(self, factory: AgentFactory) -> None:
+        super().__init__(
+            factory,
+            name="ResearchAgent",
+            system_message=(
+                "You are a research agent specializing in legal fact-checking and evidence gathering. "
+                "Your role is to identify research needs, gather relevant information, "
+                "verify factual claims, and identify knowledge gaps. "
+                "Provide structured research findings with confidence levels and source citations."
+            )
+        )
+
+
+class PrimaryWriterAgent(BaseAutoGenAgent):
+    """Primary content generation agent."""
+
+    def __init__(self, factory: AgentFactory) -> None:
+        super().__init__(
+            factory,
+            name="PrimaryWriter",
+            system_message=(
+                "You are a primary writer agent for legal documents. "
+                "Your role is to create high-quality initial drafts based on detailed plans and research. "
+                "Focus on clarity, accuracy, and adherence to legal writing standards. "
+                "Ensure proper citation formatting and logical argumentation."
+            )
+        )
+
+
+class ContentReviewerAgent(BaseAutoGenAgent):
+    """Content-focused review agent."""
+
+    def __init__(self, factory: AgentFactory, level: ReviewLevel) -> None:
+        level_prompts = {
+            ReviewLevel.BASIC: "Focus on basic grammar, spelling, and obvious factual errors.",
+            ReviewLevel.INTERMEDIATE: "Focus on logical flow, argumentation quality, and citation accuracy.",
+            ReviewLevel.ADVANCED: "Focus on legal reasoning, precedent alignment, and strategic positioning.",
+            ReviewLevel.EXPERT: "Focus on nuanced legal analysis, rhetorical effectiveness, and expert-level insights."
+        }
+
+        super().__init__(
+            factory,
+            name=f"ContentReviewer_{level.value.title()}",
+            system_message=(
+                f"You are a {level.value} content reviewer for legal documents. "
+                f"{level_prompts[level]}. "
+                "Provide specific, actionable feedback with severity ratings (low, medium, high, critical). "
+                "Focus on improving the quality and accuracy of the content."
+            )
+        )
+
+
+class TechnicalReviewerAgent(BaseAutoGenAgent):
+    """Technical accuracy and citation review agent."""
+
+    def __init__(self, factory: AgentFactory) -> None:
+        super().__init__(
+            factory,
+            name="TechnicalReviewer",
+            system_message=(
+                "You are a technical reviewer specializing in citation accuracy, "
+                "Bayesian network node references, legal precedent verification, "
+                "and technical document formatting. "
+                "Identify and flag any technical inconsistencies or errors."
+            )
+        )
+
+
+class StyleReviewerAgent(BaseAutoGenAgent):
+    """Style and tone review agent."""
+
+    def __init__(self, factory: AgentFactory) -> None:
+        super().__init__(
+            factory,
+            name="StyleReviewer",
+            system_message=(
+                "You are a style reviewer for legal documents. "
+                "Your role is to ensure consistent tone, appropriate formality, "
+                "clear communication, and professional presentation. "
+                "Focus on readability, coherence, and rhetorical effectiveness."
+            )
+        )
+
+
+class QualityAssuranceAgent(BaseAutoGenAgent):
+    """Final quality assurance and gatekeeper agent."""
+
+    def __init__(self, factory: AgentFactory) -> None:
+        super().__init__(
+            factory,
+            name="QualityAssurance",
+            system_message=(
+                "You are a quality assurance agent responsible for final document validation. "
+                "Your role is to evaluate documents against quality gates, "
+                "ensure all requirements are met, and make go/no-go decisions. "
+                "Provide comprehensive quality scores and improvement recommendations."
+            )
+        )
+
+
+class AdaptiveOrchestratorAgent(BaseAutoGenAgent):
+    """Adaptive workflow orchestration agent."""
+
+    def __init__(self, factory: AgentFactory) -> None:
+        super().__init__(
+            factory,
+            name="AdaptiveOrchestrator",
+            system_message=(
+                "You are an adaptive orchestrator for legal document creation workflows. "
+                "Your role is to analyze document complexity, determine optimal agent sequences, "
+                "manage resource allocation, and adapt workflows based on intermediate results. "
+                "Make intelligent decisions about when to apply additional review cycles."
+            )
+        )
+
+
+class AdvancedWriterOrchestrator:
+    """Sophisticated multi-agent writing system with nested review processes."""
+
+    def __init__(self, config: Optional[AdvancedAgentConfig] = None) -> None:
+        self._config = config or AdvancedAgentConfig()
+        self._factory = AgentFactory(self._config.model_config)
+
+        # Initialize planning agents
+        self._strategic_planner = StrategicPlannerAgent(self._factory)
+        self._tactical_planner = TacticalPlannerAgent(self._factory)
+        self._operational_planner = OperationalPlannerAgent(self._factory)
+
+        # Initialize research agents
+        self._research_agent = ResearchAgent(self._factory) if self._config.enable_research_agents else None
+
+        # Initialize writing agents
+        self._primary_writer = PrimaryWriterAgent(self._factory)
+
+        # Initialize review agents
+        self._content_reviewers = {
+            level: ContentReviewerAgent(self._factory, level)
+            for level in self._config.review_levels
+        }
+        self._technical_reviewer = TechnicalReviewerAgent(self._factory)
+        self._style_reviewer = StyleReviewerAgent(self._factory)
+
+        # Initialize quality assurance
+        self._qa_agent = QualityAssuranceAgent(self._factory) if self._config.enable_quality_gates else None
+
+        # Initialize adaptive orchestration
+        self._orchestrator = AdaptiveOrchestratorAgent(self._factory) if self._config.enable_adaptive_workflow else None
+
+        # Quality gates
+        self._quality_gates = [
+            QualityGate("Content Accuracy", ["factual_accuracy", "citation_accuracy"], 0.8),
+            QualityGate("Legal Reasoning", ["logical_flow", "precedent_alignment"], 0.7),
+            QualityGate("Style Consistency", ["tone_consistency", "formatting"], 0.6),
+            QualityGate("Completeness", ["section_completeness", "requirement_coverage"], 0.8),
+        ]
+
+    async def close(self) -> None:
+        """Close the shared model client."""
+        await self._factory.close()
+
+    async def run_advanced_workflow(self, insights: CaseInsights) -> WriterDeliverable:
+        """Execute the complete advanced writing workflow with nested reviews."""
+        logger.info("Starting advanced multi-agent writing workflow")
+
+        # Phase 1: Multi-order planning
+        strategic_plan = await self._strategic_planning(insights)
+        tactical_plan = await self._tactical_planning(insights, strategic_plan)
+        operational_plan = await self._operational_planning(insights, tactical_plan)
+
+        # Phase 2: Research (if enabled)
+        research_results = []
+        if self._research_agent:
+            research_results = await self._conduct_research(insights, operational_plan)
+
+        # Phase 3: Content generation
+        initial_drafts = await self._generate_content(insights, operational_plan, research_results)
+
+        # Phase 4: Nested review process
+        reviewed_drafts = await self._nested_review_process(insights, initial_drafts, operational_plan)
+
+        # Phase 5: Quality assurance
+        final_document = await self._quality_assurance(insights, reviewed_drafts, operational_plan)
+
+        # Phase 6: Adaptive refinement (if enabled)
+        if self._orchestrator:
+            final_document = await self._adaptive_refinement(insights, final_document, operational_plan)
+
+        logger.info("Advanced writing workflow completed")
+
+        return WriterDeliverable(
+            plan=operational_plan,
+            sections=reviewed_drafts,
+            edited_document=final_document,
+            reviews=[], # Will be populated by review process
+            metadata={
+                "workflow_type": "advanced_nested_review",
+                "research_enabled": self._config.enable_research_agents,
+                "quality_gates_enabled": self._config.enable_quality_gates,
+                "adaptive_workflow_enabled": self._config.enable_adaptive_workflow,
+            }
+        )
+
+    async def _strategic_planning(self, insights: CaseInsights) -> Dict:
+        """Execute strategic planning phase."""
+        logger.info("Executing strategic planning phase")
+
+        prompt = (
+            f"Analyze the following case insights and create a strategic plan:\n\n"
+            f"{insights.to_prompt_block()}\n\n"
+            "Provide a strategic plan including:\n"
+            "1. Primary objectives and goals\n"
+            "2. Key themes and arguments\n"
+            "3. Document structure recommendations\n"
+            "4. Quality standards and success criteria\n"
+            "5. Risk factors and mitigation strategies\n\n"
+            "Respond in JSON format with clear strategic guidance."
+        )
+
+        response = await self._strategic_planner.run(prompt)
+        return self._parse_json_response(response, "strategic_plan")
+
+    async def _tactical_planning(self, insights: CaseInsights, strategic_plan: Dict) -> Dict:
+        """Execute tactical planning phase."""
+        logger.info("Executing tactical planning phase")
+
+        prompt = (
+            f"Based on the strategic plan and case insights, create a tactical plan:\n\n"
+            f"Strategic Plan: {json.dumps(strategic_plan, indent=2)}\n\n"
+            f"Case Insights: {insights.to_prompt_block()}\n\n"
+            "Provide a tactical plan including:\n"
+            "1. Section breakdown and organization\n"
+            "2. Inter-section dependencies and flow\n"
+            "3. Evidence allocation and placement\n"
+            "4. Citation strategy and requirements\n"
+            "5. Review checkpoints and milestones\n\n"
+            "Respond in JSON format with detailed tactical guidance."
+        )
+
+        response = await self._tactical_planner.run(prompt)
+        return self._parse_json_response(response, "tactical_plan")
+
+    async def _operational_planning(self, insights: CaseInsights, tactical_plan: Dict) -> PlanDirective:
+        """Execute operational planning phase."""
+        logger.info("Executing operational planning phase")
+
+        prompt = (
+            f"Based on the tactical plan and case insights, create an operational plan:\n\n"
+            f"Tactical Plan: {json.dumps(tactical_plan, indent=2)}\n\n"
+            f"Case Insights: {insights.to_prompt_block()}\n\n"
+            "Provide an operational plan including:\n"
+            "1. Detailed section specifications\n"
+            "2. Paragraph-level organization\n"
+            "3. Specific evidence and citation requirements\n"
+            "4. Writing guidelines and constraints\n"
+            "5. Quality checkpoints and validation criteria\n\n"
+            "Respond in JSON format compatible with the existing PlanDirective structure."
+        )
+
+        response = await self._operational_planner.run(prompt)
+        plan_data = self._parse_json_response(response, "operational_plan")
+
+        # Convert to PlanDirective format
+        return PlanDirective(
+            objective=plan_data.get("objective", "Draft comprehensive legal analysis"),
+            deliverable_format=plan_data.get("deliverable_format", "Legal memorandum"),
+            tone=plan_data.get("tone", "Professional and analytical"),
+            style_constraints=plan_data.get("style_constraints", []),
+            citation_expectations=plan_data.get("citation_expectations", "Use [Node:Outcome] format")
+        )
+
+    async def _conduct_research(self, insights: CaseInsights, plan: PlanDirective) -> List[ResearchResult]:
+        """Conduct research using the research agent."""
+        logger.info("Conducting research phase")
+
+        if not self._research_agent:
+            return []
+
+        research_tasks = self._identify_research_needs(insights, plan)
+        results = []
+
+        for task in research_tasks:
+            prompt = (
+                f"Research the following topic for legal document creation:\n\n"
+                f"Topic: {task.topic}\n"
+                f"Depth: {task.depth}\n"
+                f"Focus Areas: {', '.join(task.focus_areas)}\n"
+                f"Evidence Requirements: {', '.join(task.evidence_requirements)}\n\n"
+                "Provide research findings including:\n"
+                "1. Key findings and insights\n"
+                "2. Supporting evidence\n"
+                "3. Confidence level (0.0-1.0)\n"
+                "4. Source references\n"
+                "5. Knowledge gaps\n\n"
+                "Respond in JSON format."
+            )
+
+            response = await self._research_agent.run(prompt)
+            result_data = self._parse_json_response(response, "research_result")
+
+            results.append(ResearchResult(
+                topic=task.topic,
+                findings=result_data.get("findings", []),
+                evidence=result_data.get("evidence", []),
+                confidence=result_data.get("confidence", 0.5),
+                sources=result_data.get("sources", []),
+                gaps=result_data.get("gaps", [])
+            ))
+
+        return results
+
+    async def _generate_content(self, insights: CaseInsights, plan: PlanDirective, research_results: List[ResearchResult]) -> List[DraftSection]:
+        """Generate initial content using the primary writer."""
+        logger.info("Generating initial content")
+
+        # Create sections based on the plan
+        sections = self._extract_sections_from_plan(plan)
+        drafts = []
+
+        for section in sections:
+            research_context = self._get_relevant_research(section, research_results)
+
+            prompt = (
+                f"Write the following section based on the plan and research:\n\n"
+                f"Section: {section.title}\n"
+                f"Objective: {section.objective}\n"
+                f"Key Points: {', '.join(section.key_points)}\n\n"
+                f"Case Insights: {insights.to_prompt_block()}\n\n"
+                f"Research Context: {research_context}\n\n"
+                f"Writing Guidelines: {plan.to_prompt()}\n\n"
+                "Generate high-quality content that follows all guidelines and incorporates research findings."
+            )
+
+            content = await self._primary_writer.run(prompt)
+            drafts.append(DraftSection(
+                section_id=section.section_id,
+                title=section.title,
+                body=content
+            ))
+
+        return drafts
+
+    async def _nested_review_process(self, insights: CaseInsights, drafts: List[DraftSection], plan: PlanDirective) -> List[DraftSection]:
+        """Execute nested review process with multiple review levels."""
+        logger.info("Executing nested review process")
+
+        current_drafts = drafts.copy()
+
+        for round_num in range(self._config.max_review_rounds):
+            logger.info(f"Review round {round_num + 1}/{self._config.max_review_rounds}")
+
+            # Content review at each level
+            for level in self._config.review_levels:
+                reviewer = self._content_reviewers[level]
+                current_drafts = await self._apply_content_review(current_drafts, reviewer, level)
+
+            # Technical review
+            current_drafts = await self._apply_technical_review(current_drafts)
+
+            # Style review
+            current_drafts = await self._apply_style_review(current_drafts)
+
+            # Check if further rounds are needed
+            if not await self._needs_additional_review(current_drafts, plan):
+                break
+
+        return current_drafts
+
+    async def _quality_assurance(self, insights: CaseInsights, drafts: List[DraftSection], plan: PlanDirective) -> str:
+        """Execute final quality assurance."""
+        logger.info("Executing quality assurance")
+
+        if not self._qa_agent:
+            return self._combine_drafts(drafts)
+
+        combined_draft = self._combine_drafts(drafts)
+
+        prompt = (
+            f"Perform final quality assurance on this legal document:\n\n"
+            f"Document:\n{combined_draft}\n\n"
+            f"Quality Gates:\n{self._format_quality_gates()}\n\n"
+            f"Original Plan: {plan.to_prompt()}\n\n"
+            "Evaluate the document against each quality gate and provide:\n"
+            "1. Quality scores for each gate\n"
+            "2. Overall quality assessment\n"
+            "3. Critical issues that must be addressed\n"
+            "4. Improvement recommendations\n"
+            "5. Final polished document\n\n"
+            "Respond in JSON format with the final document in the 'final_document' field."
+        )
+
+        response = await self._qa_agent.run(prompt)
+        qa_data = self._parse_json_response(response, "quality_assurance")
+
+        return qa_data.get("final_document", combined_draft)
+
+    async def _adaptive_refinement(self, insights: CaseInsights, document: str, plan: PlanDirective) -> str:
+        """Apply adaptive refinement based on orchestration analysis."""
+        logger.info("Applying adaptive refinement")
+
+        prompt = (
+            f"Analyze this document and determine if adaptive refinement is needed:\n\n"
+            f"Document: {document}\n\n"
+            f"Original Plan: {plan.to_prompt()}\n\n"
+            f"Case Insights: {insights.to_prompt_block()}\n\n"
+            "Evaluate:\n"
+            "1. Document complexity and quality\n"
+            "2. Areas needing additional refinement\n"
+            "3. Optimal refinement strategies\n"
+            "4. Resource allocation recommendations\n\n"
+            "If refinement is needed, provide the refined document. "
+            "If not, return the original document unchanged. "
+            "Respond in JSON format with 'refinement_needed' and 'refined_document' fields."
+        )
+
+        response = await self._orchestrator.run(prompt)
+        refinement_data = self._parse_json_response(response, "adaptive_refinement")
+
+        if refinement_data.get("refinement_needed", False):
+            return refinement_data.get("refined_document", document)
+        else:
+            return document
+
+    def _parse_json_response(self, response: str, context: str) -> Dict:
+        """Parse JSON response with error handling."""
+        try:
+            # Clean the response
+            cleaned = response.strip()
+            if cleaned.startswith("```json"):
+                cleaned = cleaned[7:]
+            if cleaned.endswith("```"):
+                cleaned = cleaned[:-3]
+            cleaned = cleaned.strip()
+
+            # Handle UTF-8 BOM
+            if cleaned.startswith('\ufeff'):
+                cleaned = cleaned[1:]
+
+            return json.loads(cleaned)
+        except json.JSONDecodeError as e:
+            logger.error(f"Failed to parse JSON response for {context}: {e}")
+            logger.error(f"Response was: {response}")
+            return {}
+
+    def _identify_research_needs(self, insights: CaseInsights, plan: PlanDirective) -> List[ResearchTask]:
+        """Identify research needs based on insights and plan."""
+        return [
+            ResearchTask(
+                topic="Legal precedents and case law",
+                depth="moderate",
+                focus_areas=["relevant precedents", "legal standards"],
+                evidence_requirements=["case citations", "statutory references"]
+            ),
+            ResearchTask(
+                topic="Bayesian network interpretation",
+                depth="deep",
+                focus_areas=["probability interpretation", "causal relationships"],
+                evidence_requirements=["node explanations", "outcome justifications"]
+            )
+        ]
+
+    def _get_relevant_research(self, section: SectionPlan, research_results: List[ResearchResult]) -> str:
+        """Get research context relevant to a specific section."""
+        relevant = []
+        for result in research_results:
+            if any(keyword in section.objective.lower() for keyword in result.topic.lower().split()):
+                relevant.append(f"Research on {result.topic}: {', '.join(result.findings[:3])}")
+        return "\n".join(relevant) if relevant else "No specific research context available."
+
+    def _extract_sections_from_plan(self, plan: PlanDirective) -> List[SectionPlan]:
+        """Extract section plans from the operational plan."""
+        # This would typically parse the plan to extract sections
+        # For now, return a default structure
+        return [
+            SectionPlan(
+                section_id="executive_summary",
+                title="Executive Summary",
+                objective="Provide high-level overview of findings",
+                key_points=["Key findings", "Main conclusions", "Recommendations"]
+            ),
+            SectionPlan(
+                section_id="analysis",
+                title="Legal Analysis",
+                objective="Detailed legal analysis of the case",
+                key_points=["Factual analysis", "Legal reasoning", "Precedent application"]
+            ),
+            SectionPlan(
+                section_id="conclusions",
+                title="Conclusions and Recommendations",
+                objective="Synthesize findings and provide recommendations",
+                key_points=["Key conclusions", "Risk assessment", "Action items"]
+            )
+        ]
+
+    async def _apply_content_review(
+        self,
+        drafts: List[DraftSection],
+        reviewer: ContentReviewerAgent,
+        level: ReviewLevel,
+    ) -> List[DraftSection]:
+        """Apply content review at a specific level."""
+        logger.debug(
+            "Skipping %s content review (placeholder implementation still TODO).",
+            level.value,
+        )
+        return drafts
+
+    async def _apply_technical_review(self, drafts: List[DraftSection]) -> List[DraftSection]:
+        """Apply technical review focusing on citations and accuracy."""
+        logger.debug("Skipping technical review (placeholder implementation still TODO).")
+        return drafts
+
+    async def _apply_style_review(self, drafts: List[DraftSection]) -> List[DraftSection]:
+        """Apply style review focusing on tone and presentation."""
+        logger.debug("Skipping style review (placeholder implementation still TODO).")
+        return drafts
+
+    async def _needs_additional_review(self, drafts: List[DraftSection], plan: PlanDirective) -> bool:
+        """Determine if additional review rounds are needed."""
+        # Simplified logic - in practice, this would analyze review feedback
+        # and determine if quality thresholds are met
+        return False
+
+    def _combine_drafts(self, drafts: List[DraftSection]) -> str:
+        """Combine draft sections into a single document."""
+        sections = []
+        for draft in drafts:
+            sections.append(f"# {draft.title}\n\n{draft.body}")
+        return "\n\n".join(sections)
+
+    def _format_quality_gates(self) -> str:
+        """Format quality gates for prompting."""
+        gates = []
+        for gate in self._quality_gates:
+            gates.append(f"- {gate.name}: {', '.join(gate.criteria)} (threshold: {gate.threshold})")
+        return "\n".join(gates)
+
+
+__all__ = [
+    "AdvancedAgentConfig",
+    "AdvancedWriterOrchestrator",
+    "ReviewLevel",
+    "PlanningOrder",
+    "ResearchTask",
+    "ResearchResult",
+    "QualityGate",
+]

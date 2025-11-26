@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 411_139_enforcement",
+  "rule_id": 139,
+  "rule_citation": "Federal 411",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": "scussions, and Related Statements </li> <li> <a href=\"/rules/fre/rule_411\"> Rule 411 </a> . Liability Insurance </li> <li> <a href=\"/rules/fre/rule_412\"> Rule 412 </a> . Sex-Offense Cases: The Victim’s Sexual Behavior or Predisposition </li> <li> <a href=\"/rules/fre/rule_413\"> Rule 413 </a> . Similar Crimes in Sexual-Assault Cases </li> <li> <a href=\"/rules/fre/rule_414\"> Rule 414 </a> . Similar C",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 411",
+  "duty": "Enforce Federal 411",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 411"
+    ]
+  }
+}

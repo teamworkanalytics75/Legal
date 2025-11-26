@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 501_144_enforcement",
+  "rule_id": 144,
+  "rule_citation": "Federal 501",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": "li> ARTICLE V. PRIVILEGES <ol> <li> <a href=\"/rules/fre/rule_501\"> Rule 501 </a> . Privilege in General </li> <li> <a href=\"/rules/fre/rule_502\"> Rule 502 </a> . Attorney-Client Privilege and Work Product; Limitations on Waiver </li> </ol> </li> <li> ARTICLE VI. WITNESSES <ol> <li> <a href=\"/rules/fre/rule_601\"> Rule 601 </a> . Competency to Testify in General </li> <li> <a href=\"/rules/fre/rule_6",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 501",
+  "duty": "Enforce Federal 501",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 501"
+    ]
+  }
+}

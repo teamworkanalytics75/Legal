@@ -1,0 +1,19 @@
+{
+  "profile": "pseudonym_seal",
+  "jurisdiction": "D. Massachusetts",
+  "target_confidence": 0.75,
+  "max_iterations": 5,
+  "autogen_model": "qwen2.5:14b",
+  "sk_use_local": true,
+  "sections": [
+    "introduction",
+    "legal_standard",
+    "danger_safety",
+    "public_interest",
+    "balancing_test",
+    "protective_measures",
+    "conclusion"
+  ],
+  "notes": "Local-first setup for motion to seal + pseudonym; tuned for iterative refinement with SK quality gates and AutoGen review."
+}
+

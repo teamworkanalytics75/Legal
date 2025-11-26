@@ -1,0 +1,28 @@
+{
+  "rule_name": "conclusion_word_count",
+  "description": "Word count validation for Conclusion section based on CatBoost analysis",
+  "source": "CatBoost model trained on successful vs unsuccessful motions",
+  "data_backing": {
+    "successful_mean": 2762.029090909091,
+    "unsuccessful_mean": 2804.03717472119,
+    "roc_auc": 0.5089760054072322,
+    "feature_importance": 3.217723502101404,
+    "sample_size": 2800.465058750773
+  },
+  "targets": {
+    "min_word_count": 402,
+    "max_word_count": 3670,
+    "optimal_range": [
+      402.5,
+      3670.0
+    ]
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "medium"
+  },
+  "recommendations": {
+    "below_min": "Increase word count in Conclusion section to at least 402 words (optimal: 402-3670)",
+    "above_max": "Reduce word count in Conclusion section to at most 3670 words (optimal: 402-3670)"
+  }
+}

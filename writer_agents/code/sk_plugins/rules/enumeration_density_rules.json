@@ -1,0 +1,36 @@
+{
+  "feature_name": "enumeration_density",
+  "shap_importance": 0.164,
+  "description": "Enforces structured lists and enumeration for clarity and organization",
+  "targets": {
+    "enumeration_density": 0.20,
+    "min_enumerated_items": 5,
+    "min_structured_sections": 3
+  },
+  "successful_case_average": {
+    "enumeration_density": 0.20
+  },
+  "recommended_phrases": [
+    "Request for Production",
+    "Document Category",
+    "numbered items",
+    "structured list",
+    "enumerated requests"
+  ],
+  "chroma_query_template": "enumeration numbered list structured requests successful petition {case_context}",
+  "validation_criteria": {
+    "enumeration_density_threshold": 0.15,
+    "min_enumerated_items": 5,
+    "min_structured_sections": 3,
+    "target_average": {
+      "enumeration_density": 0.20
+    }
+  },
+  "notes": [
+    "Top 3 SHAP feature (0.164) - enumeration is highly predictive",
+    "Successful petitions use 20% enumeration density",
+    "Structured lists improve readability and specificity",
+    "Use numbered items for requests, categories, or arguments"
+  ]
+}
+

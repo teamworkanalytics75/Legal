@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_USC § 21_313_enforcement",
+  "rule_id": 313,
+  "rule_citation": "USC § 21",
+  "rule_type": "Statute",
+  "text_excerpt": "s=\"heading centered smallCaps\">Existing Rights or Liabilities</span> <p>Act June 25, 1948, ch. 645, § 21, <a href=\"/rio/citation/62_Stat._862\">62 Stat. 862</a>, provided in part that any right or liabilities now existing under repealed sections or parts thereof shall not be affected by the repeal.</p> </div> <div class=\"note\" topic=\"miscellaneous\"><span class=\"heading centered smallCaps\">Repealed,",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce USC § 21",
+  "duty": "Enforce USC § 21",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "USC § 21"
+    ]
+  }
+}

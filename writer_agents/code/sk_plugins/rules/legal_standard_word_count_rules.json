@@ -1,0 +1,28 @@
+{
+  "rule_name": "legal_standard_word_count",
+  "description": "Word count validation for Legal Standard section based on CatBoost analysis",
+  "source": "CatBoost model trained on successful vs unsuccessful motions",
+  "data_backing": {
+    "successful_mean": 3072.5045871559632,
+    "unsuccessful_mean": 3989.3181286549707,
+    "roc_auc": 0.5301142765169805,
+    "feature_importance": 2.7327802987867282,
+    "sample_size": 3885.6535269709543
+  },
+  "targets": {
+    "min_word_count": 762,
+    "max_word_count": 4249,
+    "optimal_range": [
+      762.0,
+      4249.0
+    ]
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "medium"
+  },
+  "recommendations": {
+    "below_min": "Increase word count in Legal Standard section to at least 762 words (optimal: 762-4249)",
+    "above_max": "Reduce word count in Legal Standard section to at most 4249 words (optimal: 762-4249)"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "feature_name": "mentions_safety",
+  "feature_type": "MENTION",
+  "shap_importance": 1.2938735644745905,
+  "minimum_threshold": 1,
+  "successful_case_average": 1.5,
+  "recommended_phrases": [
+    "safety concerns",
+    "danger",
+    "threats",
+    "physical harm",
+    "security risk"
+  ],
+  "chroma_query_template": "safety concerns danger threats {case_context}",
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "safety",
+      "danger",
+      "harm"
+    ],
+    "target_average": 1.5
+  },
+  "last_updated": "2025-11-13T15:09:01.622479"
+}

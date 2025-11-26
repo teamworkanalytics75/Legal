@@ -1,0 +1,35 @@
+{
+  "feature_name": "paragraph_monitor",
+  "description": "Rules for monitoring and aggregating paragraph-level health across document",
+  "targets": {
+    "min_overall_health_score": 0.7,
+    "max_problematic_paragraphs_pct": 20,
+    "length_consistency_deviation_pct": 50,
+    "sentence_consistency_deviation_pct": 40,
+    "intro_min_words": 50,
+    "intro_max_words": 200,
+    "conclusion_min_words": 40,
+    "conclusion_max_words": 150
+  },
+  "monitoring_criteria": {
+    "track_common_issues": true,
+    "track_critical_paragraphs": true,
+    "check_length_consistency": true,
+    "check_sentence_consistency": true,
+    "position_specific_checks": true
+  },
+  "recommended_phrases": [
+    "consistent paragraph structure",
+    "balanced paragraph lengths",
+    "smooth transitions",
+    "well-organized paragraphs"
+  ],
+  "notes": [
+    "Monitors overall paragraph health across entire document",
+    "Tracks common issues appearing in multiple paragraphs",
+    "Identifies critical paragraphs requiring immediate attention",
+    "Ensures consistency in paragraph structure and length",
+    "Provides position-specific analysis for intro/body/conclusion"
+  ]
+}
+

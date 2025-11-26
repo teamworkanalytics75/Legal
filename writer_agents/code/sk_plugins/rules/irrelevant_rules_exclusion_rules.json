@@ -1,0 +1,8 @@
+{
+  "feature_name": "irrelevant_rules_exclusion",
+  "duty": "Track exclusion of all irrelevant rules",
+  "total_irrelevant_rules": 421,
+  "is_master_tracker": true,
+  "purpose": "Ensure system knows all irrelevant rules and why they don't apply",
+  "description": "Master plugin that tracks all irrelevant rules collectively"
+}

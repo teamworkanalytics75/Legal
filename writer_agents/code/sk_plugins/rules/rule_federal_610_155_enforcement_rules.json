@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 610_155_enforcement",
+  "rule_id": 155,
+  "rule_citation": "Federal 610",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": "Evidence of a Criminal Conviction </li> <li> <a href=\"/rules/fre/rule_610\"> Rule 610 </a> . Religious Beliefs or Opinions </li> <li> <a href=\"/rules/fre/rule_611\"> Rule 611 </a> . Mode and Order of Examining Witnesses and Presenting Evidence </li> <li> <a href=\"/rules/fre/rule_612\"> Rule 612 </a> . Writing Used to Refresh a Witness’s Memory </li> <li> <a href=\"/rules/fre/rule_613\"> Rule 613 </a> .",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 610",
+  "duty": "Enforce Federal 610",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 610"
+    ]
+  }
+}

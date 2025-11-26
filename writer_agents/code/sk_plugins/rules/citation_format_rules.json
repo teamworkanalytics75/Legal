@@ -1,0 +1,26 @@
+{
+  "feature_name": "citation_format",
+  "description": "Enforces character-level citation formatting (Bluebook)",
+  "priority": "required",
+  "threshold": 1.0,
+  "required": true,
+  "checklist_items": [
+    "Citation format: Bluebook compliant",
+    "Case names italicized",
+    "Pin cites correct format",
+    "Parallel citations correct",
+    "Period placement correct",
+    "Comma placement correct"
+  ],
+  "validation_criteria": {
+    "bluebook_compliant": true,
+    "case_name_format": "italicized",
+    "pin_cite_format": "(page number)",
+    "parallel_cite_separator": ", "
+  },
+  "chroma_query_template": "citation format Bluebook case citation legal citation {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 1.0,
+  "shap_importance": 0.0
+}
+

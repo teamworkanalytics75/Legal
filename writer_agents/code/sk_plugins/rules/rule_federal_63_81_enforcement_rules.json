@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 63_81_enforcement",
+  "rule_id": 81,
+  "rule_citation": "Federal 63",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "hat is Barred by a Pending Appeal </li> <li> <a href=\"/rules/frcp/rule_63\"> Rule 63 </a> . Judge's Inability to Proceed </li> </ul> </li> <li> TITLE VIII. PROVISIONAL AND FINAL REMEDIES <ul> <li> <a href=\"/rules/frcp/rule_64\"> Rule 64 </a> . Seizing a Person or Property </li> <li> <a href=\"/rules/frcp/rule_65\"> Rule 65 </a> . Injunctions and Restraining Orders </li> <li> <a href=\"/rules/frcp/rule_",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 63",
+  "duty": "Enforce Federal 63",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 63"
+    ]
+  }
+}

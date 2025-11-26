@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 82_102_enforcement",
+  "rule_id": 102,
+  "rule_citation": "Federal 82",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "Rules in General; Removed Actions </li> <li> <a href=\"/rules/frcp/rule_82\"> Rule 82 </a> . Jurisdiction and Venue Unaffected </li> <li> <a href=\"/rules/frcp/rule_83\"> Rule 83 </a> . Rules by District Courts; Judge's Directives </li> <li> <a href=\"/rules/frcp/rule_84\"> Rule 84 </a> . Abrogated, eff. Dec. 1, 2015 </li> <li> <a href=\"/rules/frcp/rule_85\"> Rule 85 </a> . Title </li> <li> <a href=\"/rul",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 82",
+  "duty": "Enforce Federal 82",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 82"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 414_142_enforcement",
+  "rule_id": 142,
+  "rule_citation": "Federal 414",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": "ar Crimes in Sexual-Assault Cases </li> <li> <a href=\"/rules/fre/rule_414\"> Rule 414 </a> . Similar Crimes in Child Molestation Cases </li> <li> <a href=\"/rules/fre/rule_415\"> Rule 415 </a> . Similar Acts in Civil Cases Involving Sexual Assault or Child Molestation </li> </ol> </li> <li> ARTICLE V. PRIVILEGES <ol> <li> <a href=\"/rules/fre/rule_501\"> Rule 501 </a> . Privilege in General </li> <li> ",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 414",
+  "duty": "Enforce Federal 414",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 414"
+    ]
+  }
+}

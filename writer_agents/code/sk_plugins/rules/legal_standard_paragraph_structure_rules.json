@@ -1,0 +1,11 @@
+{
+  "rule_name": "legal_standard_paragraph_structure",
+  "description": "Paragraph structure validation for Legal Standard section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_paragraph_count": 43,
+    "max_paragraph_count": 64,
+    "min_avg_words_per_paragraph": 10.343343040186372,
+    "max_avg_words_per_paragraph": 15.51501456027956
+  }
+}

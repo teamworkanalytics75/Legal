@@ -1,0 +1,28 @@
+{
+  "rule_name": "danger_safety_word_count",
+  "description": "Word count validation for Danger/Safety section based on CatBoost analysis",
+  "source": "CatBoost model trained on successful vs unsuccessful motions",
+  "data_backing": {
+    "successful_mean": 2647.2204301075267,
+    "unsuccessful_mean": 3026.942681678608,
+    "roc_auc": 0.505965155567295,
+    "feature_importance": 2.745917498048476,
+    "sample_size": 2993.9387850467288
+  },
+  "targets": {
+    "min_word_count": 497,
+    "max_word_count": 2751,
+    "optimal_range": [
+      497.25,
+      2751.75
+    ]
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "medium"
+  },
+  "recommendations": {
+    "below_min": "Increase word count in Danger/Safety section to at least 497 words (optimal: 497-2751)",
+    "above_max": "Reduce word count in Danger/Safety section to at most 2751 words (optimal: 497-2751)"
+  }
+}

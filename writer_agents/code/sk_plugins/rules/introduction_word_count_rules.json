@@ -1,0 +1,28 @@
+{
+  "rule_name": "introduction_word_count",
+  "description": "Word count validation for Introduction section based on CatBoost analysis",
+  "source": "CatBoost model trained on successful vs unsuccessful motions",
+  "data_backing": {
+    "successful_mean": 3520.9493670886077,
+    "unsuccessful_mean": 2601.141456582633,
+    "roc_auc": 0.4997872566748218,
+    "feature_importance": 4.253951713339969,
+    "sample_size": 2692.7742749054223
+  },
+  "targets": {
+    "min_word_count": 152,
+    "max_word_count": 1325,
+    "optimal_range": [
+      152.0,
+      1325.5
+    ]
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "medium"
+  },
+  "recommendations": {
+    "below_min": "Increase word count in Introduction section to at least 152 words (optimal: 152-1325)",
+    "above_max": "Reduce word count in Introduction section to at most 1325 words (optimal: 152-1325)"
+  }
+}

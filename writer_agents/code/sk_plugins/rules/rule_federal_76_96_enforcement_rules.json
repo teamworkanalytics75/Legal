@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 76_96_enforcement",
+  "rule_id": 96,
+  "rule_citation": "Federal 76",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "r. 11, 1997, eff. Dec. 1, 1997).] </li> <li> <a href=\"/rules/frcp/rule_76\"> Rule 76 </a> . [Abrogated (Apr. 11, 1997, eff. Dec. 1, 1997).] </li> <li> [Rule 71A. Renumbered Rule 71.1] </li> </ul> </li> <li> TITLE X. DISTRICT COURTS AND CLERKS: CONDUCTING BUSINESS; ISSUING ORDERS <ul> <li> <a href=\"/rules/frcp/rule_77\"> Rule 77 </a> . Conducting Business; Clerk's Authority; Notice of an Order or Jud",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 76",
+  "duty": "Enforce Federal 76",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 76"
+    ]
+  }
+}

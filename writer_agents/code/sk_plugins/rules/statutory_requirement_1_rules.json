@@ -1,0 +1,35 @@
+{
+  "feature_name": "statutory_requirement_1_person_found",
+  "description": "Enforces Section 1782 statutory requirement: person found/resides in district",
+  "priority": "critical",
+  "threshold": 1.0,
+  "required": true,
+  "legal_standard": "Brandi-Dohrn v. IKB Deutsche Industriebank AG, 673 F.3d 76, 80 (2d Cir. 2012)",
+  "checklist_items": [
+    "Discovery target identified",
+    "District where target is found/resides specified",
+    "Evidence of residency/location provided",
+    "Jurisdictional basis established"
+  ],
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_keywords": [
+      "resides",
+      "found",
+      "district",
+      "jurisdiction",
+      "location",
+      "address"
+    ],
+    "required_context": [
+      "person from whom discovery is sought",
+      "discovery target",
+      "respondent"
+    ]
+  },
+  "chroma_query_template": "Section 1782 person found or resides in district {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 1.0,
+  "shap_importance": 0.0
+}
+

@@ -1,0 +1,30 @@
+{
+  "feature_name": "word_frequency",
+  "description": "Tracks word frequency and keyword usage",
+  "priority": "optional",
+  "threshold": 0.85,
+  "required": false,
+  "checklist_items": [
+    "Key terms used consistently",
+    "Avoid excessive repetition",
+    "Keyword density appropriate",
+    "Legal terms frequency tracked"
+  ],
+  "validation_criteria": {
+    "max_repetition_ratio": 0.05,
+    "key_terms": [
+      "Section 1782",
+      "discovery",
+      "foreign proceeding",
+      "Harvard",
+      "custodian"
+    ],
+    "min_key_term_mentions": 1,
+    "max_key_term_mentions": 50
+  },
+  "chroma_query_template": "word frequency keyword density legal writing {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 0.85,
+  "shap_importance": 0.0
+}
+

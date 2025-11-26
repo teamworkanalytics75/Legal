@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 1002_109_enforcement",
+  "rule_id": 109,
+  "rule_citation": "Federal 1002",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": "tions That Apply to This Article </li> <li> <a href=\"/rules/fre/rule_1002\"> Rule 1002 </a> . Requirement of the Original </li> <li> <a href=\"/rules/fre/rule_1003\"> Rule 1003 </a> . Admissibility of Duplicates </li> <li> <a href=\"/rules/fre/rule_1004\"> Rule 1004 </a> . Admissibility of Other Evidence of Content </li> <li> <a href=\"/rules/fre/rule_1005\"> Rule 1005 </a> . Copies of Public Records to ",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 1002",
+  "duty": "Enforce Federal 1002",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 1002"
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "feature_name": "foreign_government",
+  "feature_importance": 3.40,
+  "feature_rank": 9,
+  "description": "Foreign government involvement in national security context",
+  "shap_importance": 3.40,
+  "target_count": 1,
+  "min_count": 1,
+  "validation_criteria": {
+    "foreign_gov_mentioned": true,
+    "linked_to_national_security": true
+  },
+  "chroma_query_template": "foreign government national security interference {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "If applicable, mention foreign government involvement and link it to national security concerns.",
+    "rationale": "CatBoost analysis shows this is predictive (importance: 3.40) for successful sealing motions when foreign government involvement exists.",
+    "example": "The foreign government interference creates significant national security concerns that justify sealing.",
+    "insight": "Successful motions explicitly link foreign government actions to national security implications."
+  },
+  "enforcement": {
+    "severity": "medium",
+    "auto_fix": false,
+    "requires_manual_review": true,
+    "suggestions": [
+      "Mention foreign government involvement if applicable",
+      "Link to national security concerns",
+      "Place in Factual Background or National Security section"
+    ]
+  }
+}
+

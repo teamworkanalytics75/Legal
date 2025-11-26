@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Fed.R.Civ.P. 37(b)(2)_179_enforcement",
+  "rule_id": 179,
+  "rule_citation": "Fed.R.Civ.P. 37(b)(2)",
+  "rule_type": "Sanctions - Discovery Sanctions",
+  "text_excerpt": "Sanctions for Failure to Comply with a Court Order. If a party fails to obey an order to provide or permit discovery, the court may issue further just orders including: (i) directing that the matters embraced in the order or other designated facts be taken as established for purposes of the action; (ii) prohibiting the disobedient party from supporting or opposing designated claims or defenses; (i",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Fed.R.Civ.P. 37(b)(2)",
+  "duty": "Enforce Fed.R.Civ.P. 37(b)(2)",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Fed.R.Civ.P. 37(b)(2)"
+    ]
+  }
+}

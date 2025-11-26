@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 69_88_enforcement",
+  "rule_id": 88,
+  "rule_citation": "Federal 69",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "> . Offer of Judgment </li> <li> <a href=\"/rules/frcp/rule_69\"> Rule 69 </a> . Execution </li> <li> <a href=\"/rules/frcp/rule_70\"> Rule 70 </a> . Enforcing a Judgment for a Specific Act </li> <li> <a href=\"/rules/frcp/rule_71\"> Rule 71 </a> . Enforcing Relief For or Against a Nonparty </li> </ul> </li> <li> TITLE IX. SPECIAL PROCEEDINGS <ul> <li> <a href=\"/rules/frcp/rule_71.1\"> Rule 71.1 </a",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 69",
+  "duty": "Enforce Federal 69",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 69"
+    ]
+  }
+}

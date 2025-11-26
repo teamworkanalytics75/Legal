@@ -1,0 +1,52 @@
+{
+  "OutcomePredictorAgent": [
+    "What's the success rate when Factor 2 is present?",
+    "Which cases are most likely to succeed?",
+    "What factors predict denial?"
+  ],
+  "DocumentClassifierAgent": [
+    "Classify cases by Intel factor completeness",
+    "Group cases by citation patterns",
+    "Categorize by outcome and complexity"
+  ],
+  "PatternRecognizerAgent": [
+    "Find patterns in denied cases",
+    "Identify success correlates",
+    "Discover hidden patterns"
+  ],
+  "LegalResearchAgent": [
+    "Research Intel Corp citation patterns",
+    "Analyze ZF Automotive influence",
+    "Study precedent evolution"
+  ],
+  "CaseAnalysisAgent": [
+    "Analyze individual case outcomes",
+    "Compare factor analysis across cases",
+    "Evaluate case complexity"
+  ],
+  "CitationAnalysisAgent": [
+    "Track citation frequency patterns",
+    "Analyze precedent influence",
+    "Study citation correlation with outcomes"
+  ],
+  "TextAnalysisAgent": [
+    "Analyze text length patterns",
+    "Study Section 1782 mention frequency",
+    "Examine language patterns"
+  ],
+  "StatisticalAnalysisAgent": [
+    "Calculate success probability factors",
+    "Perform correlation analysis",
+    "Generate statistical insights"
+  ],
+  "ReportGenerationAgent": [
+    "Generate outcome analysis reports",
+    "Create pattern recognition summaries",
+    "Produce statistical analysis reports"
+  ],
+  "MemoryManagementAgent": [
+    "Manage 1782 knowledge base",
+    "Retrieve relevant case patterns",
+    "Update memory with new insights"
+  ]
+}

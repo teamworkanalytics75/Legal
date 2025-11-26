@@ -1,0 +1,11 @@
+{
+  "rule_name": "public_interest_paragraph_structure",
+  "description": "Paragraph structure validation for Public Interest section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_paragraph_count": 3,
+    "max_paragraph_count": 4,
+    "min_avg_words_per_paragraph": 14.807190635451509,
+    "max_avg_words_per_paragraph": 22.21078595317726
+  }
+}

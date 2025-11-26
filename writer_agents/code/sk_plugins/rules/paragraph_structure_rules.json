@@ -1,0 +1,42 @@
+{
+  "feature_name": "paragraph_structure",
+  "shap_importance": 0.112,
+  "description": "Enforces paragraph-level structural metrics for optimal organization",
+  "targets": {
+    "paragraph_count": 15.0,
+    "paragraph_avg_word_count": 120.0,
+    "paragraph_median_word_count": 120.0,
+    "paragraph_max_word_count": 180.0,
+    "paragraph_avg_sentence_count": 5.0,
+    "paragraph_sentence_std": 2.0
+  },
+  "successful_case_average": {
+    "paragraph_count": 15.0,
+    "paragraph_avg_word_count": 120.0,
+    "paragraph_median_word_count": 120.0
+  },
+  "recommended_phrases": [
+    "well-structured paragraphs",
+    "organized argument",
+    "logical flow",
+    "coherent presentation"
+  ],
+  "chroma_query_template": "paragraph structure word count organization successful petition {case_context}",
+  "validation_criteria": {
+    "paragraph_count_min": 10,
+    "paragraph_count_max": 25,
+    "avg_word_count_threshold": 150,
+    "max_word_count_threshold": 180,
+    "target_average": {
+      "paragraph_count": 15.0,
+      "paragraph_avg_word_count": 120.0
+    }
+  },
+  "notes": [
+    "Top 10 SHAP feature (0.112) - paragraph structure matters",
+    "Successful petitions have 12-18 well-structured paragraphs",
+    "Average paragraph length around 120 words is optimal",
+    "Avoid paragraphs exceeding 180 words"
+  ]
+}
+

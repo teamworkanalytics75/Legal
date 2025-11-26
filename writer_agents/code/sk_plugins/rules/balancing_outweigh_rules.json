@@ -1,0 +1,40 @@
+{
+  "feature_name": "balancing_outweigh",
+  "feature_importance": 12.75,
+  "feature_rank": 2,
+  "description": "Explicit language showing national security interests 'outweigh' public access",
+  "shap_importance": 1.4233245739440916,
+  "target_count": 1,
+  "min_count": 1,
+  "validation_criteria": {
+    "outweigh_required": true,
+    "explicit_ns_connection": true,
+    "must_link_to_public_access": true
+  },
+  "chroma_query_template": "national security outweigh public access presumption {case_context}",
+  "chroma_collections": [
+    "case_law_legal",
+    "motion_examples"
+  ],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Include explicit language stating that national security interests 'outweigh' the presumption of public access.",
+    "rationale": "This is the #2 most predictive feature (importance: 12.75) for successful sealing motions.",
+    "example": "The national security interests at stake clearly outweigh the presumption of public access to court records.",
+    "insight": "Successful motions explicitly state the outweigh relationship, not just imply it."
+  },
+  "enforcement": {
+    "severity": "high",
+    "auto_fix": false,
+    "requires_manual_review": false,
+    "suggestions": [
+      "Use explicit 'outweigh' language linking national security to public access",
+      "Place in Balancing Test section",
+      "Make the connection clear and direct"
+    ]
+  },
+  "last_updated": "2025-11-13T15:09:01.618556"
+}

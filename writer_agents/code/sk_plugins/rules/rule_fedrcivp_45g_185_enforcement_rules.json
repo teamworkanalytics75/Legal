@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Fed.R.Civ.P. 45(g)_185_enforcement",
+  "rule_id": 185,
+  "rule_citation": "Fed.R.Civ.P. 45(g)",
+  "rule_type": "Sanctions - Subpoena Sanctions",
+  "text_excerpt": "Contempt for Subpoena Noncompliance. The court for the district where compliance is required may hold in contempt a person who, having been served, fails without adequate excuse to obey the subpoena or an order related to it.",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Fed.R.Civ.P. 45(g)",
+  "duty": "Enforce Fed.R.Civ.P. 45(g)",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Fed.R.Civ.P. 45(g)"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "feature_name": "intel_factor_1_participant",
+  "description": "Enforces Intel Factor 1: participant status analysis",
+  "priority": "high",
+  "threshold": 0.9,
+  "required": false,
+  "legal_standard": "Intel Corp. v. Advanced Micro Devices, Inc., 542 U.S. 241, 264 (2004)",
+  "key_cases": [
+    "Gorsoan Ltd. v. Bullock, 652 F. App'x 44 (2d Cir. 2016)",
+    "Pishevar v. Fusion GPS, 2017 WL 1184305 (D.D.C. 2017)"
+  ],
+  "checklist_items": [
+    "Discovery target identified as non-participant",
+    "Evidence that target is NOT a party to foreign proceeding",
+    "If target IS a party, justification for Section 1782 aid",
+    "Separate legal entities distinguished (if applicable)"
+  ],
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_keywords": [
+      "non-participant",
+      "not a party",
+      "separate entity",
+      "not a participant",
+      "nonparty"
+    ],
+    "required_context": [
+      "person from whom discovery is sought is a participant",
+      "nonparticipant in the matter arising abroad",
+      "not a party to the foreign proceeding"
+    ]
+  },
+  "chroma_query_template": "Intel Factor 1 non-participant not a party foreign proceeding {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 0.9,
+  "shap_importance": 0.0
+}
+

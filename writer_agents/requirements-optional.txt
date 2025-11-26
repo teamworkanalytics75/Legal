@@ -1,0 +1,53 @@
+# Optional Dependencies for Writer Agents Workflow
+#
+# These packages enable additional features but are not required for basic functionality.
+# Install with: pip install -r requirements-optional.txt
+
+# Semantic Search & Embeddings
+transformers>=4.30.0          # For Legal-BERT and other transformer models (used in EmbeddingRetriever)
+torch>=2.0.0                  # PyTorch backend for transformers
+sentence-transformers>=2.2.0  # Alternative embedding models (if not using transformers directly)
+
+# Vector Database & Memory
+chromadb>=0.4.0               # ChromaDB for persistent vector storage (used in ChromaSKMemoryStore)
+faiss-cpu>=1.7.4              # FAISS for fast similarity search (or faiss-gpu for GPU acceleration)
+
+# LangChain Integration (for external case law research)
+langchain>=0.1.0              # LangChain framework for external research
+langchain-community>=0.0.20   # LangChain community integrations
+
+# File Watching (for corpus auto-refresh)
+watchdog>=3.0.0               # File system event monitoring (used in --watch mode)
+
+# Google Docs Integration (if not already installed)
+google-api-python-client>=2.0.0
+google-auth-oauthlib>=1.0.0
+google-auth-httplib2>=0.1.0
+
+# What Each Package Enables:
+#
+# transformers/torch:
+#   - Enables semantic retrieval in CaseFactsProvider
+#   - Allows EmbeddingRetriever to encode queries using Legal-BERT
+#   - Without: Falls back to simple text matching
+#
+# chromadb:
+#   - Enables ChromaSKMemoryStore for persistent memory
+#   - Allows SK plugins to store/retrieve case law precedents
+#   - Without: Memory store disabled, plugins use fallback methods
+#
+# faiss-cpu/faiss-gpu:
+#   - Enables fast similarity search in EmbeddingRetriever
+#   - Speeds up semantic retrieval from personal corpus
+#   - Without: Falls back to SQLite-based search (slower)
+#
+# langchain:
+#   - Enables external case law research via CourtListener/Chroma
+#   - Allows workflow to pull fresh precedents during research phase
+#   - Without: Research phase uses only local corpus
+#
+# watchdog:
+#   - Enables --watch mode in corpus refresh pipeline
+#   - Automatically refreshes corpus when source files change
+#   - Without: --watch mode disabled, manual refresh required
+

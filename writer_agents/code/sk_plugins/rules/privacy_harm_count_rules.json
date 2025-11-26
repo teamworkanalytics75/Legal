@@ -1,0 +1,12 @@
+{
+  "feature_name": "privacy_harm_count",
+  "shap_importance": 0.0212,
+  "minimum_threshold": 2,
+  "successful_case_average": 3.0,
+  "harm_types": ["privacy", "harassment", "safety", "retaliation"],
+  "validation_criteria": {
+    "min_harm_types": 2,
+    "required_types": ["privacy"],
+    "target_average": 3.0
+  }
+}

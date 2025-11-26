@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 87_107_enforcement",
+  "rule_id": 107,
+  "rule_citation": "Federal 87",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "/a> . Effective Dates </li> <li> <a href=\"/rules/frcp/rule_87\"> Rule 87 </a> Civil Rules Emergency </li> </ul> </li> <li> XII. APPENDIX OF FORMS (U.S. Courts site) </li> <li> XIII. SUPPLEMENTAL RULES FOR ADMIRALTY OR MARITIME CLAIMS AND ASSET FORFEITURE ACTIONS <ul> <li> <a href=\"/rules/frcp/rule_A\"> Rule A </a> . Scope of Rules </li> <li> <a href=\"/rules/frcp/rule_B\"> Rule B </a> . In Personam Ac",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 87",
+  "duty": "Enforce Federal 87",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 87"
+    ]
+  }
+}

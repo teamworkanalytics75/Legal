@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 53_70_enforcement",
+  "rule_id": 70,
+  "rule_citation": "Federal 53",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "urt; Judgment on Partial Findings </li> <li> <a href=\"/rules/frcp/rule_53\"> Rule 53 </a> . Masters </li> </ul> </li> <li> TITLE VII. JUDGMENT <ul> <li> <a href=\"/rules/frcp/rule_54\"> Rule 54 </a> . Judgment; Costs </li> <li> <a href=\"/rules/frcp/rule_55\"> Rule 55 </a> . Default; Default Judgment </li> <li> <a href=\"/rules/frcp/rule_56\"> Rule 56 </a> . Summary Judgment </li> <li> <a",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 53",
+  "duty": "Enforce Federal 53",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 53"
+    ]
+  }
+}

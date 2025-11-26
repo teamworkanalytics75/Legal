@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Fed.R.Civ.P. 37(e)_181_enforcement",
+  "rule_id": 181,
+  "rule_citation": "Fed.R.Civ.P. 37(e)",
+  "rule_type": "Sanctions - ESI Preservation",
+  "text_excerpt": "Failure to Preserve Electronically Stored Information. If electronically stored information that should have been preserved in the anticipation or conduct of litigation is lost because a party failed to take reasonable steps to preserve it, and it cannot be restored or replaced through additional discovery, the court: (1) upon finding prejudice to another party from loss of the information, may or",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Fed.R.Civ.P. 37(e)",
+  "duty": "Enforce Fed.R.Civ.P. 37(e)",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Fed.R.Civ.P. 37(e)"
+    ]
+  }
+}

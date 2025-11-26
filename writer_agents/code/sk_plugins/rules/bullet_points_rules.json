@@ -1,0 +1,55 @@
+{
+  "feature_name": "bullet_points",
+  "feature_importance": 31.56,
+  "feature_rank": 2,
+  "description": "Use of bullet points (-, *, •) for enumeration. This is the #2 most important feature (31.56 importance) and has highest SHAP importance (0.004474).",
+  "shap_importance": 0.004474,
+  "successful_case_average": 11.75,
+  "minimum_threshold": 5,
+  "target_count": 11.75,
+  "target_density": 1.68,
+  "validation_criteria": {
+    "min_bullet_count": 5,
+    "preferred_bullet_count": 11.75,
+    "bullet_density_per_1000_words": 1.68,
+    "key_sections_should_have_bullets": [
+      "privacy_harm",
+      "danger_safety",
+      "good_cause",
+      "protective_measures"
+    ]
+  },
+  "chroma_query_template": "bullet points enumeration list {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Use bullet points extensively throughout the motion, especially in key argument sections.",
+    "rationale": "Bullet points are the #2 most important structural feature (31.56 importance) and have 88.6% grant rate vs 84.9% without.",
+    "grant_rate_with": 0.886,
+    "grant_rate_without": 0.849,
+    "difference": 0.037,
+    "key_insight": "Bullet points signal organization, systematic thinking, and make arguments scannable for judges."
+  },
+  "comparison_with_numbers": {
+    "bullets_only_grant_rate": 0.889,
+    "numbers_only_grant_rate": 0.851,
+    "both_grant_rate": 0.885,
+    "recommendation": "Use bullets (preferred) or both bullets and numbers. Bullets have higher CatBoost importance (31.56 vs 0.00)."
+  },
+  "enforcement": {
+    "severity": "high",
+    "auto_fix": false,
+    "requires_manual_review": false,
+    "suggestions": [
+      "Add bullet points in Good Cause sections (list factors)",
+      "Add bullet points in Privacy Harm arguments (enumerate harms)",
+      "Add bullet points in Danger/Safety arguments (list threats)",
+      "Add bullet points in Proposed Protective Measures (list measures)",
+      "Aim for 11+ bullet points per motion"
+    ]
+  }
+}
+

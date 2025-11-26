@@ -1,0 +1,36 @@
+{
+  "feature_name": "statutory_requirement_2_foreign_proceeding",
+  "description": "Enforces Section 1782 statutory requirement: foreign proceeding exists",
+  "priority": "critical",
+  "threshold": 1.0,
+  "required": true,
+  "legal_standard": "Brandi-Dohrn v. IKB Deutsche Industriebank AG, 673 F.3d 76, 80 (2d Cir. 2012); Intel Corp. v. Advanced Micro Devices, Inc., 542 U.S. 241 (2004); Mees v. Buiter, 793 F.3d 291 (2d Cir. 2015)",
+  "checklist_items": [
+    "Foreign proceeding identified",
+    "Foreign tribunal specified",
+    "Proceeding status (pending or reasonably contemplated)",
+    "Evidence of proceeding provided"
+  ],
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_keywords": [
+      "foreign proceeding",
+      "foreign tribunal",
+      "Hong Kong",
+      "pending",
+      "reasonably contemplated",
+      "foreign court",
+      "foreign litigation"
+    ],
+    "required_context": [
+      "proceeding before a foreign tribunal",
+      "use in a proceeding",
+      "foreign proceeding exists"
+    ]
+  },
+  "chroma_query_template": "Section 1782 foreign proceeding foreign tribunal {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 1.0,
+  "shap_importance": 0.0
+}
+

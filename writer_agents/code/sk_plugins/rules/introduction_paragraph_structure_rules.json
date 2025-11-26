@@ -1,0 +1,11 @@
+{
+  "rule_name": "introduction_paragraph_structure",
+  "description": "Paragraph structure validation for Introduction section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_paragraph_count": 2,
+    "max_paragraph_count": 3,
+    "min_avg_words_per_paragraph": 77.88000000000002,
+    "max_avg_words_per_paragraph": 116.82000000000002
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "rule_name": "factual_background_paragraph_structure",
+  "description": "Paragraph structure validation for Factual Background section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_paragraph_count": 6,
+    "max_paragraph_count": 9,
+    "min_avg_words_per_paragraph": 9.367164179104476,
+    "max_avg_words_per_paragraph": 14.050746268656715
+  }
+}

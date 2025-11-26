@@ -1,0 +1,1159 @@
+{
+  "generation_info": {
+    "source_file": "config\\agent_prompts.json",
+    "total_agents": 30,
+    "universal_skills_count": 13,
+    "domain_anchors_per_agent": 2
+  },
+  "universal_skills": [
+    {
+      "id": "schema_discovery",
+      "nl": "List all tables; for each, show 5 rows and column names",
+      "priority": 1,
+      "category": "schema"
+    },
+    {
+      "id": "table_counts",
+      "nl": "Show row counts per table, largest first",
+      "priority": 1,
+      "category": "schema"
+    },
+    {
+      "id": "distinct_values",
+      "nl": "Return distinct values of {column} and counts",
+      "priority": 1,
+      "category": "schema"
+    },
+    {
+      "id": "text_search",
+      "nl": "Find documents with {phrase} (case-insensitive) in extracted_text; return file_name, path, date",
+      "priority": 1,
+      "category": "search"
+    },
+    {
+      "id": "phrase_cooccurrence",
+      "nl": "Search for documents containing both {phrase1} and {phrase2} in the same record",
+      "priority": 1,
+      "category": "search"
+    },
+    {
+      "id": "date_window",
+      "nl": "List items between {start_date} and {end_date} ordered by date",
+      "priority": 1,
+      "category": "temporal"
+    },
+    {
+      "id": "date_range",
+      "nl": "Show the earliest and latest dates in date-like columns",
+      "priority": 1,
+      "category": "temporal"
+    },
+    {
+      "id": "dedupe",
+      "nl": "Return unique records keyed by content_hash, keeping the newest date_ingested",
+      "priority": 2,
+      "category": "data_quality"
+    },
+    {
+      "id": "pagination",
+      "nl": "Return top {n} results ordered by date with LIMIT and OFFSET",
+      "priority": 2,
+      "category": "performance"
+    },
+    {
+      "id": "null_handling",
+      "nl": "Count records where extracted_text is NULL or empty",
+      "priority": 2,
+      "category": "data_quality"
+    },
+    {
+      "id": "audit_replay",
+      "nl": "Replay the last 10 queries the agent ran and their token/cost from meta-memory",
+      "priority": 2,
+      "category": "audit"
+    },
+    {
+      "id": "cost_report",
+      "nl": "Report average token usage & cost per query from meta-memory log",
+      "priority": 2,
+      "category": "audit"
+    },
+    {
+      "id": "parsing_resilience",
+      "nl": "If the request is malformed or includes emojis 🧠, still return best effort results and a note",
+      "priority": 3,
+      "category": "error_handling"
+    }
+  ],
+  "agents": {
+    "CitationFinderAgent": {
+      "agent_info": {
+        "duty": "Find raw citation strings in text using regex patterns",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "citation_extract",
+          "nl": "Find records matching citation pattern {regex}",
+          "params": [
+            "regex"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_normalize",
+          "nl": "Normalize citations to {format} using templates",
+          "params": [
+            "format"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_verify",
+          "nl": "Verify citations against case law database using SQL queries",
+          "params": [],
+          "category": "citation"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find citations to Massachusetts cases",
+          "limit": 50
+        },
+        {
+          "nl": "List Bluebook-formatted citations",
+          "limit": 100
+        }
+      ]
+    },
+    "CitationNormalizerAgent": {
+      "agent_info": {
+        "duty": "Normalize citations to Bluebook format using templates",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "citation_extract",
+          "nl": "Find records matching citation pattern {regex}",
+          "params": [
+            "regex"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_normalize",
+          "nl": "Normalize citations to {format} using templates",
+          "params": [
+            "format"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_verify",
+          "nl": "Verify citations against case law database using SQL queries",
+          "params": [],
+          "category": "citation"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find citations to Massachusetts cases",
+          "limit": 50
+        },
+        {
+          "nl": "List Bluebook-formatted citations",
+          "limit": 100
+        }
+      ]
+    },
+    "CitationVerifierAgent": {
+      "agent_info": {
+        "duty": "Verify citations against case law database using SQL queries",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "citation_extract",
+          "nl": "Find records matching citation pattern {regex}",
+          "params": [
+            "regex"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_normalize",
+          "nl": "Normalize citations to {format} using templates",
+          "params": [
+            "format"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_verify",
+          "nl": "Verify citations against case law database using SQL queries",
+          "params": [],
+          "category": "citation"
+        },
+        {
+          "name": "logic_check",
+          "nl": "Check argument logic and identify missing premises or gaps",
+          "params": [],
+          "category": "quality"
+        },
+        {
+          "name": "consistency_check",
+          "nl": "Ensure terms and names are used consistently throughout document",
+          "params": [],
+          "category": "quality"
+        },
+        {
+          "name": "grammar_fix",
+          "nl": "Fix grammar and typos in text",
+          "params": [],
+          "category": "quality"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find citations to Massachusetts cases",
+          "limit": 50
+        },
+        {
+          "nl": "List Bluebook-formatted citations",
+          "limit": 100
+        }
+      ]
+    },
+    "CitationLocatorAgent": {
+      "agent_info": {
+        "duty": "Map citation tokens to file paths/URLs in database",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "citation_extract",
+          "nl": "Find records matching citation pattern {regex}",
+          "params": [
+            "regex"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_normalize",
+          "nl": "Normalize citations to {format} using templates",
+          "params": [
+            "format"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_verify",
+          "nl": "Verify citations against case law database using SQL queries",
+          "params": [],
+          "category": "citation"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find citations to Massachusetts cases",
+          "limit": 50
+        },
+        {
+          "nl": "List Bluebook-formatted citations",
+          "limit": 100
+        }
+      ]
+    },
+    "CitationInserterAgent": {
+      "agent_info": {
+        "duty": "Insert formatted citations into document text at correct positions",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "citation_extract",
+          "nl": "Find records matching citation pattern {regex}",
+          "params": [
+            "regex"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_normalize",
+          "nl": "Normalize citations to {format} using templates",
+          "params": [
+            "format"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_verify",
+          "nl": "Verify citations against case law database using SQL queries",
+          "params": [],
+          "category": "citation"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find citations to Massachusetts cases",
+          "limit": 50
+        },
+        {
+          "nl": "List Bluebook-formatted citations",
+          "limit": 100
+        }
+      ]
+    },
+    "OutlineBuilderAgent": {
+      "agent_info": {
+        "duty": "Build structured section outline with headings and objectives",
+        "cost_tier": "mini",
+        "meta_category": "completeness",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "generic_search",
+          "nl": "Search for {query} in documents",
+          "params": [
+            "query"
+          ],
+          "category": "generic"
+        },
+        {
+          "name": "generic_extract",
+          "nl": "Extract information related to {topic}",
+          "params": [
+            "topic"
+          ],
+          "category": "generic"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "SectionWriterAgent": {
+      "agent_info": {
+        "duty": "Write a single section of legal document based on outline and context",
+        "cost_tier": "mini",
+        "meta_category": "completeness",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "outline_build",
+          "nl": "Build structured section outline with headings and objectives",
+          "params": [],
+          "category": "writing"
+        },
+        {
+          "name": "section_write",
+          "nl": "Write a single section of legal document based on outline and context",
+          "params": [],
+          "category": "writing"
+        },
+        {
+          "name": "paragraph_write",
+          "nl": "Write a single paragraph from a brief content prompt",
+          "params": [],
+          "category": "writing"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Build outline for legal memorandum",
+          "limit": 10
+        },
+        {
+          "nl": "Write section on legal standards",
+          "limit": 5
+        }
+      ]
+    },
+    "ParagraphWriterAgent": {
+      "agent_info": {
+        "duty": "Write a single paragraph from a brief content prompt",
+        "cost_tier": "mini",
+        "meta_category": "completeness",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "outline_build",
+          "nl": "Build structured section outline with headings and objectives",
+          "params": [],
+          "category": "writing"
+        },
+        {
+          "name": "section_write",
+          "nl": "Write a single section of legal document based on outline and context",
+          "params": [],
+          "category": "writing"
+        },
+        {
+          "name": "paragraph_write",
+          "nl": "Write a single paragraph from a brief content prompt",
+          "params": [],
+          "category": "writing"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Build outline for legal memorandum",
+          "limit": 10
+        },
+        {
+          "nl": "Write section on legal standards",
+          "limit": 5
+        }
+      ]
+    },
+    "TransitionAgent": {
+      "agent_info": {
+        "duty": "Create smooth transitions between document sections",
+        "cost_tier": "mini",
+        "meta_category": "completeness",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "generic_search",
+          "nl": "Search for {query} in documents",
+          "params": [
+            "query"
+          ],
+          "category": "generic"
+        },
+        {
+          "name": "generic_extract",
+          "nl": "Extract information related to {topic}",
+          "params": [
+            "topic"
+          ],
+          "category": "generic"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "EnhancedPrecedentFinderAgent": {
+      "agent_info": {
+        "duty": "Find relevant precedent cases using LangChain database queries",
+        "cost_tier": "mini",
+        "meta_category": "completeness",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "precedent_find",
+          "nl": "Find relevant precedent cases using {criteria}",
+          "params": [
+            "criteria"
+          ],
+          "category": "precedent"
+        },
+        {
+          "name": "precedent_rank",
+          "nl": "Rank precedent cases by relevance to {legal_issue}",
+          "params": [
+            "legal_issue"
+          ],
+          "category": "precedent"
+        },
+        {
+          "name": "precedent_summarize",
+          "nl": "Create 1-2 sentence summaries of precedent cases",
+          "params": [],
+          "category": "precedent"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find cases about discrimination in Massachusetts",
+          "limit": 100
+        },
+        {
+          "nl": "Show cases mentioning constructive knowledge",
+          "limit": 50
+        }
+      ]
+    },
+    "EnhancedFactExtractorAgent": {
+      "agent_info": {
+        "duty": "Extract discrete facts using LangChain document retrieval",
+        "cost_tier": "mini",
+        "meta_category": "completeness",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "fact_extract",
+          "nl": "Extract discrete facts from documents as structured data",
+          "params": [],
+          "category": "fact_extraction"
+        },
+        {
+          "name": "entity_cooccurrence",
+          "nl": "Find records where {entity1} and {entity2} co-occur",
+          "params": [
+            "entity1",
+            "entity2"
+          ],
+          "category": "fact_extraction"
+        },
+        {
+          "name": "context_window",
+          "nl": "Extract text surrounding {phrase} with {n} characters",
+          "params": [
+            "phrase",
+            "n"
+          ],
+          "category": "fact_extraction"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Extract facts about institutional actions",
+          "limit": 100
+        },
+        {
+          "nl": "Find procedural facts with dates",
+          "limit": 50
+        }
+      ]
+    },
+    "MarkdownExporterAgent": {
+      "agent_info": {
+        "duty": "Export document to Markdown format",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "markdown_export",
+          "nl": "Export document to Markdown format",
+          "params": [],
+          "category": "export"
+        },
+        {
+          "name": "docx_export",
+          "nl": "Export document to DOCX format",
+          "params": [],
+          "category": "export"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "DocxExporterAgent": {
+      "agent_info": {
+        "duty": "Export document to DOCX format",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "markdown_export",
+          "nl": "Export document to Markdown format",
+          "params": [],
+          "category": "export"
+        },
+        {
+          "name": "docx_export",
+          "nl": "Export document to DOCX format",
+          "params": [],
+          "category": "export"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "MetadataTaggerAgent": {
+      "agent_info": {
+        "duty": "Append structured metadata to document",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "generic_search",
+          "nl": "Search for {query} in documents",
+          "params": [
+            "query"
+          ],
+          "category": "generic"
+        },
+        {
+          "name": "generic_extract",
+          "nl": "Extract information related to {topic}",
+          "params": [
+            "topic"
+          ],
+          "category": "generic"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "FactExtractorAgent": {
+      "agent_info": {
+        "duty": "Extract discrete facts from documents as structured data",
+        "cost_tier": "mini",
+        "meta_category": "completeness",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "fact_extract",
+          "nl": "Extract discrete facts from documents as structured data",
+          "params": [],
+          "category": "fact_extraction"
+        },
+        {
+          "name": "entity_cooccurrence",
+          "nl": "Find records where {entity1} and {entity2} co-occur",
+          "params": [
+            "entity1",
+            "entity2"
+          ],
+          "category": "fact_extraction"
+        },
+        {
+          "name": "context_window",
+          "nl": "Extract text surrounding {phrase} with {n} characters",
+          "params": [
+            "phrase",
+            "n"
+          ],
+          "category": "fact_extraction"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Extract facts about institutional actions",
+          "limit": 100
+        },
+        {
+          "nl": "Find procedural facts with dates",
+          "limit": 50
+        }
+      ]
+    },
+    "PrecedentFinderAgent": {
+      "agent_info": {
+        "duty": "Find relevant precedent cases from database",
+        "cost_tier": "mini",
+        "meta_category": "completeness",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "precedent_find",
+          "nl": "Find relevant precedent cases using {criteria}",
+          "params": [
+            "criteria"
+          ],
+          "category": "precedent"
+        },
+        {
+          "name": "precedent_rank",
+          "nl": "Rank precedent cases by relevance to {legal_issue}",
+          "params": [
+            "legal_issue"
+          ],
+          "category": "precedent"
+        },
+        {
+          "name": "precedent_summarize",
+          "nl": "Create 1-2 sentence summaries of precedent cases",
+          "params": [],
+          "category": "precedent"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find cases about discrimination in Massachusetts",
+          "limit": 100
+        },
+        {
+          "nl": "Show cases mentioning constructive knowledge",
+          "limit": 50
+        }
+      ]
+    },
+    "PrecedentRankerAgent": {
+      "agent_info": {
+        "duty": "Rank precedent cases by relevance to legal issue",
+        "cost_tier": "mini",
+        "meta_category": "precision",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "precedent_find",
+          "nl": "Find relevant precedent cases using {criteria}",
+          "params": [
+            "criteria"
+          ],
+          "category": "precedent"
+        },
+        {
+          "name": "precedent_rank",
+          "nl": "Rank precedent cases by relevance to {legal_issue}",
+          "params": [
+            "legal_issue"
+          ],
+          "category": "precedent"
+        },
+        {
+          "name": "precedent_summarize",
+          "nl": "Create 1-2 sentence summaries of precedent cases",
+          "params": [],
+          "category": "precedent"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find cases about discrimination in Massachusetts",
+          "limit": 100
+        },
+        {
+          "nl": "Show cases mentioning constructive knowledge",
+          "limit": 50
+        }
+      ]
+    },
+    "PrecedentSummarizerAgent": {
+      "agent_info": {
+        "duty": "Create 1-2 sentence summaries of precedent cases",
+        "cost_tier": "mini",
+        "meta_category": "precision",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "precedent_find",
+          "nl": "Find relevant precedent cases using {criteria}",
+          "params": [
+            "criteria"
+          ],
+          "category": "precedent"
+        },
+        {
+          "name": "precedent_rank",
+          "nl": "Rank precedent cases by relevance to {legal_issue}",
+          "params": [
+            "legal_issue"
+          ],
+          "category": "precedent"
+        },
+        {
+          "name": "precedent_summarize",
+          "nl": "Create 1-2 sentence summaries of precedent cases",
+          "params": [],
+          "category": "precedent"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find cases about discrimination in Massachusetts",
+          "limit": 100
+        },
+        {
+          "nl": "Show cases mentioning constructive knowledge",
+          "limit": 50
+        }
+      ]
+    },
+    "StatuteLocatorAgent": {
+      "agent_info": {
+        "duty": "Locate full text of cited statutes from database",
+        "cost_tier": null,
+        "meta_category": "completeness",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "statute_locate",
+          "nl": "Locate full text of cited statutes from database",
+          "params": [],
+          "category": "reference"
+        },
+        {
+          "name": "exhibit_fetch",
+          "nl": "Retrieve exhibit documents from file system or database",
+          "params": [],
+          "category": "reference"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "ExhibitFetcherAgent": {
+      "agent_info": {
+        "duty": "Retrieve exhibit documents from file system or database",
+        "cost_tier": null,
+        "meta_category": "completeness",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "statute_locate",
+          "nl": "Locate full text of cited statutes from database",
+          "params": [],
+          "category": "reference"
+        },
+        {
+          "name": "exhibit_fetch",
+          "nl": "Retrieve exhibit documents from file system or database",
+          "params": [],
+          "category": "reference"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "GrammarFixerAgent": {
+      "agent_info": {
+        "duty": "Fix grammar and typos in text",
+        "cost_tier": "mini",
+        "meta_category": "precision",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "logic_check",
+          "nl": "Check argument logic and identify missing premises or gaps",
+          "params": [],
+          "category": "quality"
+        },
+        {
+          "name": "consistency_check",
+          "nl": "Ensure terms and names are used consistently throughout document",
+          "params": [],
+          "category": "quality"
+        },
+        {
+          "name": "grammar_fix",
+          "nl": "Fix grammar and typos in text",
+          "params": [],
+          "category": "quality"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "StyleCheckerAgent": {
+      "agent_info": {
+        "duty": "Check document against style guide rules",
+        "cost_tier": null,
+        "meta_category": "precision",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "logic_check",
+          "nl": "Check argument logic and identify missing premises or gaps",
+          "params": [],
+          "category": "quality"
+        },
+        {
+          "name": "consistency_check",
+          "nl": "Ensure terms and names are used consistently throughout document",
+          "params": [],
+          "category": "quality"
+        },
+        {
+          "name": "grammar_fix",
+          "nl": "Fix grammar and typos in text",
+          "params": [],
+          "category": "quality"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "LogicCheckerAgent": {
+      "agent_info": {
+        "duty": "Check argument logic and identify missing premises or gaps",
+        "cost_tier": "mini",
+        "meta_category": "precision",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "logic_check",
+          "nl": "Check argument logic and identify missing premises or gaps",
+          "params": [],
+          "category": "quality"
+        },
+        {
+          "name": "consistency_check",
+          "nl": "Ensure terms and names are used consistently throughout document",
+          "params": [],
+          "category": "quality"
+        },
+        {
+          "name": "grammar_fix",
+          "nl": "Fix grammar and typos in text",
+          "params": [],
+          "category": "quality"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "ConsistencyCheckerAgent": {
+      "agent_info": {
+        "duty": "Ensure terms and names are used consistently throughout document",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "generic_search",
+          "nl": "Search for {query} in documents",
+          "params": [
+            "query"
+          ],
+          "category": "generic"
+        },
+        {
+          "name": "generic_extract",
+          "nl": "Extract information related to {topic}",
+          "params": [
+            "topic"
+          ],
+          "category": "generic"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "RedactionAgent": {
+      "agent_info": {
+        "duty": "Apply redaction rules to protect sensitive information",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "generic_search",
+          "nl": "Search for {query} in documents",
+          "params": [
+            "query"
+          ],
+          "category": "generic"
+        },
+        {
+          "name": "generic_extract",
+          "nl": "Extract information related to {topic}",
+          "params": [
+            "topic"
+          ],
+          "category": "generic"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "ComplianceAgent": {
+      "agent_info": {
+        "duty": "Verify document format and structure compliance",
+        "cost_tier": null,
+        "meta_category": null,
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "logic_check",
+          "nl": "Check argument logic and identify missing premises or gaps",
+          "params": [],
+          "category": "quality"
+        },
+        {
+          "name": "consistency_check",
+          "nl": "Ensure terms and names are used consistently throughout document",
+          "params": [],
+          "category": "quality"
+        },
+        {
+          "name": "grammar_fix",
+          "nl": "Fix grammar and typos in text",
+          "params": [],
+          "category": "quality"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find documents related to legal proceedings",
+          "limit": 100
+        },
+        {
+          "nl": "Extract information about case timeline",
+          "limit": 50
+        }
+      ]
+    },
+    "ExpertQAAgent": {
+      "agent_info": {
+        "duty": "Perform expert-level strategic coherence and citation review",
+        "cost_tier": "standard",
+        "meta_category": "precision",
+        "is_deterministic": null
+      },
+      "job_primitives": [
+        {
+          "name": "citation_extract",
+          "nl": "Find records matching citation pattern {regex}",
+          "params": [
+            "regex"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_normalize",
+          "nl": "Normalize citations to {format} using templates",
+          "params": [
+            "format"
+          ],
+          "category": "citation"
+        },
+        {
+          "name": "citation_verify",
+          "nl": "Verify citations against case law database using SQL queries",
+          "params": [],
+          "category": "citation"
+        }
+      ],
+      "domain_anchors": [
+        {
+          "nl": "Find citations to Massachusetts cases",
+          "limit": 50
+        },
+        {
+          "nl": "List Bluebook-formatted citations",
+          "limit": 100
+        }
+      ]
+    }
+  },
+  "summary": {
+    "total_queries": 155,
+    "universal_skills": 13,
+    "job_primitives": 82,
+    "domain_anchors": 60,
+    "estimated_cost": 0.04649999999999999
+  }
+}

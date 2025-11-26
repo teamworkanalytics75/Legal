@@ -1,0 +1,40 @@
+{
+  "feature_name": "prc_national_security",
+  "feature_importance": 3.0,
+  "feature_rank": 11,
+  "description": "PRC National Security Law context - leadership family identification explicitly defined as national security issue and state secret",
+  "shap_importance": 3.0,
+  "importance_source": "contextual_estimate",
+  "importance_note": "Estimated contextual importance - not from CatBoost analysis (jurisdiction-specific comparative law context)",
+  "target_count": 1,
+  "min_count": 1,
+  "validation_criteria": {
+    "prc_ns_law_mentioned": true,
+    "leadership_family_mentioned": true,
+    "explicitly_connected": true
+  },
+  "chroma_query_template": "PRC China national security law leadership family identification state secret {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Add context that under PRC national security law, identification of leadership family members is explicitly defined as a national security issue and state secret.",
+    "rationale": "Even if this doesn't automatically make it US national security, it's worth noting to the judge that other jurisdictions explicitly treat this as a national security matter.",
+    "example": "Under PRC (People's Republic of China) national security law, identification of leadership family members (such as Xi Mingze) is explicitly defined as a national security issue and state secret. While this does not automatically make it US national security, it provides relevant context that other jurisdictions explicitly treat this matter as a national security concern.",
+    "insight": "Providing comparative legal context can help US courts understand the sensitivity of the matter. PRC law explicitly treats leadership family identification as both a national security issue and state secret."
+  },
+  "enforcement": {
+    "severity": "medium",
+    "auto_fix": false,
+    "requires_manual_review": true,
+    "suggestions": [
+      "Mention PRC national security law or Chinese national security law",
+      "Connect to leadership family identification",
+      "Explain that this is explicitly defined as national security and state secret there",
+      "Note that this provides relevant context for US court consideration"
+    ]
+  }
+}
+

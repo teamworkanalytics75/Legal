@@ -1,0 +1,29 @@
+{
+  "feature_name": "section_structure",
+  "required_sections": [
+    "INTRODUCTION",
+    "PRIVACY HARM ANALYSIS",
+    "LEGAL STANDARD",
+    "ARGUMENT",
+    "CONCLUSION"
+  ],
+  "section_frequency": {
+    "INTRODUCTION": 95,
+    "ARGUMENT": 92,
+    "CONCLUSION": 88,
+    "PRIVACY HARM ANALYSIS": 78,
+    "LEGAL STANDARD": 65
+  },
+  "min_sections": 3,
+  "validation_criteria": {
+    "required_order": [
+      "INTRODUCTION",
+      "PRIVACY HARM ANALYSIS",
+      "LEGAL STANDARD",
+      "ARGUMENT",
+      "CONCLUSION"
+    ],
+    "min_sections": 3,
+    "must_include": ["INTRODUCTION", "ARGUMENT"]
+  }
+}

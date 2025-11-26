@@ -1,0 +1,40 @@
+{
+  "feature_name": "balancing_test_position",
+  "feature_importance": 0.23,
+  "feature_rank": 4,
+  "description": "Position of Balancing Test section in the motion. Balancing test is a key legal requirement for sealing/pseudonym motions.",
+  "shap_importance": 0.000107,
+  "target_position": 5.3,
+  "optimal_range": [3, 8],
+  "max_position": 12,
+  "validation_criteria": {
+    "section_required": true,
+    "optimal_position_range": [3, 8],
+    "max_position": 12,
+    "earlier_is_better": true
+  },
+  "chroma_query_template": "balancing test privacy interest public interest {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Include a Balancing Test section and place it prominently (not buried at the end).",
+    "rationale": "Balancing test is a key legal requirement. Earlier placement = more prominence. Average position in granted motions: 5.3.",
+    "average_position_granted": 5.3,
+    "insight": "Including required legal elements is important, but WHERE you place them also matters."
+  },
+  "enforcement": {
+    "severity": "medium",
+    "auto_fix": false,
+    "requires_manual_review": true,
+    "suggestions": [
+      "Include a Balancing Test section",
+      "Place it prominently (not buried at the end)",
+      "Show how privacy interests outweigh public interest",
+      "Use enumeration to structure the balancing factors"
+    ]
+  }
+}
+

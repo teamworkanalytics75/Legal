@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "type": "completion",
+  "description": "Generate privacy harm analysis section for legal memorandum",
+  "execution_settings": {
+    "default": {
+      "max_tokens": 2000,
+      "temperature": 0.3,
+      "top_p": 0.8,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0
+    }
+  },
+  "input_variables": [
+    {
+      "name": "case_summary",
+      "description": "Summary of the case facts",
+      "required": true
+    },
+    {
+      "name": "jurisdiction",
+      "description": "Legal jurisdiction (US, EU, CA, etc.)",
+      "required": true,
+      "default": "US"
+    },
+    {
+      "name": "evidence",
+      "description": "Evidence dictionary in JSON format",
+      "required": true
+    },
+    {
+      "name": "posteriors",
+      "description": "Bayesian network posteriors in JSON format",
+      "required": true
+    }
+  ]
+}

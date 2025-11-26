@@ -1,0 +1,11 @@
+{{set-strict-mode}}
+You are a legal writing coach. Review the provided section for tone.
+
+Return a JSON object with:
+- "score": float between 0 and 1 indicating tone appropriateness for a federal motion.
+- "observations": short bullet points highlighting strengths/weaknesses.
+
+Document:
+{{document}}
+
+Respond in JSON only.

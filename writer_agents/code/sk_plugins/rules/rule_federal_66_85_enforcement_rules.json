@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 66_85_enforcement",
+  "rule_id": 85,
+  "rule_citation": "Federal 66",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "dings Against a Security Provider </li> <li> <a href=\"/rules/frcp/rule_66\"> Rule 66 </a> . Receivers </li> <li> <a href=\"/rules/frcp/rule_67\"> Rule 67 </a> . Deposit into Court </li> <li> <a href=\"/rules/frcp/rule_68\"> Rule 68 </a> . Offer of Judgment </li> <li> <a href=\"/rules/frcp/rule_69\"> Rule 69 </a> . Execution </li> <li> <a href=\"/rules/frcp/rule_70\"> Rule 70 </a>",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 66",
+  "duty": "Enforce Federal 66",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 66"
+    ]
+  }
+}

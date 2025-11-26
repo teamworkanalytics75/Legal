@@ -1,0 +1,40 @@
+{
+  "feature_name": "sentence_structure",
+  "shap_importance": 0.232,
+  "description": "Enforces sentence-level structural metrics for optimal readability and clarity",
+  "targets": {
+    "max_sentence_word_count": 45.0,
+    "median_sentence_word_count": 22.0,
+    "avg_sentence_word_count": 20.0,
+    "sentence_complex_ratio": 0.15,
+    "sentence_long_ratio": 0.10
+  },
+  "successful_case_average": {
+    "max_sentence_word_count": 45.0,
+    "median_sentence_word_count": 22.0,
+    "avg_sentence_word_count": 20.0
+  },
+  "recommended_phrases": [
+    "concise sentences",
+    "clear articulation",
+    "direct statement",
+    "precise language"
+  ],
+  "chroma_query_template": "sentence structure word count readability successful petition {case_context}",
+  "validation_criteria": {
+    "max_sentence_threshold": 45,
+    "median_sentence_threshold": 25,
+    "complex_ratio_threshold": 0.20,
+    "target_average": {
+      "max_sentence_word_count": 45.0,
+      "median_sentence_word_count": 22.0
+    }
+  },
+  "notes": [
+    "Top SHAP feature (0.232) - sentence length is highly predictive",
+    "Successful petitions use shorter, clearer sentences",
+    "Avoid sentences exceeding 45 words",
+    "Median sentence length around 22 words is optimal"
+  ]
+}
+

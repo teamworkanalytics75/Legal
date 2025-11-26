@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 84_104_enforcement",
+  "rule_id": 104,
+  "rule_citation": "Federal 84",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "strict Courts; Judge's Directives </li> <li> <a href=\"/rules/frcp/rule_84\"> Rule 84 </a> . Abrogated, eff. Dec. 1, 2015 </li> <li> <a href=\"/rules/frcp/rule_85\"> Rule 85 </a> . Title </li> <li> <a href=\"/rules/frcp/rule_86\"> Rule 86 </a> . Effective Dates </li> <li> <a href=\"/rules/frcp/rule_87\"> Rule 87 </a> Civil Rules Emergency </li> </ul> </li> <li> XII. APPENDIX OF FORMS (U.S. Courts si",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 84",
+  "duty": "Enforce Federal 84",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 84"
+    ]
+  }
+}

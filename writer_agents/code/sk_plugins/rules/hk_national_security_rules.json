@@ -1,0 +1,40 @@
+{
+  "feature_name": "hk_national_security",
+  "feature_importance": 3.0,
+  "feature_rank": 10,
+  "description": "Hong Kong National Security Law context - leadership family identification explicitly defined as national security issue",
+  "shap_importance": 3.0,
+  "importance_source": "contextual_estimate",
+  "importance_note": "Estimated contextual importance - not from CatBoost analysis (jurisdiction-specific comparative law context)",
+  "target_count": 1,
+  "min_count": 1,
+  "validation_criteria": {
+    "hk_ns_law_mentioned": true,
+    "leadership_family_mentioned": true,
+    "explicitly_connected": true
+  },
+  "chroma_query_template": "Hong Kong National Security Law leadership family identification {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Add context that under Hong Kong National Security Law, identification of leadership family members is explicitly defined as a national security issue.",
+    "rationale": "Even if this doesn't automatically make it US national security, it's worth noting to the judge that other jurisdictions explicitly treat this as a national security matter.",
+    "example": "Under Hong Kong National Security Law, identification of leadership family members (such as Xi Mingze) is explicitly defined as a national security issue. While this does not automatically make it US national security, it provides relevant context that other jurisdictions explicitly treat this matter as a national security concern.",
+    "insight": "Providing comparative legal context can help US courts understand the sensitivity of the matter."
+  },
+  "enforcement": {
+    "severity": "medium",
+    "auto_fix": false,
+    "requires_manual_review": true,
+    "suggestions": [
+      "Mention Hong Kong National Security Law",
+      "Connect to leadership family identification",
+      "Explain that this is explicitly defined as national security there",
+      "Note that this provides relevant context for US court consideration"
+    ]
+  }
+}
+

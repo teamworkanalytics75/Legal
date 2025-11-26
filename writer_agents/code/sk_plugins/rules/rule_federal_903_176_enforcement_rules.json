@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 903_176_enforcement",
+  "rule_id": 176,
+  "rule_citation": "Federal 903",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": "dence That Is Self-Authenticating </li> <li> <a href=\"/rules/fre/rule_903\"> Rule 903 </a> . Subscribing Witness’s Testimony </li> </ol> </li> <li> ARTICLE X. CONTENTS OF WRITINGS, RECORDINGS, AND PHOTOGRAPHS <ol> <li> <a href=\"/rules/fre/rule_1001\"> Rule 1001 </a> . Definitions That Apply to This Article </li> <li> <a href=\"/rules/fre/rule_1002\"> Rule 1002 </a> . Requirement of the Original </li> ",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 903",
+  "duty": "Enforce Federal 903",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 903"
+    ]
+  }
+}

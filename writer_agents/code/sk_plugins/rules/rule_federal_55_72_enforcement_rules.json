@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 55_72_enforcement",
+  "rule_id": 72,
+  "rule_citation": "Federal 55",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "/a> . Judgment; Costs </li> <li> <a href=\"/rules/frcp/rule_55\"> Rule 55 </a> . Default; Default Judgment </li> <li> <a href=\"/rules/frcp/rule_56\"> Rule 56 </a> . Summary Judgment </li> <li> <a href=\"/rules/frcp/rule_57\"> Rule 57 </a> . Declaratory Judgment </li> <li> <a href=\"/rules/frcp/rule_58\"> Rule 58 </a> . Entering Judgment </li> <li> <a href=\"/rules/frcp/rule_59\"> Rule",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 55",
+  "duty": "Enforce Federal 55",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 55"
+    ]
+  }
+}

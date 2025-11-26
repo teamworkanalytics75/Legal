@@ -1,0 +1,11 @@
+{
+  "rule_name": "protective_measures_paragraph_structure",
+  "description": "Paragraph structure validation for Protective Measures section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_paragraph_count": 21,
+    "max_paragraph_count": 32,
+    "min_avg_words_per_paragraph": 12.779130434782608,
+    "max_avg_words_per_paragraph": 19.168695652173913
+  }
+}

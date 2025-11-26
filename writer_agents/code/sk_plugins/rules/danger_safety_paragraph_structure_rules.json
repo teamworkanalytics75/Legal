@@ -1,0 +1,11 @@
+{
+  "rule_name": "danger_safety_paragraph_structure",
+  "description": "Paragraph structure validation for Danger/Safety section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_paragraph_count": 1,
+    "max_paragraph_count": 2,
+    "min_avg_words_per_paragraph": 9.483196979232222,
+    "max_avg_words_per_paragraph": 14.224795468848335
+  }
+}

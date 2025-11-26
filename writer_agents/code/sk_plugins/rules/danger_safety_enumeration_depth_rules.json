@@ -1,0 +1,20 @@
+{
+  "rule_name": "danger_safety_enumeration_depth",
+  "description": "Enumeration depth validation for Danger/Safety section",
+  "source": "CatBoost model",
+  "data_backing": {
+    "optimal_threshold": 0.0,
+    "successful_mean": 1.3440860215053763,
+    "roc_auc": 0.5,
+    "feature_importance": 0.0
+  },
+  "targets": {
+    "target_depth": 0.0,
+    "min_depth": 0.0,
+    "max_depth": 2.0
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "low"
+  }
+}

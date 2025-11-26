@@ -1,0 +1,11 @@
+{
+  "rule_name": "public_interest_sentence_structure",
+  "description": "Sentence structure validation for Public Interest section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_sentences_per_paragraph": 1.578525641025641,
+    "max_sentences_per_paragraph": 6.096666666666667,
+    "min_words_per_sentence": 8.481732864085805,
+    "max_words_per_sentence": 23.599338964377523
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "generation_info": {
+    "source": "1782 PDF Analysis",
+    "total_cases": 11,
+    "analysis_date": "2025-10-17T16:17:15.835427",
+    "database": "data/case_law/1782_pdf_analysis.db"
+  },
+  "universal_skills": [
+    {
+      "id": "1782_outcome_analysis",
+      "nl": "Show outcome distribution for 1782 cases (granted vs denied vs unclear)",
+      "priority": 1,
+      "category": "1782_analysis"
+    },
+    {
+      "id": "1782_intel_factors",
+      "nl": "Show Intel factor detection rates across all 1782 cases",
+      "priority": 1,
+      "category": "1782_analysis"
+    },
+    {
+      "id": "1782_success_patterns",
+      "nl": "Show Intel factors present in successful (granted) 1782 cases",
+      "priority": 1,
+      "category": "1782_analysis"
+    },
+    {
+      "id": "1782_failure_patterns",
+      "nl": "Show Intel factors present in denied 1782 cases",
+      "priority": 1,
+      "category": "1782_analysis"
+    },
+    {
+      "id": "1782_citation_analysis",
+      "nl": "Show citation patterns in 1782 cases (Intel Corp, ZF Automotive, etc.)",
+      "priority": 1,
+      "category": "1782_analysis"
+    },
+    {
+      "id": "1782_text_length_correlation",
+      "nl": "Show average text length for granted vs denied 1782 cases",
+      "priority": 1,
+      "category": "1782_analysis"
+    },
+    {
+      "id": "1782_section_1782_mentions",
+      "nl": "Show Section 1782 mention counts by case outcome",
+      "priority": 1,
+      "category": "1782_analysis"
+    }
+  ],
+  "agents": {
+    "OutcomePredictorAgent": [
+      {
+        "id": "1782_outcome_prediction",
+        "nl": "Based on Intel factors, predict outcome for 1782 cases",
+        "priority": 1,
+        "category": "1782_prediction"
+      },
+      {
+        "id": "1782_success_probability",
+        "nl": "Calculate success probability based on Factor 2 (receptivity) presence",
+        "priority": 1,
+        "category": "1782_prediction"
+      }
+    ],
+    "DocumentClassifierAgent": [
+      {
+        "id": "1782_case_classification",
+        "nl": "Classify 1782 cases by outcome, Intel factors, and citation patterns",
+        "priority": 1,
+        "category": "1782_classification"
+      },
+      {
+        "id": "1782_factor_classification",
+        "nl": "Classify cases by Intel factor presence and outcome correlation",
+        "priority": 1,
+        "category": "1782_classification"
+      }
+    ],
+    "PatternRecognizerAgent": [
+      {
+        "id": "1782_pattern_recognition",
+        "nl": "Identify patterns in successful vs failed 1782 applications",
+        "priority": 1,
+        "category": "1782_patterns"
+      },
+      {
+        "id": "1782_success_correlates",
+        "nl": "Find correlations between Intel factors and case success",
+        "priority": 1,
+        "category": "1782_patterns"
+      }
+    ],
+    "LegalResearchAgent": [
+      {
+        "id": "1782_legal_research",
+        "nl": "Research 1782 case law patterns and precedents",
+        "priority": 1,
+        "category": "1782_research"
+      },
+      {
+        "id": "1782_precedent_analysis",
+        "nl": "Analyze citation patterns and precedent influence in 1782 cases",
+        "priority": 1,
+        "category": "1782_research"
+      }
+    ],
+    "CaseAnalysisAgent": [
+      {
+        "id": "1782_case_analysis",
+        "nl": "Analyze individual 1782 cases for Intel factors and outcomes",
+        "priority": 1,
+        "category": "1782_analysis"
+      },
+      {
+        "id": "1782_factor_analysis",
+        "nl": "Analyze Intel factor presence and correlation with outcomes",
+        "priority": 1,
+        "category": "1782_analysis"
+      }
+    ],
+    "CitationAnalysisAgent": [
+      {
+        "id": "1782_citation_analysis",
+        "nl": "Analyze citation patterns in 1782 cases",
+        "priority": 1,
+        "category": "1782_citations"
+      },
+      {
+        "id": "1782_precedent_tracking",
+        "nl": "Track precedent citations across 1782 cases",
+        "priority": 1,
+        "category": "1782_citations"
+      }
+    ],
+    "TextAnalysisAgent": [
+      {
+        "id": "1782_text_analysis",
+        "nl": "Analyze text length and content patterns in 1782 cases",
+        "priority": 1,
+        "category": "1782_text"
+      },
+      {
+        "id": "1782_section_1782_analysis",
+        "nl": "Analyze Section 1782 mention patterns in case text",
+        "priority": 1,
+        "category": "1782_text"
+      }
+    ],
+    "StatisticalAnalysisAgent": [
+      {
+        "id": "1782_statistical_analysis",
+        "nl": "Perform statistical analysis on 1782 case outcomes and factors",
+        "priority": 1,
+        "category": "1782_statistics"
+      },
+      {
+        "id": "1782_correlation_analysis",
+        "nl": "Calculate correlations between Intel factors and case success",
+        "priority": 1,
+        "category": "1782_statistics"
+      }
+    ],
+    "ReportGenerationAgent": [
+      {
+        "id": "1782_report_generation",
+        "nl": "Generate reports on 1782 case analysis and patterns",
+        "priority": 1,
+        "category": "1782_reports"
+      },
+      {
+        "id": "1782_summary_generation",
+        "nl": "Generate summaries of 1782 case outcomes and insights",
+        "priority": 1,
+        "category": "1782_reports"
+      }
+    ],
+    "MemoryManagementAgent": [
+      {
+        "id": "1782_memory_management",
+        "nl": "Manage 1782 case law memories and knowledge base",
+        "priority": 1,
+        "category": "1782_memory"
+      },
+      {
+        "id": "1782_knowledge_retrieval",
+        "nl": "Retrieve 1782 case law knowledge for agent queries",
+        "priority": 1,
+        "category": "1782_memory"
+      }
+    ]
+  }
+}

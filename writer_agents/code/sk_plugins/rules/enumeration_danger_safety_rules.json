@@ -1,0 +1,39 @@
+{
+  "feature_name": "enumeration_danger_safety",
+  "feature_importance": 0.05,
+  "feature_rank": 5,
+  "description": "Using enumeration (numbered lists, bullets) in the Danger/Safety section. This signals systematic documentation of safety concerns.",
+  "shap_importance": 0.000308,
+  "target_count": 1.0,
+  "validation_criteria": {
+    "enumeration_required": true,
+    "min_enumeration_count": 1,
+    "preferred_enumeration_count": 3,
+    "enumeration_types": ["numbered", "bullets"]
+  },
+  "chroma_query_template": "enumeration danger safety threat list {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Use enumeration in your Danger/Safety section to list threats systematically.",
+    "rationale": "Enumeration in key argument sections signals thoroughness. 90.0% grant rate when enumeration is used in Danger/Safety vs 85% without.",
+    "grant_rate_with": 0.90,
+    "grant_rate_without": 0.85,
+    "example": "1. Threat 1: [description]\n2. Threat 2: [description]\n3. Threat 3: [description]",
+    "insight": "Enumeration in SPECIFIC argument sections (not just anywhere) is predictive."
+  },
+  "enforcement": {
+    "severity": "medium",
+    "auto_fix": false,
+    "requires_manual_review": false,
+    "suggestions": [
+      "Use enumeration in Danger/Safety section",
+      "List threats systematically using numbered lists or bullets",
+      "Aim for 3+ enumerated threats for thoroughness"
+    ]
+  }
+}
+

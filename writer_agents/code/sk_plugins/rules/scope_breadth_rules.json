@@ -1,0 +1,45 @@
+{
+  "feature_name": "scope_breadth",
+  "description": "Enforces narrow scope (negative signal - minimize breadth)",
+  "priority": "high",
+  "threshold": 0.9,
+  "required": false,
+  "checklist_items": [
+    "Narrow time period",
+    "Specific document categories",
+    "Specific search terms",
+    "Avoid: 'All documents' language",
+    "Avoid: Unlimited time periods"
+  ],
+  "validation_criteria": {
+    "required_keywords": [
+      "specific",
+      "narrow",
+      "limited",
+      "targeted",
+      "particular",
+      "between.*?and",
+      "from.*?to"
+    ],
+    "negative_keywords": [
+      "all documents",
+      "any documents",
+      "all records",
+      "any records",
+      "all files",
+      "unlimited",
+      "all time",
+      "any time"
+    ]
+  },
+  "chroma_query_template": "narrow scope specific time period targeted discovery successful petition {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 0.85,
+  "shap_importance": 0.0,
+  "notes": [
+    "Negative signal - minimize breadth",
+    "Narrow scope correlates with favorable outcomes",
+    "Broad scope correlates with denial"
+  ]
+}
+

@@ -1,0 +1,11 @@
+{
+  "rule_name": "privacy_harm_paragraph_structure",
+  "description": "Paragraph structure validation for Privacy Harm section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_paragraph_count": 5,
+    "max_paragraph_count": 8,
+    "min_avg_words_per_paragraph": 12.22857142857143,
+    "max_avg_words_per_paragraph": 18.342857142857145
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 5.2_68_enforcement",
+  "rule_id": 68,
+  "rule_citation": "Federal 5.2",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "Certification, and Intervention </li> <li> <a href=\"/rules/frcp/rule_5.2\"> Rule 5.2 </a> . Privacy Protection For Filings Made with the Court </li> <li> <a href=\"/rules/frcp/rule_6\"> Rule 6 </a> . Computing and Extending Time; Time for Motion Papers </li> </ul> </li> <li> TITLE III. PLEADINGS AND MOTIONS <ul> <li> <a href=\"/rules/frcp/rule_7\"> Rule 7 </a> . Pleadings Allowed; Form of Motions and O",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 5.2",
+  "duty": "Enforce Federal 5.2",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 5.2"
+    ]
+  }
+}

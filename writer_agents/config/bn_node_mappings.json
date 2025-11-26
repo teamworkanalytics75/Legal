@@ -1,0 +1,53 @@
+{
+  "entity_to_node_mappings": {
+    "organizations": {
+      "Harvard": "Harvard_Involvement",
+      "Harvard University": "Harvard_Involvement",
+      "Harvard Club": "Harvard_Club_Actions",
+      "OGC": "Harvard_OGC_Response",
+      "CCP": "PRC_Government_Involvement",
+      "Chinese Communist Party": "PRC_Government_Involvement"
+    },
+    "locations": {
+      "China": "PRC_Territory",
+      "Chinese": "PRC_Territory",
+      "PRC": "PRC_Territory",
+      "Hong Kong": "HK_Jurisdiction",
+      "Shanghai": "PRC_Territory",
+      "Beijing": "PRC_Territory"
+    },
+    "people": {
+      "Trump": "US_Government_Action",
+      "Xi": "PRC_Leadership_Awareness",
+      "Xi Jinping": "PRC_Leadership_Awareness"
+    },
+    "concepts": {
+      "lawsuit": "Litigation_Status",
+      "litigation": "Litigation_Status",
+      "case": "Litigation_Status",
+      "email": "Communication_Evidence",
+      "court": "Legal_Proceedings",
+      "defamation": "Defamation_Claim",
+      "national security": "National_Security_Risk",
+      "national security matter": "National_Security_Risk",
+      "sealing": "Sealing_Justification",
+      "seal": "Sealing_Justification",
+      "under seal": "Sealing_Justification"
+    },
+    "evidence": {
+      "evidence": "Evidence_Strength",
+      "proof": "Evidence_Strength",
+      "document": "Documentary_Evidence",
+      "statement": "Statement_Evidence",
+      "statement 1": "Statement_1"
+    }
+  },
+  "question_type_to_target_nodes": {
+    "national_security": ["National_Security_Risk", "Sealing_Justification"],
+    "sealing": ["Sealing_Justification", "National_Security_Risk"],
+    "harvard": ["Harvard_Involvement", "Harvard_Club_Actions"],
+    "defamation": ["Defamation_Claim", "Evidence_Strength"],
+    "probability": ["National_Security_Risk", "Sealing_Justification", "Legal_Success"]
+  }
+}
+

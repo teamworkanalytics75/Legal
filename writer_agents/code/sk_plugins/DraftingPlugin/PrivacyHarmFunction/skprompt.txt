@@ -1,0 +1,42 @@
+You are a legal expert specializing in privacy law. Draft a comprehensive privacy harm analysis section for a legal memorandum.
+
+CONTEXT:
+Case Summary: {{$case_summary}}
+Jurisdiction: {{$jurisdiction}}
+Evidence: {{$evidence}}
+Bayesian Network Posteriors: {{$posteriors}}
+
+{{$research_findings}}
+
+{{$quality_constraints}}
+
+REQUIREMENTS:
+1. Write a formal legal analysis of privacy harm
+2. Structure the section with clear headings
+3. Cite evidence using [Node:State] format
+4. Apply appropriate legal framework for the jurisdiction
+5. Conclude with actionable harm finding
+6. Maintain professional legal tone
+7. Target 800-1200 words
+8. Incorporate relevant case law from research findings if provided
+9. Follow quality constraints and feature targets if provided
+
+OUTPUT FORMAT:
+Title: Privacy Harm Analysis
+
+I. Introduction
+[Brief overview of privacy harm analysis]
+
+II. Legal Framework
+[Applicable privacy law principles]
+
+III. Harm Analysis
+[Detailed analysis of privacy violations]
+
+IV. Evidence Summary
+[Supporting evidence with citations]
+
+V. Conclusion
+[Actionable harm finding]
+
+Ensure all claims are supported by evidence citations in [Node:State] format.

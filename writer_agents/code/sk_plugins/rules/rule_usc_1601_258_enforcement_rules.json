@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_USC § 1601_258_enforcement",
+  "rule_id": 258,
+  "rule_citation": "USC § 1601",
+  "rule_type": "Statute",
+  "text_excerpt": "§§ 1501 – 1594j–1)</a></li> <li class=\"tocitem\"><a aria-label=\"Chapter 10—Federal Security Agency (§§ 1601 – 1603)\" href=\"/uscode/text/42/chapter-10\" title=\"FEDERAL SECURITY AGENCY\">CHAPTER 10—FEDERAL SECURITY AGENCY (§§ 1601 – 1603)</a></li> <li class=\"tocitem\"><a aria-label=\"Chapter 11—Compensation For Disability Or Death To Persons Employed At Military, Air, And Naval Bases Outside United State",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce USC § 1601",
+  "duty": "Enforce USC § 1601",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "USC § 1601"
+    ]
+  }
+}

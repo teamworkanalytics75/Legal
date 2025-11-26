@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 72_92_enforcement",
+  "rule_id": 92,
+  "rule_citation": "Federal 72",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "demning Real or Personal Property </li> <li> <a href=\"/rules/frcp/rule_72\"> Rule 72 </a> . Magistrate Judges: Pretrial Order </li> <li> <a href=\"/rules/frcp/rule_73\"> Rule 73 </a> . Magistrate Judges: Trial by Consent; Appeal </li> <li> <a href=\"/rules/frcp/rule_74\"> Rule 74 </a> . [Abrogated (Apr. 11, 1997, eff. Dec. 1, 1997).] </li> <li> <a href=\"/rules/frcp/rule_75\"> Rule 75 </a> . [Abrogated (",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 72",
+  "duty": "Enforce Federal 72",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 72"
+    ]
+  }
+}

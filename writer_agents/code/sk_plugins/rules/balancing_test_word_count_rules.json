@@ -1,0 +1,28 @@
+{
+  "rule_name": "balancing_test_word_count",
+  "description": "Word count validation for Balancing Test section based on CatBoost analysis",
+  "source": "CatBoost model trained on successful vs unsuccessful motions",
+  "data_backing": {
+    "successful_mean": 3774.6301369863013,
+    "unsuccessful_mean": 3978.6130790190737,
+    "roc_auc": 0.5355296554813184,
+    "feature_importance": 3.3660428846725146,
+    "sample_size": 3960.161090458488
+  },
+  "targets": {
+    "min_word_count": 575,
+    "max_word_count": 4084,
+    "optimal_range": [
+      575.25,
+      4084.5
+    ]
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "medium"
+  },
+  "recommendations": {
+    "below_min": "Increase word count in Balancing Test section to at least 575 words (optimal: 575-4084)",
+    "above_max": "Reduce word count in Balancing Test section to at most 4084 words (optimal: 575-4084)"
+  }
+}

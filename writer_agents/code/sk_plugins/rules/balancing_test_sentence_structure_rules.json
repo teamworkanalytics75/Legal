@@ -1,0 +1,11 @@
+{
+  "rule_name": "balancing_test_sentence_structure",
+  "description": "Sentence structure validation for Balancing Test section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_sentences_per_paragraph": 1.4404349140423742,
+    "max_sentences_per_paragraph": 4.550675675675676,
+    "min_words_per_sentence": 8.389901823281907,
+    "max_words_per_sentence": 22.17669112218531
+  }
+}

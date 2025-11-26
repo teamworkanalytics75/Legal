@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_28 U.S.C. § 1331_465_enforcement",
+  "rule_id": 465,
+  "rule_citation": "28 U.S.C. § 1331",
+  "rule_type": "Statute - Jurisdiction",
+  "text_excerpt": "Federal question jurisdiction - The district courts shall have original jurisdiction of all civil actions arising under the Constitution, laws, or treaties of the United States.",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce 28 U.S.C. § 1331",
+  "duty": "Enforce 28 U.S.C. § 1331",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "28 U.S.C. § 1331"
+    ]
+  }
+}

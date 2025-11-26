@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Hickman v. Taylor, 329 U.S. 495 (1947)_1_enforcement",
+  "rule_id": 1,
+  "rule_citation": "Hickman v. Taylor, 329 U.S. 495 (1947)",
+  "rule_type": "Case Law - Discovery - Privilege",
+  "text_excerpt": "Established work-product doctrine protecting attorney mental impressions and trial preparation materials from discovery.",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Hickman v. Taylor, 329 U.S. 495 (1947)",
+  "duty": "Enforce Hickman v. Taylor, 329 U.S. 495 (1947)",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Hickman v. Taylor, 329 U.S. 495 (1947)"
+    ]
+  }
+}

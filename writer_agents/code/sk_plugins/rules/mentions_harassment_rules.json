@@ -1,0 +1,25 @@
+{
+  "feature_name": "mentions_harassment",
+  "feature_type": "MENTION",
+  "shap_importance": 0.6418004887774144,
+  "minimum_threshold": 1,
+  "successful_case_average": 2.0,
+  "recommended_phrases": [
+    "harassment",
+    "retaliation",
+    "intimidation",
+    "adverse action",
+    "reprisal"
+  ],
+  "chroma_query_template": "harassment retaliation intimidation {case_context}",
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "harassment",
+      "retaliation",
+      "causation"
+    ],
+    "target_average": 2.0
+  },
+  "last_updated": "2025-11-13T15:09:01.621532"
+}

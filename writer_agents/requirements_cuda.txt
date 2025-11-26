@@ -1,0 +1,17 @@
+# CUDA-Enabled PyTorch Requirements
+# Install with: pip install -r writer_agents/requirements_cuda.txt
+# OR: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+# PyTorch with CUDA 12.1 support (for GPU acceleration)
+# This is required for fast embeddings and ML operations
+# If you don't have an NVIDIA GPU, use the CPU version instead
+torch>=2.0.0  # Install with: --index-url https://download.pytorch.org/whl/cu121
+torchvision>=0.15.0
+torchaudio>=2.0.0
+
+# Note: To install CUDA PyTorch, run:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+#
+# For CUDA 11.8: --index-url https://download.pytorch.org/whl/cu118
+# For CPU-only: pip install torch torchvision torchaudio
+

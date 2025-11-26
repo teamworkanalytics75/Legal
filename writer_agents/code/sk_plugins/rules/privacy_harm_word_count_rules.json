@@ -1,0 +1,28 @@
+{
+  "rule_name": "privacy_harm_word_count",
+  "description": "Word count validation for Privacy Harm section based on CatBoost analysis",
+  "source": "CatBoost model trained on successful vs unsuccessful motions",
+  "data_backing": {
+    "successful_mean": 3303.651515151515,
+    "unsuccessful_mean": 2140.339522546419,
+    "roc_auc": 0.565911100393859,
+    "feature_importance": 2.1393378901573152,
+    "sample_size": 2233.971951219512
+  },
+  "targets": {
+    "min_word_count": 347,
+    "max_word_count": 2999,
+    "optimal_range": [
+      347.0,
+      2999.75
+    ]
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "medium"
+  },
+  "recommendations": {
+    "below_min": "Increase word count in Privacy Harm section to at least 347 words (optimal: 347-2999)",
+    "above_max": "Reduce word count in Privacy Harm section to at most 2999 words (optimal: 347-2999)"
+  }
+}

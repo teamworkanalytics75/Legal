@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 502_145_enforcement",
+  "rule_id": 145,
+  "rule_citation": "Federal 502",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": ". Privilege in General </li> <li> <a href=\"/rules/fre/rule_502\"> Rule 502 </a> . Attorney-Client Privilege and Work Product; Limitations on Waiver </li> </ol> </li> <li> ARTICLE VI. WITNESSES <ol> <li> <a href=\"/rules/fre/rule_601\"> Rule 601 </a> . Competency to Testify in General </li> <li> <a href=\"/rules/fre/rule_602\"> Rule 602 </a> . Need for Personal Knowledge </li> <li> <a href=\"/rules/fre/r",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 502",
+  "duty": "Enforce Federal 502",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 502"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "rule_name": "conclusion_paragraph_structure",
+  "description": "Paragraph structure validation for Conclusion section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_paragraph_count": 8,
+    "max_paragraph_count": 13,
+    "min_avg_words_per_paragraph": 11.464761904761904,
+    "max_avg_words_per_paragraph": 17.197142857142858
+  }
+}

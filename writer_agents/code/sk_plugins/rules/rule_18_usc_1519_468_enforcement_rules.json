@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_18 U.S.C. § 1519_468_enforcement",
+  "rule_id": 468,
+  "rule_citation": "18 U.S.C. § 1519",
+  "rule_type": "Statute - Spoliation",
+  "text_excerpt": "Destruction of records in federal investigations - Prohibits the destruction, alteration, or falsification of records in federal investigations or bankruptcy.",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce 18 U.S.C. § 1519",
+  "duty": "Enforce 18 U.S.C. § 1519",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "18 U.S.C. § 1519"
+    ]
+  }
+}

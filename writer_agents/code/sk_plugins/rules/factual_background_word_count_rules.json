@@ -1,0 +1,28 @@
+{
+  "rule_name": "factual_background_word_count",
+  "description": "Word count validation for Factual Background section based on CatBoost analysis",
+  "source": "CatBoost model trained on successful vs unsuccessful motions",
+  "data_backing": {
+    "successful_mean": 2567.472972972973,
+    "unsuccessful_mean": 2240.486427457098,
+    "roc_auc": 0.5079784542733061,
+    "feature_importance": 0.0,
+    "sample_size": 2268.132247929163
+  },
+  "targets": {
+    "min_word_count": 547,
+    "max_word_count": 2844,
+    "optimal_range": [
+      547.75,
+      2844.25
+    ]
+  },
+  "severity": {
+    "below_min": "medium",
+    "above_max": "medium"
+  },
+  "recommendations": {
+    "below_min": "Increase word count in Factual Background section to at least 547 words (optimal: 547-2844)",
+    "above_max": "Reduce word count in Factual Background section to at most 2844 words (optimal: 547-2844)"
+  }
+}

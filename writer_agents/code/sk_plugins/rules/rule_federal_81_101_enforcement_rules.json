@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 81_101_enforcement",
+  "rule_id": 101,
+  "rule_citation": "Federal 81",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "TITLE XI. GENERAL PROVISIONS <ul> <li> <a href=\"/rules/frcp/rule_81\"> Rule 81 </a> . Applicability of the Rules in General; Removed Actions </li> <li> <a href=\"/rules/frcp/rule_82\"> Rule 82 </a> . Jurisdiction and Venue Unaffected </li> <li> <a href=\"/rules/frcp/rule_83\"> Rule 83 </a> . Rules by District Courts; Judge's Directives </li> <li> <a href=\"/rules/frcp/rule_84\"> Rule 84 </a> . Abrogated,",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 81",
+  "duty": "Enforce Federal 81",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 81"
+    ]
+  }
+}

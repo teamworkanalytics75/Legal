@@ -1,0 +1,22 @@
+{
+  "feature_name": "sentence_count",
+  "description": "Enforces sentence count per paragraph",
+  "priority": "optional",
+  "threshold": 0.85,
+  "required": false,
+  "checklist_items": [
+    "Sentences per paragraph: 3-8 (typical)",
+    "Maximum sentence count per paragraph",
+    "Minimum sentence count per paragraph"
+  ],
+  "validation_criteria": {
+    "min_sentences_per_paragraph": 3,
+    "max_sentences_per_paragraph": 8,
+    "target_average": 5
+  },
+  "chroma_query_template": "sentence count paragraph structure legal writing {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 5.0,
+  "shap_importance": 0.0
+}
+

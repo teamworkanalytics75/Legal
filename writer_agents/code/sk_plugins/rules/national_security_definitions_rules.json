@@ -1,0 +1,41 @@
+{
+  "feature_name": "national_security_definitions",
+  "feature_importance": 3.67,
+  "feature_rank": 8,
+  "description": "National security definition phrases that are predictive of successful sealing motions",
+  "shap_importance": 3.67,
+  "target_count": 2,
+  "min_count": 1,
+  "validation_criteria": {
+    "min_phrases": 1,
+    "target_phrases": 2,
+    "preferred_phrases": 3,
+    "required_phrases": [
+      "matter of national security",
+      "national security interest",
+      "national security concern"
+    ]
+  },
+  "chroma_query_template": "national security definition matter of national security {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Include explicit national security definition phrases to establish the legal foundation.",
+    "rationale": "CatBoost analysis shows NS definition phrases are predictive of successful sealing motions (importance: 3.67).",
+    "insight": "Successful motions explicitly define the case as a 'matter of national security' or invoke 'national security interests'."
+  },
+  "enforcement": {
+    "severity": "high",
+    "auto_fix": false,
+    "requires_manual_review": true,
+    "suggestions": [
+      "Use phrases like 'matter of national security' or 'national security interest'",
+      "Include at least 2-3 different NS definition phrases",
+      "Place NS definitions in Introduction or Legal Standard section"
+    ]
+  }
+}
+

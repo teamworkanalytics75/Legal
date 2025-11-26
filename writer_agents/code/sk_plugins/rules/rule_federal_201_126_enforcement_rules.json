@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 201_126_enforcement",
+  "rule_id": 126,
+  "rule_citation": "Federal 201",
+  "rule_type": "Federal Rules Evidence",
+  "text_excerpt": "ARTICLE II. JUDICIAL NOTICE <ol> <li> <a href=\"/rules/fre/rule_201\"> Rule 201 </a> . Judicial Notice of Adjudicative Facts </li> </ol> </li> <li> ARTICLE III. PRESUMPTIONS IN CIVIL CASES <ol> <li> <a href=\"/rules/fre/rule_301\"> Rule 301 </a> . Presumptions in Civil Cases Generally </li> <li> <a href=\"/rules/fre/rule_302\"> Rule 302 </a> . Applying State Law to Presumptions in Civil Cases </li> </ol",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 201",
+  "duty": "Enforce Federal 201",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 201"
+    ]
+  }
+}

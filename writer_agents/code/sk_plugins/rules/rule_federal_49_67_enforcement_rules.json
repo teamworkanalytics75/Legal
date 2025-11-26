@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Federal 49_67_enforcement",
+  "rule_id": 67,
+  "rule_citation": "Federal 49",
+  "rule_type": "Federal Rules Civil Procedure",
+  "text_excerpt": "umber of Jurors; Verdict; Polling </li> <li> <a href=\"/rules/frcp/rule_49\"> Rule 49 </a> . Special Verdict; General Verdict and Questions </li> <li> <a href=\"/rules/frcp/rule_50\"> Rule 50 </a> . Judgment as a Matter of Law in a Jury Trial; Related Motion for a New Trial; Conditional Ruling </li> <li> <a href=\"/rules/frcp/rule_51\"> Rule 51 </a> . Instructions to the Jury; Objections; Preserving a C",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Federal 49",
+  "duty": "Enforce Federal 49",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Federal 49"
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_USC § 3_334_enforcement",
+  "rule_id": 334,
+  "rule_citation": "USC § 3",
+  "rule_type": "Statute",
+  "text_excerpt": "\">Effective Date of 1958 Amendment</span> <p><a href=\"/rio/citation/Pub._L._85-554\">Pub. L. 85–554, § 3</a>, <span class=\"date\" date=\"1958-07-25\">July 25, 1958</span>, <a href=\"/rio/citation/72_Stat._415\">72 Stat. 415</a>, provided that: </p><div class=\"quotedContent\" origin=\"/us/pl/85/554/s3\">“This Act [amending this section and sections <a aria-label=\"28 USC 1332\" href=\"/uscode/text/28/1332\">133",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce USC § 3",
+  "duty": "Enforce USC § 3",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "USC § 3"
+    ]
+  }
+}

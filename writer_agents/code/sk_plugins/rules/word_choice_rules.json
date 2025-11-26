@@ -1,0 +1,43 @@
+{
+  "feature_name": "word_choice",
+  "description": "Enforces legal terminology and word choice",
+  "priority": "optional",
+  "threshold": 0.85,
+  "required": false,
+  "checklist_items": [
+    "Legal terminology used correctly",
+    "Avoid informal language",
+    "Avoid contractions",
+    "Technical terms defined"
+  ],
+  "validation_criteria": {
+    "avoid_contractions": true,
+    "avoid_informal": true,
+    "required_legal_terms": [],
+    "informal_patterns": [
+      "don't",
+      "can't",
+      "won't",
+      "it's",
+      "that's",
+      "here's",
+      "there's",
+      "gonna",
+      "wanna",
+      "gotta"
+    ],
+    "legal_terms": [
+      "pursuant to",
+      "whereas",
+      "herein",
+      "thereof",
+      "aforementioned",
+      "notwithstanding"
+    ]
+  },
+  "chroma_query_template": "legal terminology word choice professional language {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 0.85,
+  "shap_importance": 0.0
+}
+

@@ -1,0 +1,38 @@
+{
+  "feature_name": "transition_legal_to_factual",
+  "feature_importance": 64.80,
+  "feature_rank": 1,
+  "description": "Legal Standard section immediately followed by Factual Background section. This is the #1 most important feature (64.80 importance) for motion success.",
+  "shap_importance": 0.001260,
+  "successful_case_average": 1.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "transition_present": true,
+    "max_gap_lines": 10,
+    "legal_standard_section_required": true,
+    "factual_background_section_required": true
+  },
+  "chroma_query_template": "legal standard factual background transition {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Legal Standard must immediately precede Factual Background. Do not place any other sections between them.",
+    "rationale": "This transition is the most predictive structural feature for motion success according to CatBoost analysis (84.92% accuracy).",
+    "grant_rate_with_feature": 0.714,
+    "grant_rate_without_feature": 0.852
+  },
+  "enforcement": {
+    "severity": "critical",
+    "auto_fix": false,
+    "requires_manual_review": true,
+    "suggestions": [
+      "Add Legal Standard section if missing",
+      "Add Factual Background section if missing",
+      "Reorder sections to place Factual Background immediately after Legal Standard"
+    ]
+  }
+}
+

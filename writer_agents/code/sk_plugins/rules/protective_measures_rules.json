@@ -1,0 +1,46 @@
+{
+  "feature_name": "protective_measures",
+  "feature_type": "PROPOSAL",
+  "feature_importance": 4.32,
+  "feature_rank": 7,
+  "description": "Explicit mention of specific protective measures being requested",
+  "shap_importance": 0.41079642984091147,
+  "target_count": 2,
+  "min_count": 1,
+  "validation_criteria": {
+    "min_measures": 1,
+    "target_measures": 2,
+    "preferred_measures": 3,
+    "required_measures": [
+      "protective order",
+      "file under seal",
+      "confidentiality order"
+    ]
+  },
+  "chroma_query_template": "protective order seal confidentiality order impound {case_context}",
+  "chroma_collections": [
+    "case_law_legal",
+    "motion_examples"
+  ],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Explicitly mention specific protective measures being requested.",
+    "rationale": "CatBoost analysis shows this is predictive (importance: 4.32) for successful sealing motions.",
+    "example": "Plaintiff respectfully requests: (1) a protective order; (2) leave to file documents under seal; and (3) a confidentiality order.",
+    "insight": "Successful motions specify exactly which protective measures are requested, not just mention 'sealing' generally."
+  },
+  "enforcement": {
+    "severity": "medium",
+    "auto_fix": false,
+    "requires_manual_review": false,
+    "suggestions": [
+      "List specific protective measures: protective order, file under seal, confidentiality order, impound, redact",
+      "Place in Requested Relief section",
+      "Use enumeration to list multiple measures"
+    ]
+  },
+  "last_updated": "2025-11-13T15:09:01.619931"
+}

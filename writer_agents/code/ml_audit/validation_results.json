@@ -1,0 +1,105 @@
+{
+  "summary": {
+    "overall_stats": {
+      "total_cases": 2,
+      "improved_cases": 0,
+      "improvement_rate": 0.0,
+      "avg_improvement": 0.0,
+      "avg_improvement_percent": 0.0
+    },
+    "plugin_effectiveness": {
+      "mentions_privacy": {
+        "invocations": 2,
+        "total_delta": 0.0,
+        "cases": [
+          {
+            "case_id": "test_case_1",
+            "delta": 0.0,
+            "improvement_percent": 0.0
+          },
+          {
+            "case_id": "test_case_2",
+            "delta": 0.0,
+            "improvement_percent": 0.0
+          }
+        ],
+        "avg_delta": 0.0,
+        "success_rate": 0.0
+      }
+    },
+    "most_effective_plugins": [
+      [
+        "mentions_privacy",
+        {
+          "invocations": 2,
+          "total_delta": 0.0,
+          "cases": [
+            {
+              "case_id": "test_case_1",
+              "delta": 0.0,
+              "improvement_percent": 0.0
+            },
+            {
+              "case_id": "test_case_2",
+              "delta": 0.0,
+              "improvement_percent": 0.0
+            }
+          ],
+          "avg_delta": 0.0,
+          "success_rate": 0.0
+        }
+      ]
+    ],
+    "problematic_plugins": [],
+    "recommendations": [
+      "\u274c Plugin system shows minimal improvements, review rule configurations",
+      "\ud83d\udfe1 mentions_privacy has low success rate (0.0%), consider threshold adjustments"
+    ]
+  },
+  "detailed_results": [
+    {
+      "case_id": "test_case_1",
+      "baseline_score": null,
+      "improved_score": null,
+      "delta": 0.0,
+      "improvement_percent": 0.0,
+      "plugins_invoked": [
+        "mentions_privacy"
+      ],
+      "plugin_analysis": {
+        "mentions_privacy": {
+          "gap": 3.0,
+          "current": 2.0,
+          "target": 5.0,
+          "priority": "medium"
+        }
+      },
+      "original_length": 11,
+      "improved_length": 14,
+      "timestamp": "2025-10-24T14:47:40.592472"
+    },
+    {
+      "case_id": "test_case_2",
+      "baseline_score": null,
+      "improved_score": null,
+      "delta": 0.0,
+      "improvement_percent": 0.0,
+      "plugins_invoked": [
+        "mentions_privacy"
+      ],
+      "plugin_analysis": {
+        "mentions_privacy": {
+          "gap": 3.0,
+          "current": 2.0,
+          "target": 5.0,
+          "priority": "medium"
+        }
+      },
+      "original_length": 11,
+      "improved_length": 14,
+      "timestamp": "2025-10-24T14:47:40.592472"
+    }
+  ],
+  "timestamp": "2025-10-24T14:47:40.593472",
+  "total_cases": 2
+}

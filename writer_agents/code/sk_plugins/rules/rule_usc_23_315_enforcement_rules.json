@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_USC § 23_315_enforcement",
+  "rule_id": 315,
+  "rule_citation": "USC § 23",
+  "rule_type": "Statute",
+  "text_excerpt": "498</p> </td> </tr> <tr> <td> <p class=\"leaders\"><span>669–676</span></p> </td> <td> <p>D.C. Code, §§ 23–701, 23–702, 23–705</p> </td> </tr> <tr> <td> <p class=\"leaders\"><span>681</span></p> </td> <td> <p>Rep. See Cr. Proc. R. 37.</p> </td> </tr> <tr> <td> <p class=\"leaders\"><span>682</span></p> </td> <td> <p>3731</p> </td> </tr> <tr> <td> <p class=\"leaders\"><span>683</span></p> </td> <td> <p>Rep.",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce USC § 23",
+  "duty": "Enforce USC § 23",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "USC § 23"
+    ]
+  }
+}

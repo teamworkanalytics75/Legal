@@ -1,0 +1,16 @@
+# Requirements for Strategic Analysis Modules
+# Install with: pip install -r writer_agents/requirements_strategic.txt
+
+# Core dependencies (required)
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Optional dependencies (enhanced features)
+pandas>=2.0.0          # For scenario comparison tables
+matplotlib>=3.7.0      # For visualization
+nashpy>=0.0.35         # For advanced game theory (if needed in future)
+
+# Note: These modules also require the existing writer_agents dependencies:
+# - Your BN system (bn_adapter, bn_bridge, insights)
+# - OpenAI Agents SDK (if using integration layer)
+

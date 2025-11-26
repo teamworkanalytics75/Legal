@@ -1,0 +1,624 @@
+{
+  "extraction_info": {
+    "source_directory": "writer_agents\\code\\atomic_agents",
+    "total_agents": 30,
+    "extraction_timestamp": "C:\\Users\\Owner\\Desktop\\Agents"
+  },
+  "agents": [
+    {
+      "class_name": "CitationFinderAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\citations.py",
+      "duty": "Find raw citation strings in text using regex patterns",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Find raw citation strings in text using pattern matching.\n\nSingle duty: Identify potential legal citations in text.\nMethod: Regex patterns for common citation formats.\nOutput: List of citation candidates with positions."
+    },
+    {
+      "class_name": "CitationNormalizerAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\citations.py",
+      "duty": "Normalize citations to Bluebook format using templates",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Normalize citations to Bluebook format using templates.\n\nSingle duty: Convert raw citations to standardized Bluebook format.\nMethod: Template-based transformation rules.\nOutput: Normalized citation strings."
+    },
+    {
+      "class_name": "CitationVerifierAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\citations.py",
+      "duty": "Verify citations against case law database using SQL queries",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Verify citations against case law database.\n\nSingle duty: Check if citations point to real cases.\nMethod: SQL queries against lawsuit_docs database.\nOutput: Verification status for each citation."
+    },
+    {
+      "class_name": "CitationLocatorAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\citations.py",
+      "duty": "Map citation tokens to file paths/URLs in database",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Map citation tokens to file paths or URLs in database.\n\nSingle duty: Find the source document for each citation.\nMethod: Database queries to locate case files.\nOutput: File paths or URLs for each citation."
+    },
+    {
+      "class_name": "CitationInserterAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\citations.py",
+      "duty": "Insert formatted citations into document text at correct positions",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Insert formatted citations into document text.\n\nSingle duty: Place normalized citations at correct positions.\nMethod: String manipulation based on position markers.\nOutput: Document text with properly formatted citations."
+    },
+    {
+      "class_name": "OutlineBuilderAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\drafting.py",
+      "duty": "Build structured section outline with headings and objectives",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.003,
+      "meta_category": "completeness",
+      "is_deterministic": null,
+      "docstring": "Build structured section outline for legal document.\n\nSingle duty: Create section headings and structure.\nMethod: LLM analysis of case insights to determine sections.\nOutput: Ordered list of sections with objectives."
+    },
+    {
+      "class_name": "SectionWriterAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\drafting.py",
+      "duty": "Write a single section of legal document based on outline and context",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.01,
+      "meta_category": "completeness",
+      "is_deterministic": null,
+      "docstring": "Write a single section of legal document.\n\nSingle duty: Draft prose for one section based on outline.\nMethod: LLM generation from section objective and context.\nOutput: Written section text."
+    },
+    {
+      "class_name": "ParagraphWriterAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\drafting.py",
+      "duty": "Write a single paragraph from a brief content prompt",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.005,
+      "meta_category": "completeness",
+      "is_deterministic": null,
+      "docstring": "Write a single paragraph within a section.\n\nSingle duty: Draft one paragraph from a brief prompt.\nMethod: LLM generation with strict length control.\nOutput: Single paragraph text."
+    },
+    {
+      "class_name": "TransitionAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\drafting.py",
+      "duty": "Create smooth transitions between document sections",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.002,
+      "meta_category": "completeness",
+      "is_deterministic": null,
+      "docstring": "Create smooth transitions between sections.\n\nSingle duty: Write transition sentences connecting sections.\nMethod: LLM analysis of section boundaries.\nOutput: Transition sentences to insert."
+    },
+    {
+      "class_name": "EnhancedPrecedentFinderAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\enhanced_research.py",
+      "duty": "Find relevant precedent cases using LangChain database queries",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.005,
+      "meta_category": "completeness",
+      "is_deterministic": null,
+      "docstring": "Find relevant precedent cases using LangChain for evidence retrieval.\n\nSingle duty: Identify candidate precedent cases using natural language database queries.\nMethod: LangChain SQLDatabaseToolkit + LLM ranking.\nOutput: List of relevant case citations with evidence."
+    },
+    {
+      "class_name": "EnhancedFactExtractorAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\enhanced_research.py",
+      "duty": "Extract discrete facts using LangChain document retrieval",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.007,
+      "meta_category": "completeness",
+      "is_deterministic": null,
+      "docstring": "Extract discrete facts using LangChain for document retrieval.\n\nSingle duty: Extract facts as structured data using LangChain evidence retrieval.\nMethod: LangChain SQLDatabaseToolkit + LLM extraction.\nOutput: List of fact objects with source evidence."
+    },
+    {
+      "class_name": "MarkdownExporterAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\output.py",
+      "duty": "Export document to Markdown format",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Export document to Markdown format.\n\nSingle duty: Convert structured document to Markdown.\nMethod: Template-based rendering (deterministic).\nOutput: Markdown-formatted text."
+    },
+    {
+      "class_name": "DocxExporterAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\output.py",
+      "duty": "Export document to DOCX format",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Export document to DOCX format.\n\nSingle duty: Convert structured document to DOCX.\nMethod: Template-based rendering using python-docx (deterministic).\nOutput: DOCX file path."
+    },
+    {
+      "class_name": "MetadataTaggerAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\output.py",
+      "duty": "Append structured metadata to document",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Add metadata tags to document.\n\nSingle duty: Append structured metadata.\nMethod: JSON serialization (deterministic).\nOutput: Document with metadata section."
+    },
+    {
+      "class_name": "FactExtractorAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+      "duty": "Extract discrete facts from documents as structured data",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.005,
+      "meta_category": "completeness",
+      "is_deterministic": null,
+      "docstring": "Extract discrete facts from documents.\n\nSingle duty: Extract facts as structured data.\nMethod: LLM extraction with structured output (gpt-4o-mini).\nOutput: List of fact objects."
+    },
+    {
+      "class_name": "PrecedentFinderAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+      "duty": "Find relevant precedent cases from database",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.003,
+      "meta_category": "completeness",
+      "is_deterministic": null,
+      "docstring": "Find relevant precedent cases.\n\nSingle duty: Identify candidate precedent cases.\nMethod: DB query + mini LLM ranking.\nOutput: List of relevant case citations."
+    },
+    {
+      "class_name": "PrecedentRankerAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+      "duty": "Rank precedent cases by relevance to legal issue",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.004,
+      "meta_category": "precision",
+      "is_deterministic": null,
+      "docstring": "Rank precedent cases by relevance.\n\nSingle duty: Score and rank found precedents.\nMethod: LLM relevance scoring (gpt-4o-mini).\nOutput: Ranked list of precedents with scores."
+    },
+    {
+      "class_name": "PrecedentSummarizerAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+      "duty": "Create 1-2 sentence summaries of precedent cases",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.003,
+      "meta_category": "precision",
+      "is_deterministic": null,
+      "docstring": "Summarize precedent cases.\n\nSingle duty: Create 1-2 sentence summaries of cases.\nMethod: LLM summarization (gpt-4o-mini).\nOutput: Brief case summaries."
+    },
+    {
+      "class_name": "StatuteLocatorAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+      "duty": "Locate full text of cited statutes from database",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": "completeness",
+      "is_deterministic": null,
+      "docstring": "Find statute text from database.\n\nSingle duty: Locate full text of cited statutes.\nMethod: Database queries (deterministic).\nOutput: Statute text with metadata."
+    },
+    {
+      "class_name": "ExhibitFetcherAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+      "duty": "Retrieve exhibit documents from file system or database",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": "completeness",
+      "is_deterministic": null,
+      "docstring": "Fetch exhibit files from storage.\n\nSingle duty: Retrieve exhibit documents.\nMethod: File system or database lookup (deterministic).\nOutput: Exhibit file paths or content."
+    },
+    {
+      "class_name": "GrammarFixerAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+      "duty": "Fix grammar and typos in text",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.005,
+      "meta_category": "precision",
+      "is_deterministic": null,
+      "docstring": "Fix grammar and typos in text.\n\nSingle duty: Correct grammatical errors and typos.\nMethod: LLM-based grammar checking (gpt-4o-mini).\nOutput: Corrected text with change log."
+    },
+    {
+      "class_name": "StyleCheckerAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+      "duty": "Check document against style guide rules",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": "precision",
+      "is_deterministic": null,
+      "docstring": "Check document against style guide rules.\n\nSingle duty: Verify compliance with legal writing style guide.\nMethod: Rule-based checking (deterministic).\nOutput: List of style violations with suggestions."
+    },
+    {
+      "class_name": "LogicCheckerAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+      "duty": "Check argument logic and identify missing premises or gaps",
+      "cost_tier": "mini",
+      "max_cost_per_run": 0.008,
+      "meta_category": "precision",
+      "is_deterministic": null,
+      "docstring": "Check argument logic and coherence.\n\nSingle duty: Verify logical flow and argument structure.\nMethod: LLM analysis of reasoning chain (gpt-4o-mini).\nOutput: Logic assessment with identified gaps."
+    },
+    {
+      "class_name": "ConsistencyCheckerAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+      "duty": "Ensure terms and names are used consistently throughout document",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Check term and name consistency throughout document.\n\nSingle duty: Ensure terms and names used consistently.\nMethod: Dictionary tracking and matching (deterministic).\nOutput: Inconsistencies found with suggested corrections."
+    },
+    {
+      "class_name": "RedactionAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+      "duty": "Apply redaction rules to protect sensitive information",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Apply redaction rules to protect sensitive information.\n\nSingle duty: Redact PII and sealed information per rules.\nMethod: Regex-based pattern matching and replacement (deterministic).\nOutput: Redacted text with redaction log."
+    },
+    {
+      "class_name": "ComplianceAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+      "duty": "Verify document format and structure compliance",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Verify document format compliance.\n\nSingle duty: Check formatting and structure requirements.\nMethod: Rule-based validation (deterministic).\nOutput: Compliance checklist with pass/fail status."
+    },
+    {
+      "class_name": "ConsistencyCheckerAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+      "duty": "Ensure terms and names are used consistently throughout document",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Check term and name consistency throughout document.\n\nSingle duty: Ensure terms and names used consistently.\nMethod: Dictionary tracking and matching (deterministic).\nOutput: Inconsistencies found with suggested corrections."
+    },
+    {
+      "class_name": "RedactionAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+      "duty": "Apply redaction rules to protect sensitive information",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Apply redaction rules to protect sensitive information.\n\nSingle duty: Redact PII and sealed information per rules.\nMethod: Regex-based pattern matching and replacement (deterministic).\nOutput: Redacted text with redaction log."
+    },
+    {
+      "class_name": "ComplianceAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+      "duty": "Verify document format and structure compliance",
+      "cost_tier": null,
+      "max_cost_per_run": null,
+      "meta_category": null,
+      "is_deterministic": null,
+      "docstring": "Verify document format compliance.\n\nSingle duty: Check formatting and structure requirements.\nMethod: Rule-based validation (deterministic).\nOutput: Compliance checklist with pass/fail status."
+    },
+    {
+      "class_name": "ExpertQAAgent",
+      "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+      "duty": "Perform expert-level strategic coherence and citation review",
+      "cost_tier": "standard",
+      "max_cost_per_run": 0.02,
+      "meta_category": "precision",
+      "is_deterministic": null,
+      "docstring": "Expert-level final QA review.\n\nSingle duty: Strategic coherence and citation verification.\nMethod: LLM analysis with GPT-4o (premium tier for complex cases).\nOutput: Expert assessment with actionable feedback."
+    }
+  ],
+  "categories": {
+    "completeness": [
+      {
+        "class_name": "OutlineBuilderAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\drafting.py",
+        "duty": "Build structured section outline with headings and objectives",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.003,
+        "meta_category": "completeness",
+        "is_deterministic": null,
+        "docstring": "Build structured section outline for legal document.\n\nSingle duty: Create section headings and structure.\nMethod: LLM analysis of case insights to determine sections.\nOutput: Ordered list of sections with objectives."
+      },
+      {
+        "class_name": "SectionWriterAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\drafting.py",
+        "duty": "Write a single section of legal document based on outline and context",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.01,
+        "meta_category": "completeness",
+        "is_deterministic": null,
+        "docstring": "Write a single section of legal document.\n\nSingle duty: Draft prose for one section based on outline.\nMethod: LLM generation from section objective and context.\nOutput: Written section text."
+      },
+      {
+        "class_name": "ParagraphWriterAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\drafting.py",
+        "duty": "Write a single paragraph from a brief content prompt",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.005,
+        "meta_category": "completeness",
+        "is_deterministic": null,
+        "docstring": "Write a single paragraph within a section.\n\nSingle duty: Draft one paragraph from a brief prompt.\nMethod: LLM generation with strict length control.\nOutput: Single paragraph text."
+      },
+      {
+        "class_name": "TransitionAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\drafting.py",
+        "duty": "Create smooth transitions between document sections",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.002,
+        "meta_category": "completeness",
+        "is_deterministic": null,
+        "docstring": "Create smooth transitions between sections.\n\nSingle duty: Write transition sentences connecting sections.\nMethod: LLM analysis of section boundaries.\nOutput: Transition sentences to insert."
+      },
+      {
+        "class_name": "EnhancedPrecedentFinderAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\enhanced_research.py",
+        "duty": "Find relevant precedent cases using LangChain database queries",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.005,
+        "meta_category": "completeness",
+        "is_deterministic": null,
+        "docstring": "Find relevant precedent cases using LangChain for evidence retrieval.\n\nSingle duty: Identify candidate precedent cases using natural language database queries.\nMethod: LangChain SQLDatabaseToolkit + LLM ranking.\nOutput: List of relevant case citations with evidence."
+      },
+      {
+        "class_name": "EnhancedFactExtractorAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\enhanced_research.py",
+        "duty": "Extract discrete facts using LangChain document retrieval",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.007,
+        "meta_category": "completeness",
+        "is_deterministic": null,
+        "docstring": "Extract discrete facts using LangChain for document retrieval.\n\nSingle duty: Extract facts as structured data using LangChain evidence retrieval.\nMethod: LangChain SQLDatabaseToolkit + LLM extraction.\nOutput: List of fact objects with source evidence."
+      },
+      {
+        "class_name": "FactExtractorAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+        "duty": "Extract discrete facts from documents as structured data",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.005,
+        "meta_category": "completeness",
+        "is_deterministic": null,
+        "docstring": "Extract discrete facts from documents.\n\nSingle duty: Extract facts as structured data.\nMethod: LLM extraction with structured output (gpt-4o-mini).\nOutput: List of fact objects."
+      },
+      {
+        "class_name": "PrecedentFinderAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+        "duty": "Find relevant precedent cases from database",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.003,
+        "meta_category": "completeness",
+        "is_deterministic": null,
+        "docstring": "Find relevant precedent cases.\n\nSingle duty: Identify candidate precedent cases.\nMethod: DB query + mini LLM ranking.\nOutput: List of relevant case citations."
+      },
+      {
+        "class_name": "StatuteLocatorAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+        "duty": "Locate full text of cited statutes from database",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": "completeness",
+        "is_deterministic": null,
+        "docstring": "Find statute text from database.\n\nSingle duty: Locate full text of cited statutes.\nMethod: Database queries (deterministic).\nOutput: Statute text with metadata."
+      },
+      {
+        "class_name": "ExhibitFetcherAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+        "duty": "Retrieve exhibit documents from file system or database",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": "completeness",
+        "is_deterministic": null,
+        "docstring": "Fetch exhibit files from storage.\n\nSingle duty: Retrieve exhibit documents.\nMethod: File system or database lookup (deterministic).\nOutput: Exhibit file paths or content."
+      }
+    ],
+    "precision": [
+      {
+        "class_name": "PrecedentRankerAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+        "duty": "Rank precedent cases by relevance to legal issue",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.004,
+        "meta_category": "precision",
+        "is_deterministic": null,
+        "docstring": "Rank precedent cases by relevance.\n\nSingle duty: Score and rank found precedents.\nMethod: LLM relevance scoring (gpt-4o-mini).\nOutput: Ranked list of precedents with scores."
+      },
+      {
+        "class_name": "PrecedentSummarizerAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\research.py",
+        "duty": "Create 1-2 sentence summaries of precedent cases",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.003,
+        "meta_category": "precision",
+        "is_deterministic": null,
+        "docstring": "Summarize precedent cases.\n\nSingle duty: Create 1-2 sentence summaries of cases.\nMethod: LLM summarization (gpt-4o-mini).\nOutput: Brief case summaries."
+      },
+      {
+        "class_name": "GrammarFixerAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+        "duty": "Fix grammar and typos in text",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.005,
+        "meta_category": "precision",
+        "is_deterministic": null,
+        "docstring": "Fix grammar and typos in text.\n\nSingle duty: Correct grammatical errors and typos.\nMethod: LLM-based grammar checking (gpt-4o-mini).\nOutput: Corrected text with change log."
+      },
+      {
+        "class_name": "StyleCheckerAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+        "duty": "Check document against style guide rules",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": "precision",
+        "is_deterministic": null,
+        "docstring": "Check document against style guide rules.\n\nSingle duty: Verify compliance with legal writing style guide.\nMethod: Rule-based checking (deterministic).\nOutput: List of style violations with suggestions."
+      },
+      {
+        "class_name": "LogicCheckerAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+        "duty": "Check argument logic and identify missing premises or gaps",
+        "cost_tier": "mini",
+        "max_cost_per_run": 0.008,
+        "meta_category": "precision",
+        "is_deterministic": null,
+        "docstring": "Check argument logic and coherence.\n\nSingle duty: Verify logical flow and argument structure.\nMethod: LLM analysis of reasoning chain (gpt-4o-mini).\nOutput: Logic assessment with identified gaps."
+      },
+      {
+        "class_name": "ExpertQAAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+        "duty": "Perform expert-level strategic coherence and citation review",
+        "cost_tier": "standard",
+        "max_cost_per_run": 0.02,
+        "meta_category": "precision",
+        "is_deterministic": null,
+        "docstring": "Expert-level final QA review.\n\nSingle duty: Strategic coherence and citation verification.\nMethod: LLM analysis with GPT-4o (premium tier for complex cases).\nOutput: Expert assessment with actionable feedback."
+      }
+    ],
+    "standard": [],
+    "unknown": [
+      {
+        "class_name": "CitationFinderAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\citations.py",
+        "duty": "Find raw citation strings in text using regex patterns",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Find raw citation strings in text using pattern matching.\n\nSingle duty: Identify potential legal citations in text.\nMethod: Regex patterns for common citation formats.\nOutput: List of citation candidates with positions."
+      },
+      {
+        "class_name": "CitationNormalizerAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\citations.py",
+        "duty": "Normalize citations to Bluebook format using templates",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Normalize citations to Bluebook format using templates.\n\nSingle duty: Convert raw citations to standardized Bluebook format.\nMethod: Template-based transformation rules.\nOutput: Normalized citation strings."
+      },
+      {
+        "class_name": "CitationVerifierAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\citations.py",
+        "duty": "Verify citations against case law database using SQL queries",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Verify citations against case law database.\n\nSingle duty: Check if citations point to real cases.\nMethod: SQL queries against lawsuit_docs database.\nOutput: Verification status for each citation."
+      },
+      {
+        "class_name": "CitationLocatorAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\citations.py",
+        "duty": "Map citation tokens to file paths/URLs in database",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Map citation tokens to file paths or URLs in database.\n\nSingle duty: Find the source document for each citation.\nMethod: Database queries to locate case files.\nOutput: File paths or URLs for each citation."
+      },
+      {
+        "class_name": "CitationInserterAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\citations.py",
+        "duty": "Insert formatted citations into document text at correct positions",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Insert formatted citations into document text.\n\nSingle duty: Place normalized citations at correct positions.\nMethod: String manipulation based on position markers.\nOutput: Document text with properly formatted citations."
+      },
+      {
+        "class_name": "MarkdownExporterAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\output.py",
+        "duty": "Export document to Markdown format",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Export document to Markdown format.\n\nSingle duty: Convert structured document to Markdown.\nMethod: Template-based rendering (deterministic).\nOutput: Markdown-formatted text."
+      },
+      {
+        "class_name": "DocxExporterAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\output.py",
+        "duty": "Export document to DOCX format",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Export document to DOCX format.\n\nSingle duty: Convert structured document to DOCX.\nMethod: Template-based rendering using python-docx (deterministic).\nOutput: DOCX file path."
+      },
+      {
+        "class_name": "MetadataTaggerAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\output.py",
+        "duty": "Append structured metadata to document",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Add metadata tags to document.\n\nSingle duty: Append structured metadata.\nMethod: JSON serialization (deterministic).\nOutput: Document with metadata section."
+      },
+      {
+        "class_name": "ConsistencyCheckerAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+        "duty": "Ensure terms and names are used consistently throughout document",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Check term and name consistency throughout document.\n\nSingle duty: Ensure terms and names used consistently.\nMethod: Dictionary tracking and matching (deterministic).\nOutput: Inconsistencies found with suggested corrections."
+      },
+      {
+        "class_name": "RedactionAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+        "duty": "Apply redaction rules to protect sensitive information",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Apply redaction rules to protect sensitive information.\n\nSingle duty: Redact PII and sealed information per rules.\nMethod: Regex-based pattern matching and replacement (deterministic).\nOutput: Redacted text with redaction log."
+      },
+      {
+        "class_name": "ComplianceAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+        "duty": "Verify document format and structure compliance",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Verify document format compliance.\n\nSingle duty: Check formatting and structure requirements.\nMethod: Rule-based validation (deterministic).\nOutput: Compliance checklist with pass/fail status."
+      },
+      {
+        "class_name": "ConsistencyCheckerAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+        "duty": "Ensure terms and names are used consistently throughout document",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Check term and name consistency throughout document.\n\nSingle duty: Ensure terms and names used consistently.\nMethod: Dictionary tracking and matching (deterministic).\nOutput: Inconsistencies found with suggested corrections."
+      },
+      {
+        "class_name": "RedactionAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+        "duty": "Apply redaction rules to protect sensitive information",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Apply redaction rules to protect sensitive information.\n\nSingle duty: Redact PII and sealed information per rules.\nMethod: Regex-based pattern matching and replacement (deterministic).\nOutput: Redacted text with redaction log."
+      },
+      {
+        "class_name": "ComplianceAgent",
+        "file_path": "writer_agents\\code\\atomic_agents\\review.py",
+        "duty": "Verify document format and structure compliance",
+        "cost_tier": null,
+        "max_cost_per_run": null,
+        "meta_category": null,
+        "is_deterministic": null,
+        "docstring": "Verify document format compliance.\n\nSingle duty: Check formatting and structure requirements.\nMethod: Rule-based validation (deterministic).\nOutput: Compliance checklist with pass/fail status."
+      }
+    ]
+  },
+  "summary": {
+    "completeness_agents": 10,
+    "precision_agents": 6,
+    "standard_agents": 0,
+    "unknown_agents": 14
+  }
+}

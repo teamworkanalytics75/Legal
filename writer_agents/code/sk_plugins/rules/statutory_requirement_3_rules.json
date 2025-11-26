@@ -1,0 +1,37 @@
+{
+  "feature_name": "statutory_requirement_3_interested_person",
+  "description": "Enforces Section 1782 statutory requirement: interested person/applicant",
+  "priority": "critical",
+  "threshold": 1.0,
+  "required": true,
+  "legal_standard": "Brandi-Dohrn v. IKB Deutsche Industriebank AG, 673 F.3d 76, 80 (2d Cir. 2012); Intel Corp. v. Advanced Micro Devices, Inc., 542 U.S. 241, 256 (2004)",
+  "checklist_items": [
+    "Applicant identified",
+    "Applicant's interest in foreign proceeding established",
+    "'Reasonable interest' demonstrated",
+    "Applicant is party to foreign proceeding OR has right to submit information"
+  ],
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_keywords": [
+      "interested person",
+      "applicant",
+      "petitioner",
+      "party",
+      "plaintiff",
+      "defendant",
+      "reasonable interest"
+    ],
+    "required_context": [
+      "application is made by",
+      "interested person",
+      "party to the foreign proceeding",
+      "right to submit information"
+    ]
+  },
+  "chroma_query_template": "Section 1782 interested person applicant {case_context}",
+  "chroma_collections": ["case_law_legal"],
+  "successful_case_average": 1.0,
+  "shap_importance": 0.0
+}
+

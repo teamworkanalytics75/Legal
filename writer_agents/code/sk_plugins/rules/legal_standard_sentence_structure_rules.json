@@ -1,0 +1,11 @@
+{
+  "rule_name": "legal_standard_sentence_structure",
+  "description": "Sentence structure validation for Legal Standard section",
+  "source": "CatBoost model",
+  "targets": {
+    "min_sentences_per_paragraph": 1.548172757475083,
+    "max_sentences_per_paragraph": 4.6923076923076925,
+    "min_words_per_sentence": 8.711340206185566,
+    "max_words_per_sentence": 21.142857142857142
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "feature_name": "rule_Fed.R.Civ.P. 16(f)_182_enforcement",
+  "rule_id": 182,
+  "rule_citation": "Fed.R.Civ.P. 16(f)",
+  "rule_type": "Sanctions - Pretrial Sanctions",
+  "text_excerpt": "Sanctions for Pretrial Conference Violations. On motion or on its own, the court may issue any just orders, including those authorized by Rule 37(b)(2)(A)(ii)-(vii), if a party or its attorney fails to obey a scheduling or other pretrial order.",
+  "is_relevant": true,
+  "is_enforcement": true,
+  "is_exclusion": false,
+  "priority": "critical",
+  "threshold": 1.0,
+  "description": "Enforce Fed.R.Civ.P. 16(f)",
+  "duty": "Enforce Fed.R.Civ.P. 16(f)",
+  "shap_importance": 0.0,
+  "minimum_threshold": 1,
+  "validation_criteria": {
+    "min_mentions": 1,
+    "required_context": [
+      "Fed.R.Civ.P. 16(f)"
+    ]
+  }
+}

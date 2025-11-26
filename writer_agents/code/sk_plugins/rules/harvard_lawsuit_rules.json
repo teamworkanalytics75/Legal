@@ -1,0 +1,39 @@
+{
+  "feature_name": "harvard_lawsuit",
+  "feature_importance": 3.5,
+  "feature_rank": 13,
+  "description": "Harvard's lawsuit in response to June 4th proclamation demonstrating CCP ties are national security concern",
+  "shap_importance": 3.5,
+  "importance_source": "contextual_estimate",
+  "importance_note": "Estimated contextual importance - not from CatBoost analysis (case-specific fact, not generalizable feature)",
+  "target_count": 1,
+  "min_count": 1,
+  "validation_criteria": {
+    "lawsuit_mentioned": true,
+    "connected_to_proclamation": true,
+    "national_security_context": true
+  },
+  "chroma_query_template": "Harvard lawsuit June 4 proclamation CCP national security {case_context}",
+  "chroma_collections": ["case_law_legal", "motion_examples"],
+  "collection_weights": {
+    "case_law_legal": 1.0,
+    "motion_examples": 0.9
+  },
+  "recommendations": {
+    "critical": "Add mention of Harvard's lawsuit in response to the June 4th proclamation.",
+    "rationale": "Harvard's lawsuit challenging the proclamation further demonstrates that Harvard's ties to the CCP are a recognized matter of national security concern.",
+    "example": "In response to the June 4th proclamation, Harvard filed a lawsuit challenging the proclamation, further demonstrating that Harvard's ties to the CCP are a matter of national security concern.",
+    "insight": "Harvard's decision to challenge the proclamation in court shows that the national security designation of its CCP ties is a significant and contested matter."
+  },
+  "enforcement": {
+    "severity": "medium",
+    "auto_fix": false,
+    "requires_manual_review": true,
+    "suggestions": [
+      "Mention Harvard's lawsuit",
+      "Connect it to the June 4th proclamation",
+      "Explain it demonstrates Harvard's CCP ties are a national security concern"
+    ]
+  }
+}
+
