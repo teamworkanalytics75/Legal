@@ -16,23 +16,10 @@ Automated legal document generation system focused on motion to seal proceedings
 pip install -r requirements_upwork.txt
 
 # Generate a motion
-python scripts/motion_generation/create_motion_local.py
+python scripts/create_motion_local.py
 
 # Run analysis
-python scripts/analysis/analyze_burroughs_rulings.py
-```
-
-## 📁 Structure
-
-```
-LegalTech-MotionToSeal/
-├── scripts/
-│   ├── motion_generation/  # Motion creation scripts
-│   └── analysis/           # Case analysis tools
-├── background_agents/       # Automated research agents
-├── ml_system/              # ML models and pipelines
-├── docs/                   # Documentation
-└── plans/                  # Project plans
+python scripts/analyze_burroughs_rulings.py
 ```
 
 ## 📋 Requirements
@@ -45,4 +32,3 @@ LegalTech-MotionToSeal/
 
 Large data files (models, case databases) are excluded.
 See setup docs for downloading required assets.
-

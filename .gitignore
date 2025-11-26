@@ -49,6 +49,9 @@ secrets.toml
 *.sqlite3
 token.pickle
 
+# Scripts with API keys (exclude from repo)
+scripts/
+
 # Test outputs
 coverage/
 htmlcov/
